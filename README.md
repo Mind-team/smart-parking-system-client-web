@@ -1,30 +1,7 @@
-![Logo](https://user-images.githubusercontent.com/57585370/111341061-fa752980-869a-11eb-9933-e014a1503678.png)
-<div align="center">
+# Smart Parking System Client Web
 
-![Release](https://img.shields.io/github/v/release/Ermolaev-Inc/react-project)
-![Lang](https://img.shields.io/github/languages/top/Ermolaev-Inc/react-project)
-
-
-![Lint](https://github.com/Ermolaev-Inc/react-project/actions/workflows/lint.yml/badge.svg)
-![Build](https://github.com/Ermolaev-Inc/react-project/actions/workflows/build.yml/badge.svg)
-
-</div>
-
-# Getting Started with React project
+## Getting Started with React project
 This project was bootstrapped with [react-project](https://github.com/Ermolaev-Inc/react-project)
-
-## Available Features
-- React 17.0.1
-- TypeScript 4.0.3
-- React-components-kit 2.1.2 
-- Eslint 7.17.0
-- Jesse config for eslint 2.2.3
-- Styled-components 5.2.1
-- Node-sass 4.14.1
-- Lint & Build checkers (Github Actions)
-
-## [React-components-kit](https://github.com/Ermolaev-Inc/react-components-kit)
-You can use components from react-components-kit (erck) library
 
 ## Project Structure
 In **src** folder you can find:
@@ -57,9 +34,3 @@ Fixes code style errors ([Jesse](https://github.com/ErmolaevID/Jesse))
 
 ### `npm run test:coverage` or `yarn test:coverage`
 Checks the code coverage by types
-
-## Create React App
-react-project was bootstrapped with [create-react-app](https://github.com/facebook/create-react-app)
-
-## License
-React-project is open source software licensed as MIT
