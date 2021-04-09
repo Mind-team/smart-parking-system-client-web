@@ -30,13 +30,11 @@ const App: React.FC = () => {
         "Content-Type": "application/json",
       }
     })
-      .then(result => {
-        if (!result.phoneNumber) {
-          setUserData(null);
-        } else {
-          setUserData(result);
-        }
-      });
+      .then(
+        result => result.isExpected ?
+          setUserData(result.value) :
+          setUserData(null)
+      );
   };
 
   useEffect(() => isUserAuthData() ? getUserData() : undefined, []);
