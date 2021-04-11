@@ -31,9 +31,10 @@ const App: React.FC = () => {
       }
     })
       .then(
-        result => result.isExpected ?
-          setUserData(result.value) :
-          setUserData(null)
+        result =>
+          result.isExpected ?
+            setUserData(result.value) :
+            setUserData(null)
       );
   };
 
