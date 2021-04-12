@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import s from "../styles/SignIn.module.sass";
 import logo from "../img/mindLogo.svg";
-import ill from "../img/leftSideSVG.svg";
+import illustration from "../img/leftSideSVG.svg";
 import darkModeIcon from "../img/darkMode.svg";
 import { useHttp } from "../hooks/http.hook";
 import { UserRecord } from "../common/UserRecord.interface";
@@ -46,7 +46,7 @@ export const SignIn: React.FC = () => {
       <div className={s.wrapper}>
         <div className={s.leftSide}>
           <img className={s.mindLogo} src={logo} alt="" />
-          <img className={s.illustration} src={ill} alt="" />
+          <img className={s.illustration} src={illustration} alt="" />
           <img className={s.modeIcon} src={darkModeIcon} alt=""/>
         </div>
         <div className={s.rightSide}>
