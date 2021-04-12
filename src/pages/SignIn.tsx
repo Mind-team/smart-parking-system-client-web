@@ -13,7 +13,7 @@ export const SignIn: React.FC = () => {
   const [phoneNumber, setPhoneNumber] = useState();
   const [password, setPassword] = useState();
 
-  const handleInput = (event: any, type: string) =>
+  const handleInput = (event: any, type: "phoneNumber" | "password") =>
     type === "phoneNumber" ?
       setPhoneNumber(event.target.value) :
       setPassword(event.target.value);
