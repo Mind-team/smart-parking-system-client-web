@@ -7,21 +7,21 @@ import darkModeIcon from "../img/darkMode.svg";
 export const SignIn: React.FC = () => {
   return (
     <div className={s.wrapper}>
-      <div className={s.leftSideBackground}>
+      <div className={s.leftSide}>
         <img className={s.mindLogo} src={logo} alt="" />
-        <img className={s.ill} src={ill} alt="" />
-        <img className={s.mode} src={darkModeIcon} alt=""/>
+        <img className={s.illustration} src={ill} alt="" />
+        <img className={s.modeIcon} src={darkModeIcon} alt=""/>
       </div>
-      <div className={s.rightSideBackground}>
+      <div className={s.rightSide}>
         <div className={s.form}>
           <p className={s.formTitle}>Умная парковочная система</p>
           <p className={s.formSubtitle}>Еще не зарегистрированы?</p>
-          <div className={s.inputs}>
-            <input type="text" className={s.input} placeholder="+7" />
-            <input type="password" className={s.input} placeholder="Пароль" />
+          <div className={s.formInputs}>
+            <input type="text" className={s.formInput} placeholder="+7" />
+            <input type="password" className={s.formInput} placeholder="Пароль" />
           </div>
           <button className={s.formButton}>
-            <span className={s.buttonTitle}>
+            <span className={s.formButtonTitle}>
               Войти
             </span>
           </button>
