@@ -49,6 +49,7 @@
       display: flex
       flex-direction: column
       .formInput
+        cursor: pointer
         height: 6.03703704vh
         margin-bottom: 34px
         border: 2px solid #393939
@@ -57,6 +58,9 @@
         font-weight: 400
         font-size: 3.18518519vh
         padding-left: 15px
+        &:hover
+          box-shadow: 0 0 8px rgba(0, 0, 0, 0.25)
+          transition: 0.2s
     .formButton
       display: flex
       justify-content: center
@@ -71,6 +75,9 @@
       font-weight: 500
       font-size: 3.18518519vh
       cursor: pointer
+      &:hover
+        box-shadow: 0 0 8px #61A0EA
+        transition: 0.2s
       .formButtonTitle
         display: flex
         align-self: center
