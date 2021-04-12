@@ -6,6 +6,7 @@ import darkModeIcon from "../img/darkMode.svg";
 import { useHttp } from "../hooks/http.hook";
 import { UserRecord } from "../common/UserRecord.interface";
 import { Redirect } from "react-router-dom";
+import { DarkModeIcon, Form, FormButton, FormButtonTitle, FormInput, FormInputs, FormSubtitle, FormTitle, Illustration, LeftSide, MindLogo, RightSide, Wrapper } from "../styles/SignIn.styles";
 
 export const SignIn: React.FC = () => {
   const req = useHttp();
@@ -43,28 +44,28 @@ export const SignIn: React.FC = () => {
   return (
     <>
       {userData && <Redirect push to="/home" />}
-      <div className={s.wrapper}>
-        <div className={s.leftSide}>
-          <img className={s.mindLogo} src={logo} alt="" />
-          <img className={s.illustration} src={illustration} alt="" />
-          <img className={s.modeIcon} src={darkModeIcon} alt=""/>
-        </div>
-        <div className={s.rightSide}>
-          <div className={s.form}>
-            <p className={s.formTitle}>Умная парковочная система</p>
-            <p className={s.formSubtitle}>Еще не зарегистрированы?</p>
-            <div className={s.formInputs}>
-              <input type="text" className={s.formInput} placeholder="+7" onChange={(event => handleInput(event, "phoneNumber"))} />
-              <input type="password" className={s.formInput} placeholder="Пароль" onChange={(event => handleInput(event, "password"))} />
-            </div>
-            <button className={s.formButton} onClick={handleSubmit}>
-              <span className={s.formButtonTitle}>
+      <Wrapper>
+        <LeftSide>
+          <MindLogo src={logo} />
+          <Illustration src={illustration} />
+        </LeftSide>
+        <RightSide>
+          <DarkModeIcon src={darkModeIcon} />
+          <Form>
+            <FormTitle>Умная парковочная система</FormTitle>
+            <FormSubtitle>Еще не зарегистрированы?</FormSubtitle>
+            <FormInputs>
+              <FormInput type="text" placeholder="+7" />
+              <FormInput type="password" placeholder="Пароль" />
+            </FormInputs>
+            <FormButton>
+              <FormButtonTitle>
                 Войти
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
+              </FormButtonTitle>
+            </FormButton>
+          </Form>
+        </RightSide>
+      </Wrapper>
     </>
   );
 };
