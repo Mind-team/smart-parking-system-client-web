@@ -8,7 +8,7 @@ import darkModeIcon from "../img/darkMode.svg";
 import { useHttp } from "../hooks/http.hook";
 import { UserRecord } from "../common/UserRecord.interface";
 import { Redirect } from "react-router-dom";
-import { DarkModeIcon, Form, FormButton, FormButtonTitle, FormInput, FormInputs, FormSubtitle, FormTitle, Illustration, LeftSide, MindLogo, RightSide, Wrapper } from "../styles/SignIn.styles";
+import { AppearanceModeIcon, Form, FormButton, FormButtonTitle, FormInput, FormInputs, FormSubtitle, FormTitle, Illustration, LeftSide, MindLogo, RightSide, Wrapper } from "../styles/SignIn.styles";
 import { ThemeProvider } from "styled-components";
 import { lightModeConfig, darkModeConfig } from "../styles/ModeConfig";
 
@@ -28,12 +28,10 @@ export const SignIn: React.FC = () => {
     req<UserRecord>({
       url: "http://localhost:5000/user/signIn",
       method: "POST",
-      body: JSON.stringify(
-        {
-          phoneNumber: phoneNumber,
-          password: password
-        }
-      ),
+      body: JSON.stringify({
+        phoneNumber: phoneNumber,
+        password: password
+      }),
       headers: {
         "Content-Type": "application/json",
       }
@@ -47,10 +45,24 @@ export const SignIn: React.FC = () => {
       });
   };
 
+  const changeAppearanceMode = () => {
+    if (mode === "Light") {
+      setMode("Dark");
+      localStorage.setItem("Mode", "Dark");
+      return;
+    }
+    setMode("Light");
+    localStorage.setItem("Mode", "Light");
+  };
+
   useEffect(() => {
-    const mode = localStorage.getItem("Mode");
-    mode ? setMode(mode as "Light" | "Dark") : setMode("Light");
-  }, [localStorage]);
+    const storageMode = localStorage.getItem("Mode");
+    if (storageMode === "Dark") {
+      setMode("Dark");
+      return;
+    }
+    setMode("Light");
+  }, []);
 
   return (
     <>
@@ -62,7 +74,7 @@ export const SignIn: React.FC = () => {
             <Illustration src={mode === "Light" ? illustration : illustrationDark} />
           </LeftSide>
           <RightSide>
-            <DarkModeIcon src={mode === "Light" ? darkModeIcon : lightModeIcon} />
+            <AppearanceModeIcon src={mode === "Light" ? darkModeIcon : lightModeIcon} onClick={changeAppearanceMode} />
             <Form>
               <FormTitle>Умная парковочная система</FormTitle>
               <FormSubtitle>Еще не зарегистрированы?</FormSubtitle>

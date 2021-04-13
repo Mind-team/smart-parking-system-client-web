@@ -37,7 +37,7 @@ export const Illustration = styled.img`
   flex-basis: calc(882vh * ${heightRate});
 `;
 
-export const DarkModeIcon = styled.img`
+export const AppearanceModeIcon = styled.img`
   display: flex;
   width: calc(49.62vw * ${widthRate});
   height: calc(56vh * ${heightRate});
