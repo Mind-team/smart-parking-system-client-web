@@ -26,7 +26,7 @@ export const SignIn: React.FC = () => {
       setPassword(event.target.value);
 
   const handleSubmit = () => 
-    req<UserRecord>({
+    req<SignInData, UserRecord>({
       url: "http://localhost:5000/user/signIn",
       method: "POST",
       body: JSON.stringify({
