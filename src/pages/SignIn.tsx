@@ -11,6 +11,7 @@ import { Redirect } from "react-router-dom";
 import { AppearanceModeIcon, Form, FormButton, FormButtonTitle, FormInput, FormInputs, FormSubtitle, FormTitle, Illustration, LeftSide, MindLogo, RightSide, Wrapper } from "../styles/SignIn.styles";
 import { ThemeProvider } from "styled-components";
 import { lightModeConfig, darkModeConfig } from "../styles/ModeConfig";
+import { SignInData } from "../common/SignInData.type";
 
 export const SignIn: React.FC = () => {
   const req = useHttp();
@@ -24,7 +25,7 @@ export const SignIn: React.FC = () => {
       setPhoneNumber(event.target.value) :
       setPassword(event.target.value);
 
-  const handleSubmit = () => {
+  const handleSubmit = () => 
     req<UserRecord>({
       url: "http://localhost:5000/user/signIn",
       method: "POST",
@@ -43,7 +44,6 @@ export const SignIn: React.FC = () => {
         }
         setUserData(result.value);
       });
-  };
 
   const changeAppearanceMode = () => {
     if (mode === "Light") {
@@ -56,8 +56,8 @@ export const SignIn: React.FC = () => {
   };
 
   useEffect(() => {
-    const storageMode = localStorage.getItem("Mode");
-    if (storageMode === "Dark") {
+    const mode = localStorage.getItem("Mode");
+    if (mode === "Dark") {
       setMode("Dark");
       return;
     }
