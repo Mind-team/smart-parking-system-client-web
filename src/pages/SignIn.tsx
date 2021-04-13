@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import logoLight from "../img/mindLogoLight.svg";
 import logoDark from "../img/mindLogoDark.svg";
 import illustration from "../img/illustrationLight.svg";
@@ -6,6 +6,7 @@ import illustrationDark from "../img/illustrationDark.svg";
 import lightModeIcon from "../img/lightMode.svg";
 import darkModeIcon from "../img/darkMode.svg";
 import { useHttp } from "../hooks/http.hook";
+import { useMode } from "../hooks/mode.hook";
 import { UserRecord } from "../common/UserRecord.interface";
 import { Redirect } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
@@ -28,7 +29,7 @@ import {
 
 export const SignIn: React.FC = () => {
   const req = useHttp();
-  const [mode, setMode] = useState<"Light" | "Dark">("Light");
+  const [mode, toggleMode] = useMode();
   const [userData, setUserData] = useState<UserRecord | null>();
   const [phoneNumber, setPhoneNumber] = useState();
   const [password, setPassword] = useState();
@@ -58,25 +59,6 @@ export const SignIn: React.FC = () => {
         setUserData(result.value);
       });
 
-  const changeAppearanceMode = () => {
-    if (mode === "Light") {
-      setMode("Dark");
-      localStorage.setItem("Mode", "Dark");
-      return;
-    }
-    setMode("Light");
-    localStorage.setItem("Mode", "Light");
-  };
-
-  useEffect(() => {
-    const mode = localStorage.getItem("Mode");
-    if (mode === "Dark") {
-      setMode("Dark");
-      return;
-    }
-    setMode("Light");
-  }, []);
-
   return (
     <>
       {userData && <Redirect push to="/home" />}
@@ -87,7 +69,7 @@ export const SignIn: React.FC = () => {
             <Illustration src={mode === "Light" ? illustration : illustrationDark} />
           </LeftSide>
           <RightSide>
-            <AppearanceModeIcon src={mode === "Light" ? darkModeIcon : lightModeIcon} onClick={changeAppearanceMode} />
+            <AppearanceModeIcon src={mode === "Light" ? darkModeIcon : lightModeIcon} onClick={toggleMode} />
             <Form>
               <FormTitle>Умная парковочная система</FormTitle>
               <FormSubtitle>Еще не зарегистрированы?</FormSubtitle>
@@ -95,7 +77,7 @@ export const SignIn: React.FC = () => {
                 <FormInput type="text" placeholder="+7" onChange={e => handleInput(e, "phoneNumber")} />
                 <FormInput type="password" placeholder="Пароль" onChange={e => handleInput(e, "password")} />
               </FormInputs>
-              <Button title="Войти" />
+              <Button title="Войти" onClick={handleSubmit} />
             </Form>
           </RightSide>
         </Wrapper>
