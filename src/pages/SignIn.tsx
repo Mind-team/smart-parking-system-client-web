@@ -1,15 +1,20 @@
-import React, { useState } from "react";
-import s from "../styles/SignIn.module.sass";
-import logo from "../img/mindLogo.svg";
-import illustration from "../img/leftSideSVG.svg";
+import React, { useEffect, useState } from "react";
+import logoLight from "../img/mindLogoLight.svg";
+import logoDark from "../img/mindLogoDark.svg";
+import illustration from "../img/illustrationLight.svg";
+import illustrationDark from "../img/illustrationDark.svg";
+import lightModeIcon from "../img/lightMode.svg";
 import darkModeIcon from "../img/darkMode.svg";
 import { useHttp } from "../hooks/http.hook";
 import { UserRecord } from "../common/UserRecord.interface";
 import { Redirect } from "react-router-dom";
 import { DarkModeIcon, Form, FormButton, FormButtonTitle, FormInput, FormInputs, FormSubtitle, FormTitle, Illustration, LeftSide, MindLogo, RightSide, Wrapper } from "../styles/SignIn.styles";
+import { ThemeProvider } from "styled-components";
+import { lightModeConfig, darkModeConfig } from "../styles/ModeConfig";
 
 export const SignIn: React.FC = () => {
   const req = useHttp();
+  const [mode, setMode] = useState<"Light" | "Dark">("Light");
   const [userData, setUserData] = useState<UserRecord | null>();
   const [phoneNumber, setPhoneNumber] = useState();
   const [password, setPassword] = useState();
@@ -41,31 +46,39 @@ export const SignIn: React.FC = () => {
         setUserData(result.value);
       });
   };
+
+  useEffect(() => {
+    const mode = localStorage.getItem("Mode");
+    mode ? setMode(mode as "Light" | "Dark") : setMode("Light");
+  }, [localStorage]);
+
   return (
     <>
       {userData && <Redirect push to="/home" />}
-      <Wrapper>
-        <LeftSide>
-          <MindLogo src={logo} />
-          <Illustration src={illustration} />
-        </LeftSide>
-        <RightSide>
-          <DarkModeIcon src={darkModeIcon} />
-          <Form>
-            <FormTitle>Умная парковочная система</FormTitle>
-            <FormSubtitle>Еще не зарегистрированы?</FormSubtitle>
-            <FormInputs>
-              <FormInput type="text" placeholder="+7" />
-              <FormInput type="password" placeholder="Пароль" />
-            </FormInputs>
-            <FormButton>
-              <FormButtonTitle>
-                Войти
-              </FormButtonTitle>
-            </FormButton>
-          </Form>
-        </RightSide>
-      </Wrapper>
+      <ThemeProvider theme={mode === "Light" ? lightModeConfig : darkModeConfig}>
+        <Wrapper>
+          <LeftSide>
+            <MindLogo src={mode === "Light" ? logoLight : logoDark} />
+            <Illustration src={mode === "Light" ? illustration : illustrationDark} />
+          </LeftSide>
+          <RightSide>
+            <DarkModeIcon src={mode === "Light" ? darkModeIcon : lightModeIcon} />
+            <Form>
+              <FormTitle>Умная парковочная система</FormTitle>
+              <FormSubtitle>Еще не зарегистрированы?</FormSubtitle>
+              <FormInputs>
+                <FormInput type="text" placeholder="+7" onChange={e => handleInput(e, "phoneNumber")} />
+                <FormInput type="password" placeholder="Пароль" onChange={e => handleInput(e, "password")} />
+              </FormInputs>
+              <FormButton onClick={handleSubmit}>
+                <FormButtonTitle>
+                  Войти
+                </FormButtonTitle>
+              </FormButton>
+            </Form>
+          </RightSide>
+        </Wrapper>
+      </ThemeProvider>
     </>
   );
 };
