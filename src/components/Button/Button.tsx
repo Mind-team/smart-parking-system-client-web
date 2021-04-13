@@ -3,13 +3,15 @@ import { ButtonTitle, ButtonWrapper } from "./ButtonStyles";
 
 interface Props {
   title: string;
+  [name: string]: any;
 }
 
 export const Button: React.FC<Props> = ({
-  title = "ОК"
+  title = "ОК",
+  ...props
 }) => {
   return (
-    <ButtonWrapper>
+    <ButtonWrapper {...props}>
       <ButtonTitle>
         {title}
       </ButtonTitle>
