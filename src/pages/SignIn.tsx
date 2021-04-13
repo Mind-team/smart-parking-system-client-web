@@ -8,10 +8,23 @@ import darkModeIcon from "../img/darkMode.svg";
 import { useHttp } from "../hooks/http.hook";
 import { UserRecord } from "../common/UserRecord.interface";
 import { Redirect } from "react-router-dom";
-import { AppearanceModeIcon, Form, FormButton, FormButtonTitle, FormInput, FormInputs, FormSubtitle, FormTitle, Illustration, LeftSide, MindLogo, RightSide, Wrapper } from "../styles/SignIn.styles";
 import { ThemeProvider } from "styled-components";
 import { lightModeConfig, darkModeConfig } from "../styles/ModeConfig";
 import { SignInData } from "../common/SignInData.type";
+import { Button } from "../components/Button/Button";
+import { 
+  AppearanceModeIcon, 
+  Form, 
+  FormInput, 
+  FormInputs, 
+  FormSubtitle, 
+  FormTitle, 
+  Illustration, 
+  LeftSide, 
+  MindLogo, 
+  RightSide, 
+  Wrapper 
+} from "../styles/SignIn.styles";
 
 export const SignIn: React.FC = () => {
   const req = useHttp();
@@ -82,11 +95,7 @@ export const SignIn: React.FC = () => {
                 <FormInput type="text" placeholder="+7" onChange={e => handleInput(e, "phoneNumber")} />
                 <FormInput type="password" placeholder="Пароль" onChange={e => handleInput(e, "password")} />
               </FormInputs>
-              <FormButton onClick={handleSubmit}>
-                <FormButtonTitle>
-                  Войти
-                </FormButtonTitle>
-              </FormButton>
+              <Button title="Войти" />
             </Form>
           </RightSide>
         </Wrapper>
