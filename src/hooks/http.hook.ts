@@ -10,11 +10,11 @@ export interface HttpRequest<T> {
 }
 
 export const useHttp = () => {
-  return async<T, U>(configObject: HttpRequest<T>): Promise<ServerResponse<U>> => {
+  return async<In, Out>(configObject: HttpRequest<In>): Promise<ServerResponse<Out>> => {
     try {
       const { method, body, headers } = { ...configObject };
-      const Tbody = body as BodyInit;
-      const response = await fetch(configObject.url, { method, body: Tbody, headers });
+      const _body = body as BodyInit;
+      const response = await fetch(configObject.url, { method, body: _body, headers });
       return await response.json();
     } catch (e) {
       throw e;
