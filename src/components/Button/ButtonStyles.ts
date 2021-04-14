@@ -3,9 +3,14 @@ import styled from "styled-components";
 const widthRate = 100 / 1920;
 const heightRate = 100 / 1080;
 
-export const ButtonWrapper = styled.button`
-  width: calc(175vw * ${widthRate});
-  height: calc(80vh * ${heightRate});
+interface Styles {
+  width: string;
+  height: string;
+}
+
+export const ButtonWrapper = styled.button<Styles>`
+  width: calc(${props => props.width} * ${widthRate});
+  height: calc(${props => props.height} * ${heightRate});
   background: #61A0EA;
   border-radius: 14px;
   outline: none;

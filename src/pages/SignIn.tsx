@@ -17,7 +17,6 @@ import { Input } from "../components/Input/Input";
 import { 
   AppearanceModeIcon, 
   Form, 
-  FormInput, 
   FormInputs, 
   FormSubtitle, 
   FormTitle, 
