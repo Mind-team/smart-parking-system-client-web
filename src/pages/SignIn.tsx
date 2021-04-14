@@ -13,6 +13,7 @@ import { ThemeProvider } from "styled-components";
 import { lightModeConfig, darkModeConfig } from "../styles/ModeConfig";
 import { SignInData } from "../common/SignInData.type";
 import { Button } from "../components/Button/Button";
+import { Input } from "../components/Input/Input";
 import { 
   AppearanceModeIcon, 
   Form, 
@@ -74,8 +75,8 @@ export const SignIn: React.FC = () => {
               <FormTitle>Умная парковочная система</FormTitle>
               <FormSubtitle>Еще не зарегистрированы?</FormSubtitle>
               <FormInputs>
-                <FormInput type="text" placeholder="+7" onChange={e => handleInput(e, "phoneNumber")} />
-                <FormInput type="password" placeholder="Пароль" onChange={e => handleInput(e, "password")} />
+                <Input placeholder="+7" onChange={(e: any) => handleInput(e, "phoneNumber")} />
+                <Input type="password" placeholder="Пароль" onChange={(e: any) => handleInput(e, "password")} />
               </FormInputs>
               <Button title="Войти" onClick={handleSubmit} />
             </Form>
