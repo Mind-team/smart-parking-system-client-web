@@ -6,7 +6,7 @@ interface Props {
   [name: string]: any;
 }
 
-export const Button: React.FC<Props> = ({
+export const Button: React.FC<Partial<Props>> = ({
   title = "ОК",
   ...props
 }) => {
