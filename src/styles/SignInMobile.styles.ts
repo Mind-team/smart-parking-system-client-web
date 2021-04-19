@@ -24,6 +24,7 @@ export const Form = styled.div`
   margin-top: calc(68vh * ${heightRate});
   width: calc(299vw * ${widthRate});
   height: calc(222vh * ${heightRate});
+  margin-bottom: calc(170vh * ${heightRate});
 `;
 
 export const FormTitle = styled.p`

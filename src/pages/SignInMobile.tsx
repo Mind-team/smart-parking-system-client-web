@@ -19,11 +19,11 @@ export const SignInMobile = () => {
             <FormTitle>Умная парковочная система</FormTitle>
             <FormSubtitle>Еще не зарегистрированы?</FormSubtitle>
             <Inputs>
-              <Input placeholder="+7" paddingLeft="80vw" height="55vh" fontSizeMobile="20px" />
-              <Input type="password" paddingLeft="80vw" height="55vh" fontSizeMobile="20px" placeholder="Пароль" />
+              <Input placeholder="+7" paddingLeft="80vw" height="65vh" fontSizeMobile="20px" />
+              <Input type="password" paddingLeft="80vw" height="65vh" fontSizeMobile="20px" placeholder="Пароль" />
             </Inputs>
           </Form>
-          <Button title="Войти" width="400vw" height="70vh" />
+          <Button title="Войти" />
         </Wrapper>
       </ThemeProvider>  
     </>
