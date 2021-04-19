@@ -3,14 +3,7 @@ import styled from "styled-components";
 const widthRate = 100 / 1920;
 const heightRate = 100 / 1080;
 
-interface Styles {
-  width: string;
-  height: string;
-}
-
-export const ButtonWrapper = styled.button<Styles>`
-  width: calc(${props => props.width} * ${widthRate});
-  height: calc(${props => props.height} * ${heightRate});
+export const ButtonWrapper = styled.button`
   background: #61A0EA;
   border-radius: 14px;
   outline: none;
@@ -33,5 +26,6 @@ export const ButtonWrapper = styled.button<Styles>`
 export const ButtonTitle = styled.span`
   display: flex;
   align-self: center;
-  margin-left: calc(37vw * ${widthRate});
+  justify-self: center;
+  padding: 6px 10px;
 `;
