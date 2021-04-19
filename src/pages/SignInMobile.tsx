@@ -1,5 +1,13 @@
 import React from "react";
-import { Form, Logo, Wrapper, FormSubtitle, FormTitle, Inputs, AppearanceModeIcon } from "../styles/SignInMobile.styles";
+import { 
+  Form, 
+  Logo,
+  Wrapper, 
+  FormSubtitle, 
+  FormTitle, 
+  Inputs, 
+  AppearanceModeIcon 
+} from "../styles/SignInMobile.styles";
 import logoLight from "../img/mindLogoLight.svg";
 import logoDark from "../img/mindLogoDark.svg";
 import { ThemeProvider } from "styled-components";
