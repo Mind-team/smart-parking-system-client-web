@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   display: flex;
   height: 100%;
   flex-direction: column;
+  background-color: ${props => props.theme.backgroundColor}
 `;
 
 export const Logo = styled.img`
@@ -51,4 +52,14 @@ export const Inputs = styled.div`
   justify-self: center;
   margin-top: calc(46vh * ${heightRate});
 `;
+
+export const AppearanceModeIcon = styled.img`
+  display: flex;
+  width: calc(25vw * ${widthRate});
+  height: calc(25vh * ${heightRate});
+  cursor: pointer;
+  align-self: center;
+  margin-top: calc(90vh * ${heightRate});
+`;
+
 
