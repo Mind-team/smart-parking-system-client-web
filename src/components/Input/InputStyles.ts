@@ -34,5 +34,9 @@ export const InputWrapper = styled.input<Styles>`
   :hover {
     transition: 400ms;
     border-color: ${props => props.theme.actionColor};
+    ::placeholder {
+      transition: 400ms;
+      color: ${props => props.theme.actionColor};
+    }
   }
 `;
