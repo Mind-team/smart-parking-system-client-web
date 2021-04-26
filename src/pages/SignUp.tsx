@@ -34,11 +34,11 @@ export const SignUp: React.FC = () => {
             <FormTitle>Умная парковочная система</FormTitle>
             <FormInputs>
               <InputTitle>Номер телефона:</InputTitle>
-              <Input placeholder="+7"></Input>
+              <Input placeholder="+7" height="90vh"></Input>
               <InputTitle>Пароль:</InputTitle>
-              <Input type="password" placeholder="Пароль"></Input>
+              <Input type="password" placeholder="Пароль" height="90vh"></Input>
               <InputTitle>Регистрационный знак(и)</InputTitle>
-              <Input placeholder="x999xx"></Input>
+              <Input placeholder="x999xx" height="90vh"></Input>
             </FormInputs>
             <Button title="Зарегистрироваться"></Button>
           </Form>
