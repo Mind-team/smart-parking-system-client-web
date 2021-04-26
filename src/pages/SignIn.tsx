@@ -17,7 +17,6 @@ import { Input } from "../components/Input/Input";
 import { 
   AppearanceModeIcon, 
   Form, 
-  FormInput, 
   FormInputs, 
   FormSubtitle, 
   FormTitle, 
@@ -75,8 +74,8 @@ export const SignIn: React.FC = () => {
               <FormTitle>Умная парковочная система</FormTitle>
               <FormSubtitle>Еще не зарегистрированы?</FormSubtitle>
               <FormInputs>
-                <Input placeholder="+7" onChange={(e: any) => handleInput(e, "phoneNumber")} />
-                <Input type="password" placeholder="Пароль" onChange={(e: any) => handleInput(e, "password")} />
+                <Input placeholder="+7" onChange={(e: any) => handleInput(e, "phoneNumber")} height="90vh" />
+                <Input type="password" placeholder="Пароль" onChange={(e: any) => handleInput(e, "password")} height="90vh" />
               </FormInputs>
               <Button title="Войти" onClick={handleSubmit} />
             </Form>

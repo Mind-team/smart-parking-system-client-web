@@ -4,8 +4,6 @@ const widthRate = 100 / 1920;
 const heightRate = 100 / 1080;
 
 export const ButtonWrapper = styled.button`
-  width: calc(175vw * ${widthRate});
-  height: calc(80vh * ${heightRate});
   background: #61A0EA;
   border-radius: 14px;
   outline: none;
@@ -28,5 +26,6 @@ export const ButtonWrapper = styled.button`
 export const ButtonTitle = styled.span`
   display: flex;
   align-self: center;
-  margin-left: calc(37vw * ${widthRate});
+  justify-self: center;
+  padding: 6px 10px;
 `;
