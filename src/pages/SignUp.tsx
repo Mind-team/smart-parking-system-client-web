@@ -17,20 +17,9 @@ import {
   LeftSide,
   Wrapper,
   MindLogo 
-} from "../styles/SignUP.styles";
-// const widthRate = 100 / 1920;
-// const heightRate = 100 / 1080;
-// const Wrapper = styled.div` 
-//   color: red;
-//   width: calc(193vw*${widthRate});
-//   height: calc(1080vh*${heightRate});
-// `;
-// const Icon = styled.img`
+} from "../styles/SignUp.styles";
 
-//а `;
-
-
-export const Home: React.FC = () => {
+export const SignUp: React.FC = () => {
   const [mode, toggleMode] = useMode();
   return (
     <Wrapper>
@@ -46,7 +35,7 @@ export const Home: React.FC = () => {
             <Input placeholder="+7"></Input>
             <InputTitle>Пароль:</InputTitle>
             <Input type="password" placeholder="Пароль"></Input>
-            <InputTitle>Регистрационный знак:</InputTitle>
+            <InputTitle>Регистрационный знак(и)</InputTitle>
             <Input placeholder="x999xx"></Input>
           </FormInputs>
           <Button title="Зарегистрироваться"></Button>

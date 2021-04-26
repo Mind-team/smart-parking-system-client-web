@@ -7,46 +7,39 @@ export const Wrapper = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
+  overflow-y: hidden;
 `;
 
 export const LeftSide = styled.div`
   display: flex;
   flex-direction: column;
-  align-self: center;
   justify-content: space-between;
-  height: 100%;
+  align-items: center;
   flex-basis: calc(193vw * ${widthRate});
+  height: 100%;
   background-color: #f6f6f6;
 `;
 
 export const MindLogo = styled.img`
-  display: flex;
-  justify-content: flex-start;
-  align-self: center;
-  align-items: center;
   width: calc(55vw * ${widthRate});
   height: calc(55vh * ${heightRate});
-  margin-top: calc(30vh * ${heightRate});
+  margin-top: calc(56vh * ${heightRate});
 `;
 
 export const AppearanceModeIcon = styled.img`
-  display: flex;
-  justify-content: flex-end;
-  align-self: center;
   width: calc(49.62vw * ${widthRate});
   height: calc(56vh * ${heightRate});
   cursor: pointer;
-  margin-bottom: 30px;
+  margin-bottom: calc(56vh * ${heightRate});
 `;
 
 export const RightSide = styled.div`
   display: flex;
   flex-direction: column;
-  align-self: center;
   height: 100%;
   width: 100%;
-  background-color: white;
-  padding-top: 50pt;
+  background-color: #ffffff;
+  margin-top: calc(70vh * ${heightRate});
 `;
 
 export const Form = styled.div`
@@ -54,29 +47,24 @@ export const Form = styled.div`
   flex-direction: column;
   align-self: center;
   width: calc(651vw * ${widthRate});
-  height: calc(623vh * ${heightRate});
+  height: calc(782vh * ${heightRate});
 `;
 
 export const FormTitle = styled.p`
 display: flex;
 align-self: center;
-font-style: normal;
-font-weight: 500;
-font-size: 48px;
-line-height: 56px;
-font-weight: bold;
+font-size: 35px;
+font-weight: 700;
 color: #393939;
 `;
 
 export const InputTitle = styled.p`
-  transform: translate(20px,-10px);
-  font-style: normal;
   font-weight: 300;
   font-size: 30px;
-  line-height: 35px;
-  display: flex;
   align-items: center;
   color: #393939;
+  margin-bottom: calc(23vh * ${heightRate});
+  margin-left: calc(26vw * ${widthRate});
 `;
 
 export const FormInputs = styled.div`
