@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   height: 100%;
   width: 100%;
   overflow-y: hidden;
+  background-color: ${props => props.theme.backgroundColor};
 `;
 
 export const LeftSide = styled.div`
@@ -17,7 +18,7 @@ export const LeftSide = styled.div`
   align-items: center;
   flex-basis: calc(193vw * ${widthRate});
   height: 100%;
-  background-color: #f6f6f6;
+  background-color: ${props => props.theme.additionalBGColor ?? props.theme.backgroundColor};
 `;
 
 export const MindLogo = styled.img`
@@ -38,7 +39,6 @@ export const RightSide = styled.div`
   flex-direction: column;
   height: 100%;
   width: 100%;
-  background-color: #ffffff;
   margin-top: calc(70vh * ${heightRate});
 `;
 
@@ -55,14 +55,14 @@ display: flex;
 align-self: center;
 font-size: 35px;
 font-weight: 700;
-color: #393939;
+color: ${props => props.theme.textColor};
 `;
 
 export const InputTitle = styled.p`
   font-weight: 300;
   font-size: 30px;
   align-items: center;
-  color: #393939;
+  color: ${props => props.theme.textColor};;
   margin-bottom: calc(23vh * ${heightRate});
   margin-left: calc(26vw * ${widthRate});
 `;
