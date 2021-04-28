@@ -25,9 +25,9 @@ import { ServerResponse } from "../common/ServerResponse.interface";
 
 export const SignUp: React.FC = () => {
   const req = useHttp();
-  const [phoneNumber, setPhoneNumber] = useState<string>();
-  const [password, setPassword] = useState<string>();
-  const [plate, setPlate] = useState<string>();
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [plate, setPlate] = useState<string>("");
 
   const handleInput = (
     event: any,
@@ -48,11 +48,11 @@ export const SignUp: React.FC = () => {
     req<SignUpDto, ServerResponse<null>>({
       url: "http://localhost:5000/user/signUp",
       method: "POST",
-      body: JSON.stringify({
+      body: {
         phoneNumber,
         password,
         plates: [plate]
-      }),
+      },
       headers: {
         "Content-Type": "application/json",
       },

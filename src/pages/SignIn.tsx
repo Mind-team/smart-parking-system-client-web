@@ -11,7 +11,6 @@ import { UserRecord } from "../common/UserRecord.interface";
 import { Redirect } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { lightModeConfig, darkModeConfig } from "../styles/ModeConfig";
-import { SignInData } from "../common/SignInData.type";
 import { Button } from "../components/Button/Button";
 import { Input } from "../components/Input/Input";
 import { 
@@ -26,13 +25,14 @@ import {
   RightSide, 
   Wrapper 
 } from "../styles/SignIn.styles";
+import { SignInDto } from "../common/SignInDto";
 
 export const SignIn: React.FC = () => {
   const req = useHttp();
   const [mode, toggleMode] = useMode();
   const [userData, setUserData] = useState<UserRecord | null>();
-  const [phoneNumber, setPhoneNumber] = useState();
-  const [password, setPassword] = useState();
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const handleInput = (event: any, type: "phoneNumber" | "password") =>
     type === "phoneNumber" ?
@@ -40,18 +40,19 @@ export const SignIn: React.FC = () => {
       setPassword(event.target.value);
 
   const handleSubmit = () => 
-    req<SignInData, UserRecord>({
+    req<SignInDto, UserRecord>({
       url: "http://localhost:5000/user/signIn",
       method: "POST",
-      body: JSON.stringify({
-        phoneNumber: phoneNumber,
-        password: password
-      }),
+      body: {
+        phoneNumber,
+        password,
+      },
       headers: {
         "Content-Type": "application/json",
       }
     })
       .then(result => {
+        console.log(phoneNumber);
         if (!result.isExpected) {
           // TODO: Error handler
           return;
