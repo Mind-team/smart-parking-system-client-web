@@ -22,13 +22,9 @@ import {
   RightSide,
   Wrapper,
 } from "../../styles/SignIn.styles";
+import { SignInProps } from "./SignInProps";
 
-interface Props {
-  handleInput: (event: any, type: "phoneNumber" | "password") => void;
-  handleSubmit: () => void;
-}
-
-export const SignIn: React.FC<Props> = ({ handleInput, handleSubmit }) => {
+export const SignIn: React.FC<SignInProps> = ({ handleInput, handleSubmit }) => {
   const [mode, toggleMode] = useMode();
 
   return (
