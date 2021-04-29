@@ -44,13 +44,13 @@ export const SignInContainer = () => {
     });
 
   return (
-    <ThemeProvider theme={mode === "Light" ? lightModeConfig : darkModeConfig}>
+    <>
       {userData && <Redirect push to="/home" />}
       {useWindowDimensions().width > 760 ? (
         <SignIn handleInput={handleInput} handleSubmit={handleSubmit} />
       ) : (
         <SignInMobile />
       )}
-    </ThemeProvider>
+    </>
   );
 };
