@@ -18,6 +18,7 @@ import { Button } from "../../components/Button/Button";
 import lightModeIcon from "../../img/lightMode.svg";
 import darkModeIcon from "../../img/darkMode.svg";
 import { SignInProps } from "./SignInProps";
+import { NavLink } from "react-router-dom";
 
 export const SignInMobile: React.FC<SignInProps> = ({
   handleInput,
@@ -30,7 +31,9 @@ export const SignInMobile: React.FC<SignInProps> = ({
         <Logo src={mode === "Light" ? logoLight : logoDark} />
         <Form>
           <FormTitle>Умная парковочная система</FormTitle>
-          <FormSubtitle>Еще не зарегистрированы?</FormSubtitle>
+          <NavLink to="/signUp" style={{ textDecoration: "none" }}>
+            <FormSubtitle>Еще не зарегистрированы?</FormSubtitle>
+          </NavLink>
           <Inputs>
             <Input
               placeholder="+7"
