@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   display: flex;
   height: 100%;
   flex-direction: column;
-  background-color: ${props => props.theme.backgroundColor}
+  background-color: ${props => props.theme.backgroundColor};
 `;
 
 export const Logo = styled.img`
