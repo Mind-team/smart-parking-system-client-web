@@ -17,9 +17,13 @@ import { Button } from "../../components/Button/Button";
 import { AppearanceModeIcon } from "../../styles/SignInMobile.styles";
 import lightModeIcon from "../../img/lightMode.svg";
 import darkModeIcon from "../../img/darkMode.svg";
+import { SignUpProps } from "./SignUpProps";
 
-export const SignUpMobile = () => {
-  const [mode, setMode] = useMode();
+export const SignUpMobile: React.FC<SignUpProps> = ({
+  handleInput,
+  handleSubmit,
+}) => {
+  const [mode, toggleMode] = useMode();
   return (
     <ThemeProvider theme={mode === "Light" ? lightModeConfig : darkModeConfig}>
       <Wrapper>
@@ -33,6 +37,7 @@ export const SignUpMobile = () => {
               paddingLeft="80vw"
               height="65vh"
               fontSizeMobile="20px"
+              onChange={(e: any) => handleInput(e, "phoneNumber")}
             />
             <InputTitle>Пароль</InputTitle>
             <Input
@@ -41,6 +46,7 @@ export const SignUpMobile = () => {
               paddingLeft="80vw"
               height="65vh"
               fontSizeMobile="20px"
+              onChange={(e: any) => handleInput(e, "password")}
             />
             <InputTitle>Регистрационный знак</InputTitle>
             <Input
@@ -48,11 +54,13 @@ export const SignUpMobile = () => {
               paddingLeft="80vw"
               height="65vh"
               fontSizeMobile="20px"
+              onChange={(e: any) => handleInput(e, "plate")}
             />
           </Inputs>
-          <Button title="Войти" />
+          <Button title="Зарегистрироваться" onClick={handleSubmit} />
           <AppearanceModeIcon
             src={mode === "Light" ? darkModeIcon : lightModeIcon}
+            onClick={toggleMode}
           />
         </Form>
       </Wrapper>

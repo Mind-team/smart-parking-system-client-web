@@ -41,5 +41,9 @@ export const SignUpContainer = () => {
       },
     }).then((result) => result);
   };
-  return useWindowDimensions().width > 760 ? <SignUp /> : <SignUpMobile />;
+  return useWindowDimensions().width > 760 ? (
+    <SignUp handleInput={handleInput} handleSubmit={handleSubmit} />
+  ) : (
+    <SignUpMobile handleInput={handleInput} handleSubmit={handleSubmit} />
+  );
 };
