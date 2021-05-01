@@ -23,8 +23,12 @@ import {
   Wrapper,
 } from "../../styles/SignIn.styles";
 import { SignInProps } from "./SignInProps";
+import { NavLink } from "react-router-dom";
 
-export const SignIn: React.FC<SignInProps> = ({ handleInput, handleSubmit }) => {
+export const SignIn: React.FC<SignInProps> = ({
+  handleInput,
+  handleSubmit,
+}) => {
   const [mode, toggleMode] = useMode();
 
   return (
@@ -43,7 +47,9 @@ export const SignIn: React.FC<SignInProps> = ({ handleInput, handleSubmit }) => 
           />
           <Form>
             <FormTitle>Умная парковочная система</FormTitle>
-            <FormSubtitle>Еще не зарегистрированы?</FormSubtitle>
+            <NavLink to="/signUp" style={{ textDecoration: "none" }}>
+              <FormSubtitle>Еще не зарегистрированы?</FormSubtitle>
+            </NavLink>
             <FormInputs>
               <Input
                 placeholder="+7"

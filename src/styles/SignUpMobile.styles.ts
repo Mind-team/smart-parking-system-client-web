@@ -4,28 +4,23 @@ const widthRate = 100 / 375;
 const heightRate = 100 / 812;
 
 export const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
   display: flex;
-  height: 100%;
   flex-direction: column;
+  align-items: center;
   background-color: ${props => props.theme.backgroundColor};
 `;
 
-export const Logo = styled.img`
-  display: block;
-  align-self: center;
-  width: calc(30% * ${widthRate});
-  height: calc(30% * ${heightRate});
+export const MindLogo = styled.img`
+  width: calc(30vw * ${widthRate});
+  height: calc(30vh * ${heightRate});
   margin-top: calc(49vh * ${heightRate});
 `;
 
 export const Form = styled.div`
   display: flex;
   flex-direction: column;
-  align-self: center;
-  margin-top: calc(68vh * ${heightRate});
-  width: calc(299vw * ${widthRate});
-  height: calc(222vh * ${heightRate});
-  margin-bottom: calc(170vh * ${heightRate});
 `;
 
 export const FormTitle = styled.p`
@@ -34,23 +29,23 @@ export const FormTitle = styled.p`
   font-size: 20px;
   line-height: 26px;
   color: ${props => props.theme.textColor};
-`;
-
-export const FormSubtitle = styled.p`
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 21px;
-  color: ${props => props.theme.actionColor};
-  margin-top: 15px;
-  cursor: pointer;
+  margin-top: calc(54vh * ${heightRate});
 `;
 
 export const Inputs = styled.div`
-  display: flex;
+  display: flex;  
   flex-direction: column;
   justify-self: center;
-  margin-top: calc(46vh * ${heightRate});
+  margin-top: calc(52vh * ${heightRate});
+`;
+
+export const InputTitle = styled.p`
+  font-weight: 400;
+  font-size: 20px;
+  align-items: center;
+  color: ${props => props.theme.textColor};;
+  margin-bottom: calc(10vh * ${heightRate});
+  margin-left: calc(19vw * ${widthRate});
 `;
 
 export const AppearanceModeIcon = styled.img`
@@ -61,5 +56,3 @@ export const AppearanceModeIcon = styled.img`
   align-self: center;
   margin-top: calc(90vh * ${heightRate});
 `;
-
-
