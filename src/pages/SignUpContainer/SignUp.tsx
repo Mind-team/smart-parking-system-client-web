@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Button } from "../components/Button/Button";
-import { Input } from "../components/Input/Input";
-import darkModeIcon from "../img/darkMode.svg";
-import lightModeIcon from "../img/lightMode.svg";
-import logoLight from "../img/mindLogoLight.svg";
-import logoDark from "../img/mindLogoDark.svg";
-import { useMode } from "../hooks/mode.hook";
-import { lightModeConfig, darkModeConfig } from "../styles/ModeConfig";
+import { Button } from "../../components/Button/Button";
+import { Input } from "../../components/Input/Input";
+import darkModeIcon from "../../img/darkMode.svg";
+import lightModeIcon from "../../img/lightMode.svg";
+import logoLight from "../../img/mindLogoLight.svg";
+import logoDark from "../../img/mindLogoDark.svg";
+import { useMode } from "../../hooks/mode.hook";
+import { lightModeConfig, darkModeConfig } from "../../styles/ModeConfig";
 import { ThemeProvider } from "styled-components";
 import {
   InputTitle,
@@ -18,10 +18,10 @@ import {
   LeftSide,
   Wrapper,
   MindLogo,
-} from "../styles/SignUp.styles";
-import { useHttp } from "../hooks/http.hook";
-import { SignUpDto } from "../common/SignUpDto";
-import { ServerResponse } from "../common/ServerResponse.interface";
+} from "../../styles/SignUp.styles";
+import { useHttp } from "../../hooks/http.hook";
+import { SignUpDto } from "../../common/SignUpDto";
+import { ServerResponse } from "../../common/ServerResponse.interface";
 
 export const SignUp: React.FC = () => {
   const req = useHttp();
