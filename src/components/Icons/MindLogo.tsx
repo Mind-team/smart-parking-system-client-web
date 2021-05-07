@@ -7,7 +7,7 @@ export interface Props {
 }
 
 export const MindLogo: React.FC<Partial<Props>> = ({
-  color = "#191919",
+  color = "#393939",
   width = "59px",
   height = "59px"
 }) => {
