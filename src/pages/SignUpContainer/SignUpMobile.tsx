@@ -1,7 +1,6 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import { useMode } from "../../hooks/mode.hook";
-import { darkModeConfig, lightModeConfig } from "../../styles/ModeConfig";
 import {
   Wrapper,
   MindLogo,
@@ -23,9 +22,9 @@ export const SignUpMobile: React.FC<SignUpProps> = ({
   handleInput,
   handleSubmit,
 }) => {
-  const [mode, toggleMode] = useMode();
+  const [mode, toggleMode, modeConfig] = useMode();
   return (
-    <ThemeProvider theme={mode === "Light" ? lightModeConfig : darkModeConfig}>
+    <ThemeProvider theme={modeConfig}>
       <Wrapper>
         <MindLogo src={mode === "Light" ? logoLight : logoDark} />
         <Form>

@@ -6,7 +6,6 @@ import lightModeIcon from "../../img/lightMode.svg";
 import logoLight from "../../img/mindLogoLight.svg";
 import logoDark from "../../img/mindLogoDark.svg";
 import { useMode } from "../../hooks/mode.hook";
-import { lightModeConfig, darkModeConfig } from "../../styles/ModeConfig";
 import { ThemeProvider } from "styled-components";
 import {
   InputTitle,
@@ -25,9 +24,9 @@ export const SignUp: React.FC<SignUpProps> = ({
   handleInput,
   handleSubmit,
 }) => {
-  const [mode, toggleMode] = useMode();
+  const [mode, toggleMode, modeConfig] = useMode();
   return (
-    <ThemeProvider theme={mode === "Light" ? lightModeConfig : darkModeConfig}>
+    <ThemeProvider theme={modeConfig}>
       <Wrapper>
         <LeftSide>
           <MindLogo src={mode === "Light" ? logoLight : logoDark} />
