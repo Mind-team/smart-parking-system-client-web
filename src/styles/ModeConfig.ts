@@ -6,7 +6,7 @@ export interface ModeConfig {
 }
 
 export const lightModeConfig: ModeConfig = {
-  backgroundColor: "#fffff",
+  backgroundColor: "#ffffff",
   additionalBGColor: "#F7F7F7",
   textColor: "#393939",
   actionColor: "#61A0EA",
