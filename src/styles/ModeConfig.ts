@@ -1,5 +1,4 @@
 export interface ModeConfig {
-  type: "Light" | "Dark";
   backgroundColor: string;
   textColor: string;
   actionColor: string;
@@ -7,7 +6,6 @@ export interface ModeConfig {
 }
 
 export const lightModeConfig: ModeConfig = {
-  type: "Light",
   backgroundColor: "#fffff",
   additionalBGColor: "#F7F7F7",
   textColor: "#393939",
@@ -15,7 +13,6 @@ export const lightModeConfig: ModeConfig = {
 };
 
 export const darkModeConfig: ModeConfig = {
-  type: "Dark",
   backgroundColor: "#191919",
   additionalBGColor: "#000000",
   textColor: "#ffffff",
