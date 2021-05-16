@@ -13,7 +13,8 @@ export const LeftSide = styled.div`
   flex-direction: column;
   height: 100%;
   flex-basis: calc(1043vw * ${widthRate});
-  background-color: ${props => props.theme.additionalBGColor ?? props.theme.backgroundColor};
+  background-color: ${(props) =>
+    props.theme.additionalBGColor ?? props.theme.backgroundColor};
 `;
 
 export const RightSide = styled.div`
@@ -21,7 +22,7 @@ export const RightSide = styled.div`
   flex-direction: column;
   height: 100%;
   flex-basis: calc(877vw * ${widthRate});
-  background-color: ${props => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 export const MindLogo = styled.img`
@@ -59,8 +60,8 @@ export const FormTitle = styled.p`
   font-weight: 500;
   font-size: 45px;
   line-height: 56px;
-  color: ${props => props.theme.textColor};
-  @media(max-width: 1790px) {
+  color: ${(props) => props.theme.textColor};
+  @media (max-width: 1790px) {
     font-size: 30px;
   }
 `;
@@ -70,10 +71,10 @@ export const FormSubtitle = styled.p`
   font-weight: 400;
   font-size: 35px;
   line-height: 41px;
-  color: ${props => props.theme.actionColor};
+  color: ${(props) => props.theme.actionColor};
   margin-top: 15px;
   cursor: pointer;
-  @media(max-width: 1790px) {
+  @media (max-width: 1790px) {
     font-size: 25px;
     margin-top: 0;
   }
@@ -86,10 +87,10 @@ export const FormInputs = styled.div`
 `;
 
 export const FormInput = styled.input`
-  height: calc(76vh * ${heightRate}); 
+  height: calc(76vh * ${heightRate});
   margin-bottom: calc(50vh * ${heightRate});
-  color: ${props => props.theme.textColor};
-  border: 2px solid ${props => props.theme.textColor};
+  color: ${(props) => props.theme.textColor};
+  border: 2px solid ${(props) => props.theme.textColor};
   box-sizing: border-box;
   border-radius: 14px;
   outline: none;
@@ -99,15 +100,15 @@ export const FormInput = styled.input`
   line-height: 41px;
   cursor: pointer;
   padding-left: calc(25vw * ${widthRate});
-  background-color: ${props => props.theme.backgroundColor};
-  @media(max-width: 1790px) {
+  background-color: ${(props) => props.theme.backgroundColor};
+  @media (max-width: 1790px) {
     font-size: 25px;
   }
   ::placeholder {
-    color: ${props => props.theme.textColor};
+    color: ${(props) => props.theme.textColor};
   }
   :hover {
     transition: 400ms;
-    border-color: ${props => props.theme.actionColor};
+    border-color: ${(props) => props.theme.actionColor};
   }
 `;
