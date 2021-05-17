@@ -30,13 +30,13 @@ export const SignInContainer = () => {
         "Content-Type": "application/json",
       },
     }).then((result) => {
-      console.log(phoneNumber);
       if (!result.isExpected) {
         // TODO: Error handler
         return;
       }
       setUserData(result.value);
-      console.log(result);
+      localStorage.setItem("phoneNumber", phoneNumber);
+      localStorage.setItem("password", password);
     });
 
   return (
