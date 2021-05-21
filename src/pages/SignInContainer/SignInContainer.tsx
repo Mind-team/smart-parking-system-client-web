@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { SignInDto } from "../../common/SignInDto";
 import { UserRecord } from "../../common/UserRecord.interface";
@@ -38,6 +38,27 @@ export const SignInContainer = () => {
       localStorage.setItem("phoneNumber", phoneNumber);
       localStorage.setItem("password", password);
     });
+
+  useEffect(() => {
+    const [phoneNumber, password] = [
+      localStorage.getItem("phoneNumber"),
+      localStorage.getItem("password"),
+    ];
+    if (!(phoneNumber && password)) {
+      return;
+    }
+    req<SignInDto, UserRecord>({
+      url: "http://localhost:5000/user/signIn",
+      method: "POST",
+      body: {
+        phoneNumber,
+        password,
+      },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => setUserData(res.value));
+  }, []);
 
   return (
     <>
