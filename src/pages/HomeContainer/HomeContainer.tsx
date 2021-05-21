@@ -11,12 +11,19 @@ export const HomeContainer = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const [phoneNumber, password] = [
+      localStorage.getItem("phoneNumber"),
+      localStorage.getItem("password"),
+    ];
+    if (!(phoneNumber && password)) {
+      return;
+    }
     req<SignInDto, ParkingRecord>({
       url: "http://localhost:5000/user/lastParkingHistoryElement",
       method: "POST",
       body: {
-        phoneNumber: localStorage.getItem("phoneNumber") ?? "",
-        password: localStorage.getItem("password") ?? "",
+        phoneNumber,
+        password,
       },
       headers: {
         "Content-Type": "application/json",

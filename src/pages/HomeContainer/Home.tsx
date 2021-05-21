@@ -23,9 +23,7 @@ interface Props {
   parking: ParkingRecord;
 }
 
-export const Home: FC<Props> = ({
-  parking
-}) => {
+export const Home: FC<Props> = ({ parking }) => {
   const modeConfig = useMode()[2];
 
   return (

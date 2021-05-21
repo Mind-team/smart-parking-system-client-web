@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { SignInDto } from "../../common/SignInDto";
 import { UserRecord } from "../../common/UserRecord.interface";
@@ -40,10 +40,11 @@ export const SignInContainer = () => {
     });
 
   useEffect(() => {
-    const [phoneNumber, password] = [localStorage.getItem("phoneNumber"), localStorage.getItem("password")];
-    if (
-      !(phoneNumber && password)
-    ) {
+    const [phoneNumber, password] = [
+      localStorage.getItem("phoneNumber"),
+      localStorage.getItem("password"),
+    ];
+    if (!(phoneNumber && password)) {
       return;
     }
     req<SignInDto, UserRecord>({

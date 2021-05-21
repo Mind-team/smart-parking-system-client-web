@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${props => props.theme.additionalBGColor};
+  background-color: ${(props) => props.theme.additionalBGColor};
   height: 100%;
 `;
 
@@ -23,14 +23,14 @@ export const TopicWrapper = styled.div`
 export const TopicTitle = styled.p`
   font-size: 30px;
   font-weight: 500;
-  color: ${props => props.theme.textColor};
+  color: ${(props) => props.theme.textColor};
   margin-bottom: calc(35vh * ${hFullHD});
 `;
 
 export const TopicBody = styled.div`
   box-shadow: 0px 0px 10px rgba(25, 25, 25, 0.15);
   border-radius: 35px;
-  background-color: ${props => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 export const Line = styled.div`
@@ -41,14 +41,14 @@ export const Line = styled.div`
 export const LineNumber = styled.p`
   font-weight: 400;
   font-size: 21px;
-  color: ${props => props.theme.actionColor};
+  color: ${(props) => props.theme.actionColor};
   padding: 0 30px;
 `;
 
 export const LineContent = styled.p`
   font-weight: 400;
   font-size: 21px;
-  color: ${props => props.theme.textColor}
+  color: ${(props) => props.theme.textColor};
 `;
 
 export const InfoLine = styled.div`
@@ -73,15 +73,14 @@ export const Price = styled.p`
   justify-self: center;
   font-weight: 500;
   font-size: 30px;
-  color: ${props => props.theme.textColor};
+  color: ${(props) => props.theme.textColor};
 `;
 
 export const Cheque = styled.p`
   margin-top: 8px;
   margin-bottom: calc(30vh * ${hFullHD});
-  color: ${props => props.theme.actionColor};
+  color: ${(props) => props.theme.actionColor};
   font-weight: 400;
   font-size: 18px;
   cursor: pointer;
 `;
-
