@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ParkingRecord } from "../../common/ParkingRecord.interface";
 import { SignInDto } from "../../common/SignInDto";
-import { UserRecord } from "../../common/UserRecord.interface";
 import { useHttp } from "../../hooks/http.hook";
 import { useWindowDimensions } from "../../hooks/windowDimensions.hook";
 import { Home } from "./Home";

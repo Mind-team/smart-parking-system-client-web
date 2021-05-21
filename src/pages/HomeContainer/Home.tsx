@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { ThemeProvider } from "styled-components";
 import { ParkingRecord } from "../../common/ParkingRecord.interface";
 import { Navbar } from "../../components/Navbar/Navbar";
@@ -23,7 +23,7 @@ interface Props {
   parking: ParkingRecord;
 }
 
-export const Home: React.FC<Props> = ({
+export const Home: FC<Props> = ({
   parking
 }) => {
   const modeConfig = useMode()[2];
