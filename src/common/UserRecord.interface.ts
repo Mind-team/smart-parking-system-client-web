@@ -1,9 +1,12 @@
 import { ParkingRecord } from "./ParkingRecord.interface";
+import { PlateRecord } from "./PlateRecord.interface";
+import { PhoneNumberRecord } from "./PhoneNumberRecord.interface";
 
 export interface UserRecord {
-  phoneNumber: string;
+  _id: string;
+  phoneNumber: PhoneNumberRecord;
   password: string;
   email?: string;
-  plates: string[];
+  plates: PlateRecord[];
   parkingHistory: ParkingRecord[];
 }
