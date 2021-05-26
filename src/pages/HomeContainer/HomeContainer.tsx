@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
+import { Redirect } from "react-router";
 import { ParkingRecord } from "../../common/ParkingRecord.interface";
 import { SignInDto } from "../../common/SignInDto";
+import { useAPI } from "../../hooks/api.hook";
 import { useHttp } from "../../hooks/http.hook";
 import { useWindowDimensions } from "../../hooks/windowDimensions.hook";
 import { Home } from "./Home";
 
 export const HomeContainer = () => {
-  const req = useHttp();
+  const [req, api, width] = [
+    useHttp(),
+    useAPI(),
+    useWindowDimensions().width,
+  ];
   const [lastParking, setLastParking] = useState<ParkingRecord>();
   const [loading, setLoading] = useState(true);
+  const [isAuth, setAuth] = useState(true);
 
   useEffect(() => {
     const [phoneNumber, password] = [
@@ -16,10 +23,12 @@ export const HomeContainer = () => {
       localStorage.getItem("password"),
     ];
     if (!(phoneNumber && password)) {
+      setAuth(false);
+      setLoading(false);
       return;
     }
     req<SignInDto, ParkingRecord>({
-      url: "http://localhost:5000/user/lastParkingHistoryElement",
+      url: api.lastParkingHistoryElement(),
       method: "POST",
       body: {
         phoneNumber,
@@ -37,19 +46,17 @@ export const HomeContainer = () => {
     });
   }, []);
 
-  return (
-    <>
-      {useWindowDimensions().width > 760 ? (
-        loading ? (
-          "Loading"
-        ) : (
-          <Home parking={lastParking as ParkingRecord} />
-        )
-      ) : loading ? (
-        "Loading"
-      ) : (
-        <Home parking={lastParking as ParkingRecord} />
-      )}
-    </>
+  if (loading) {
+    return <>Loading</>;
+  }
+
+  if (!isAuth) {
+    return <Redirect to="signIn" />;
+  }
+
+  return width > 760 ? (
+    <Home parking={lastParking as ParkingRecord} />
+  ) : (
+    <Home parking={lastParking as ParkingRecord} />
   );
 };
