@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ParkingRecord } from "../../common/ParkingRecord.interface";
 import { SignInDto } from "../../common/SignInDto";
 import { UserRecord } from "../../common/UserRecord.interface";
 import { useAPI } from "../../hooks/api.hook";
@@ -45,5 +46,9 @@ export const HistoryContainer = () => {
   if (loading) {
     return <>Loading</>;
   }
-  return width > 760 ? <History userData={data as UserRecord} /> : <History userData={data as UserRecord} />;
+  return width > 760 ? (
+    <History parkings={data?.parkingHistory as ParkingRecord[]} />
+  ) : (
+    <History parkings={data?.parkingHistory as ParkingRecord[]} />
+  );
 };
