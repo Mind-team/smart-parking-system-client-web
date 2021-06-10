@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { WidgetWrapper, Cheque, InfoLine, Price } from "./ParkingWidget.styles";
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
   parkingPrice: number;
 }
 
-export const ParkingWidget: React.FC<Props> = ({
+export const ParkingWidget: FC<Props> = ({
   parkingTitle,
   parkingDate,
   parkingPrice,

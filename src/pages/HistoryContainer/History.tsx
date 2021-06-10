@@ -17,10 +17,12 @@ export const History: FC<Props> = ({ parkings }) => {
       <Wrapper>
         {parkings.map((parking) => {
           return (
-            <WidgetWrapper> 
+            <WidgetWrapper>
               <ParkingWidget
                 parkingTitle={parking.parkingTitle}
-                parkingDate={useDateFormater(new Date(parking.entryCarTime)).fullDate}
+                parkingDate={
+                  useDateFormater(new Date(parking.entryCarTime)).fullDate
+                }
                 parkingPrice={parking.priceRub}
               />
             </WidgetWrapper>

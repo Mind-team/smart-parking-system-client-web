@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useProportions } from "../hooks/windowProportions.hook";
 
-const { wFullHD, hFullHD } = useProportions();
+const { hFullHD } = useProportions();
 
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.additionalBGColor};

@@ -62,7 +62,9 @@ export const Home: FC<Props> = ({ parking }) => {
             <TopicBody>
               <InfoLine>
                 <InfoLineContent>{parking.parkingTitle}</InfoLineContent>
-                <InfoLineContent>{useDateFormater(new Date(parking.entryCarTime)).fullDate}</InfoLineContent>
+                <InfoLineContent>
+                  {useDateFormater(new Date(parking.entryCarTime)).fullDate}
+                </InfoLineContent>
               </InfoLine>
               <PriceLine>
                 <Price>-{parking.priceRub} ₽</Price>
