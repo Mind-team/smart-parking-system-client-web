@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { ThemeProvider } from "styled-components";
 import { ParkingRecord } from "../../common/ParkingRecord.interface";
-import { Navbar } from "../../components/Navbar/Navbar";
 import { ParkingWidget } from "../../components/ParkingWidget/ParkingWidget";
 import { useDateFormater } from "../../hooks/dateFormater.hook";
 import { useMode } from "../../hooks/mode.hook";
@@ -15,7 +14,6 @@ export const History: FC<Props> = ({ parkings }) => {
   const modeConfig = useMode()[2];
   return (
     <ThemeProvider theme={modeConfig}>
-      <Navbar />
       <Wrapper>
         {parkings.map((parking) => {
           return (
