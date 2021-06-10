@@ -3,7 +3,7 @@ export const useRoutes = () => {
     signIn: () => "/signIn",
     signUp: () => "/signUp",
     home: () => "/home",
-    history: () => "history",
+    history: () => "/history",
     startup: () => "/",
   };
 };
