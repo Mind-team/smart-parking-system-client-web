@@ -15,7 +15,7 @@ export const History: FC<Props> = ({ parkings }) => {
   return (
     <ThemeProvider theme={modeConfig}>
       <Wrapper>
-        {parkings.map((parking) => {
+        {parkings.map((parking, index) => {
           return (
             <WidgetWrapper>
               <ParkingWidget
