@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { ThemeProvider } from "styled-components";
 import { ParkingRecord } from "../../common/ParkingRecord.interface";
-import { Navbar } from "../../components/Navbar/Navbar";
+import { useDateFormater } from "../../hooks/dateFormater.hook";
 import { useMode } from "../../hooks/mode.hook";
 import {
   Cheque,
@@ -29,7 +29,6 @@ export const Home: FC<Props> = ({ parking }) => {
   return (
     <ThemeProvider theme={modeConfig}>
       <Wrapper>
-        <Navbar />
         <ContentWrapper>
           <TopicWrapper>
             <TopicTitle>Правила паркинга</TopicTitle>
@@ -63,7 +62,9 @@ export const Home: FC<Props> = ({ parking }) => {
             <TopicBody>
               <InfoLine>
                 <InfoLineContent>{parking.parkingTitle}</InfoLineContent>
-                <InfoLineContent>{parking.entryCarTime}</InfoLineContent>
+                <InfoLineContent>
+                  {useDateFormater(new Date(parking.entryCarTime)).fullDate}
+                </InfoLineContent>
               </InfoLine>
               <PriceLine>
                 <Price>-{parking.priceRub} ₽</Price>
