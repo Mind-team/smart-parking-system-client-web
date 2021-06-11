@@ -4,6 +4,8 @@ export const useRoutes = () => {
     signUp: () => "/signUp",
     home: () => "/home",
     history: () => "/history",
+    parkings: () => "/parkings",
+    profile: () => "/profile",
     startup: () => "/",
   };
 };
