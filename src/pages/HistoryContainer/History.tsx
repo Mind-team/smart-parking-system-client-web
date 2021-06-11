@@ -17,7 +17,7 @@ export const History: FC<Props> = ({ parkings }) => {
       <Wrapper>
         {parkings.map((parking, index) => {
           return (
-            <WidgetWrapper>
+            <WidgetWrapper key={index}>
               <ParkingWidget
                 parkingTitle={parking.parkingTitle}
                 parkingDate={
