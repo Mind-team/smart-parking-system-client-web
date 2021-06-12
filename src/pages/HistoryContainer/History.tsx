@@ -4,6 +4,7 @@ import { ParkingRecord } from "../../common/ParkingRecord.interface";
 import { ParkingWidget } from "../../components/ParkingWidget/ParkingWidget";
 import { useDateFormater } from "../../hooks/dateFormater.hook";
 import { useMode } from "../../hooks/mode.hook";
+import { useRoutes } from "../../hooks/routes.hook";
 import { WidgetWrapper, Wrapper } from "../../styles/History.styles";
 
 interface Props {
@@ -12,6 +13,7 @@ interface Props {
 
 export const History: FC<Props> = ({ parkings }) => {
   const modeConfig = useMode()[2];
+  const routes = useRoutes();
   return (
     <ThemeProvider theme={modeConfig}>
       <Wrapper>
@@ -27,6 +29,7 @@ export const History: FC<Props> = ({ parkings }) => {
                   useDateFormater(new Date(parking.entryCarTime)).fullDate
                 }
                 parkingPrice={parking.priceRub}
+                route={routes.parkingDetails(parking._id)}
               />
             </WidgetWrapper>
           );

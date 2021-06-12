@@ -5,7 +5,6 @@ const { hFullHD } = useProportions();
 
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.additionalBGColor};
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
