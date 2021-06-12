@@ -51,36 +51,3 @@ export const LineContent = styled.p`
   color: ${(props) => props.theme.textColor};
 `;
 
-export const InfoLine = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-export const InfoLineContent = styled(LineContent)`
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 16px;
-`;
-
-export const PriceLine = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: calc(30vh * ${hFullHD});
-`;
-
-export const Price = styled.p`
-  justify-self: center;
-  font-weight: 500;
-  font-size: 30px;
-  color: ${(props) => props.theme.textColor};
-`;
-
-export const Cheque = styled.p`
-  margin-top: 8px;
-  margin-bottom: calc(30vh * ${hFullHD});
-  color: ${(props) => props.theme.actionColor};
-  font-weight: 400;
-  font-size: 18px;
-  cursor: pointer;
-`;

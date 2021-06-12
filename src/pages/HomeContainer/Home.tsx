@@ -1,21 +1,18 @@
 import { FC } from "react";
 import { ThemeProvider } from "styled-components";
 import { ParkingRecord } from "../../common/ParkingRecord.interface";
+import { ParkingWidget } from "../../components/ParkingWidget/ParkingWidget";
 import { useDateFormater } from "../../hooks/dateFormater.hook";
 import { useMode } from "../../hooks/mode.hook";
+import { useRoutes } from "../../hooks/routes.hook";
 import {
-  Cheque,
   ContentWrapper,
-  InfoLine,
-  InfoLineContent,
-  Line,
-  LineContent,
-  LineNumber,
-  Price,
   TopicBody,
+  Line,
+  LineNumber,
+  LineContent,
   TopicTitle,
   TopicWrapper,
-  PriceLine,
   Wrapper,
 } from "../../styles/Home.styles";
 
@@ -25,6 +22,7 @@ interface Props {
 
 export const Home: FC<Props> = ({ parking }) => {
   const modeConfig = useMode()[2];
+  const routes = useRoutes();
 
   return (
     <ThemeProvider theme={modeConfig}>
@@ -58,19 +56,19 @@ export const Home: FC<Props> = ({ parking }) => {
             </TopicBody>
           </TopicWrapper>
           <TopicWrapper>
-            <TopicTitle>{parking.isCompleted ? "Последняя операция" : "Текущая парковка"}</TopicTitle>
-            <TopicBody>
-              <InfoLine>
-                <InfoLineContent>{parking.parkingTitle}</InfoLineContent>
-                <InfoLineContent>
-                  {parking.isCompleted ? useDateFormater(new Date(parking.departureCarTime)).fullDate : `${Math.round(parking.parkingTimeMin)} минут`}
-                </InfoLineContent>
-              </InfoLine>
-              <PriceLine>
-                <Price>{parking.priceRub} ₽</Price>
-                <Cheque>Посмотреть чек</Cheque>
-              </PriceLine>
-            </TopicBody>
+            <TopicTitle>
+              {parking.isCompleted ? "Последняя операция" : "Текущая парковка"}
+            </TopicTitle>
+            <ParkingWidget
+              parkingTitle={parking.parkingTitle}
+              parkingDate={
+                parking.isCompleted
+                  ? useDateFormater(new Date(parking.departureCarTime)).fullDate
+                  : `${Math.round(parking.parkingTimeMin)} минут`
+              }
+              parkingPrice={parking.priceRub}
+              route={routes.parkingDetails(parking._id)}
+            />
           </TopicWrapper>
         </ContentWrapper>
       </Wrapper>
