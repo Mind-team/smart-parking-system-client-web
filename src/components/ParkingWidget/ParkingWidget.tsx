@@ -1,16 +1,19 @@
 import { FC } from "react";
-import { WidgetWrapper, Cheque, InfoLine, Price } from "./ParkingWidget.styles";
+import { NavLink } from "react-router-dom";
+import { WidgetWrapper, Details, InfoLine, Price, NavLinkStyles } from "./ParkingWidget.styles";
 
 interface Props {
   parkingTitle: string;
   parkingDate: string;
   parkingPrice: number;
+  route: string;
 }
 
 export const ParkingWidget: FC<Props> = ({
   parkingTitle,
   parkingDate,
   parkingPrice,
+  route,
 }) => {
   return (
     <WidgetWrapper>
@@ -19,7 +22,9 @@ export const ParkingWidget: FC<Props> = ({
         <div>{parkingDate}</div>
       </InfoLine>
       <Price>{parkingPrice}₽</Price>
-      <Cheque>Посмотреть чек</Cheque>
+      <NavLink to={route} style={NavLinkStyles}>
+        <Details>Подробнее</Details>
+      </NavLink>
     </WidgetWrapper>
   );
 };

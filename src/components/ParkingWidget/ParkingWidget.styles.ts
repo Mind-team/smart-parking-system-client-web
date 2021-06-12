@@ -4,7 +4,7 @@ import { useProportions } from "../../hooks/windowProportions.hook";
 const { wFullHD, hFullHD } = useProportions();
 
 export const WidgetWrapper = styled.div`
-  width: calc(950vw * ${wFullHD});
+  width: calc(1015vw * ${wFullHD});
   height: calc(300vh * ${hFullHD});
   border-radius: 35px;
   display: flex;
@@ -30,8 +30,16 @@ export const Price = styled.div`
   font-size: 56px;
 `;
 
-export const Cheque = styled.div`
+export const Details = styled.div`
   align-self: center;
   color: ${props => props.theme.actionColor};
   font-size: 25px;
+  cursor: pointer;
+  padding-bottom: 12px;
 `;
+
+export const NavLinkStyles = {
+  textDecoration: "none",
+  display: "flex",
+  justifyContent: "center"
+};
