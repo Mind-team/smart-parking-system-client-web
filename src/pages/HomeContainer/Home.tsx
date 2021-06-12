@@ -58,16 +58,16 @@ export const Home: FC<Props> = ({ parking }) => {
             </TopicBody>
           </TopicWrapper>
           <TopicWrapper>
-            <TopicTitle>Последняя операция</TopicTitle>
+            <TopicTitle>{parking.isCompleted ? "Последняя операция" : "Текущая парковка"}</TopicTitle>
             <TopicBody>
               <InfoLine>
                 <InfoLineContent>{parking.parkingTitle}</InfoLineContent>
                 <InfoLineContent>
-                  {useDateFormater(new Date(parking.entryCarTime)).fullDate}
+                  {parking.isCompleted ? useDateFormater(new Date(parking.departureCarTime)).fullDate : `${Math.round(parking.parkingTimeMin)} минут`}
                 </InfoLineContent>
               </InfoLine>
               <PriceLine>
-                <Price>-{parking.priceRub} ₽</Price>
+                <Price>{parking.priceRub} ₽</Price>
                 <Cheque>Посмотреть чек</Cheque>
               </PriceLine>
             </TopicBody>

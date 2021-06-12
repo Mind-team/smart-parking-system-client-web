@@ -16,6 +16,9 @@ export const History: FC<Props> = ({ parkings }) => {
     <ThemeProvider theme={modeConfig}>
       <Wrapper>
         {parkings.map((parking, index) => {
+          if (!parking.isCompleted) {
+            return;
+          }
           return (
             <WidgetWrapper key={index}>
               <ParkingWidget

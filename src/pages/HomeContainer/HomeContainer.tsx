@@ -15,6 +15,7 @@ export const HomeContainer = () => {
   ];
   const [lastParking, setLastParking] = useState<ParkingRecord>();
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [isAuth, setAuth] = useState(true);
 
   useEffect(() => {
@@ -39,12 +40,16 @@ export const HomeContainer = () => {
       },
     }).then((result) => {
       if (!result.isExpected) {
-        return;
+        setError(true);
       }
       setLastParking(result.value);
       setLoading(false);
     });
   }, []);
+
+  if (error) {
+    return <>Error</>;
+  }
 
   if (loading) {
     return <>Loading</>;

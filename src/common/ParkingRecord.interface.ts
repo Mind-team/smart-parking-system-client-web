@@ -5,4 +5,6 @@ export interface ParkingRecord {
   entryCarTime: string;
   departureCarTime: string;
   priceRub: number;
+  parkingTimeMin: number;
+  isCompleted: boolean;
 }
