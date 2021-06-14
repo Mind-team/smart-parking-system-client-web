@@ -28,7 +28,6 @@ const App: React.FC = () => {
         />
         <Route exact path={routes.profile()} component={ProfileContainer} />
       </>
-      <Redirect from={routes.startup()} to={routes.signIn()} />
     </Switch>
   );
 };
