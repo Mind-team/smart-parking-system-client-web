@@ -5,6 +5,7 @@ import { useRoutes } from "./hooks/routes.hook";
 import { useWindowDimensions } from "./hooks/windowDimensions.hook";
 import { HistoryContainer } from "./pages/HistoryContainer/HistoryContainer";
 import { HomeContainer } from "./pages/HomeContainer/HomeContainer";
+import { ParkingDetailsContainer } from "./pages/ParkingDetailsContainer/ParkingDetailsContainer";
 import { SignInContainer } from "./pages/SignInContainer/SignInContainer";
 import { SignUpContainer } from "./pages/SignUpContainer/SignUpContainer";
 
@@ -19,6 +20,11 @@ const App: React.FC = () => {
         {width > 760 ? <Navbar /> : <Navbar />}
         <Route exact path={routes.home()} component={HomeContainer} />
         <Route exact path={routes.history()} component={HistoryContainer} />
+        <Route
+          exact
+          path={routes.parkingDetails()}
+          component={ParkingDetailsContainer}
+        />
       </>
       <Redirect from={routes.startup()} to={routes.signIn()} />
     </Switch>
