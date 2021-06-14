@@ -10,10 +10,12 @@ import { SignIn } from "./SignIn";
 import { SignInMobile } from "./SignInMobile";
 
 export const SignInContainer = () => {
-  const req = useHttp();
-  const routes = useRoutes();
-  const api = useAPI();
-  const { width } = useWindowDimensions();
+  const [req, routes, api, width] = [
+    useHttp(),
+    useRoutes(),
+    useAPI(),
+    useWindowDimensions().width,
+  ];
   const [userData, setUserData] = useState<UserRecord>();
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");

@@ -11,14 +11,16 @@ import { useWindowDimensions } from "../../hooks/windowDimensions.hook";
 import { Profile } from "./Profile";
 
 export const ProfileContainer = () => {
-  const req = useHttp();
-  const api = useAPI();
-  const routes = useRoutes();
-  const modeConfig = useMode()[2];
+  const [req, api, routes, modeConfig, width] = [
+    useHttp(),
+    useAPI(),
+    useRoutes(),
+    useMode()[2],
+    useWindowDimensions().width,
+  ];
   const [data, setData] = useState<UserRecord>();
   const [isLoading, setLoading] = useState(true);
   const [isAuth, setAuth] = useState(true);
-  const { width } = useWindowDimensions();
 
   const handleLogout = () => {
     localStorage.removeItem("phoneNumber");
