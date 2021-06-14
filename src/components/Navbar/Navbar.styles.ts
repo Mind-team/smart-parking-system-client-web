@@ -22,10 +22,12 @@ export const NavbarElement = styled.p`
   font-size: 20px;
   font-weight: 400;
   color: ${props => props.theme.textColor};
+  cursor: pointer;
 `;
 
 export const NavLinkStyles = {
   textDecoration: "none",
   display: "flex",
   alignItems: "center",
+  cursor: "pointer"
 };
