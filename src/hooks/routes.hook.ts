@@ -8,6 +8,5 @@ export const useRoutes = () => {
     profile: () => "/profile",
     startup: () => "/",
     parkingDetails: () => "/parkingDetails/:id",
-
   };
 };
