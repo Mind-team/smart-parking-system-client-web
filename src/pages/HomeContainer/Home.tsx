@@ -2,9 +2,9 @@ import { FC } from "react";
 import { ThemeProvider } from "styled-components";
 import { ParkingRecord } from "../../common/ParkingRecord.interface";
 import { ParkingWidget } from "../../components/ParkingWidget/ParkingWidget";
+import { useAPI } from "../../hooks/api.hook";
 import { useDateFormater } from "../../hooks/dateFormater.hook";
 import { useMode } from "../../hooks/mode.hook";
-import { useRoutes } from "../../hooks/routes.hook";
 import {
   ContentWrapper,
   TopicBody,
@@ -22,7 +22,7 @@ interface Props {
 
 export const Home: FC<Props> = ({ parking }) => {
   const modeConfig = useMode()[2];
-  const routes = useRoutes();
+  const api = useAPI();
 
   return (
     <ThemeProvider theme={modeConfig}>
@@ -60,14 +60,14 @@ export const Home: FC<Props> = ({ parking }) => {
               {parking.isCompleted ? "Последняя операция" : "Текущая парковка"}
             </TopicTitle>
             <ParkingWidget
-              parkingTitle={parking.parkingTitle}
-              parkingDate={
+              title={parking.parkingTitle}
+              date={
                 parking.isCompleted
                   ? useDateFormater(new Date(parking.departureCarTime)).fullDate
                   : `${Math.round(parking.parkingTimeMin)} минут`
               }
-              parkingPrice={parking.priceRub}
-              route={routes.parkingDetails(parking._id)}
+              price={parking.priceRub}
+              route={api.parkingDetails(parking._id)}
             />
           </TopicWrapper>
         </ContentWrapper>

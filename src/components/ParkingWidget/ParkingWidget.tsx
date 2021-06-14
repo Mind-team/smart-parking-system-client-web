@@ -3,25 +3,25 @@ import { NavLink } from "react-router-dom";
 import { WidgetWrapper, Details, InfoLine, Price, NavLinkStyles } from "./ParkingWidget.styles";
 
 interface Props {
-  parkingTitle: string;
-  parkingDate: string;
-  parkingPrice: number;
+  title: string;
+  date: string;
+  price: number;
   route: string;
 }
 
 export const ParkingWidget: FC<Props> = ({
-  parkingTitle,
-  parkingDate,
-  parkingPrice,
+  title,
+  date,
+  price,
   route,
 }) => {
   return (
     <WidgetWrapper>
       <InfoLine>
-        <div>{parkingTitle}</div>
-        <div>{parkingDate}</div>
+        <div>{title}</div>
+        <div>{date}</div>
       </InfoLine>
-      <Price>{parkingPrice}₽</Price>
+      <Price>{price}₽</Price>
       <NavLink to={route} style={NavLinkStyles}>
         <Details>Подробнее</Details>
       </NavLink>
