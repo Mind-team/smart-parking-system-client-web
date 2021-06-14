@@ -7,6 +7,7 @@ export const useRoutes = () => {
     parkings: () => "/parkings",
     profile: () => "/profile",
     startup: () => "/",
-    parkingDetails: (id: string) => `/parkingDetails/${id}`
+    parkingDetails: () => "/parkingDetails/:id",
+
   };
 };
