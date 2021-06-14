@@ -6,6 +6,7 @@ import { useWindowDimensions } from "./hooks/windowDimensions.hook";
 import { HistoryContainer } from "./pages/HistoryContainer/HistoryContainer";
 import { HomeContainer } from "./pages/HomeContainer/HomeContainer";
 import { ParkingDetailsContainer } from "./pages/ParkingDetailsContainer/ParkingDetailsContainer";
+import { ProfileContainer } from "./pages/ProfileContainer/ProfileContainer";
 import { SignInContainer } from "./pages/SignInContainer/SignInContainer";
 import { SignUpContainer } from "./pages/SignUpContainer/SignUpContainer";
 
@@ -25,6 +26,7 @@ const App: React.FC = () => {
           path={routes.parkingDetails()}
           component={ParkingDetailsContainer}
         />
+        <Route exact path={routes.profile()} component={ProfileContainer} />
       </>
       <Redirect from={routes.startup()} to={routes.signIn()} />
     </Switch>
