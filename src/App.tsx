@@ -1,11 +1,12 @@
 import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { Navbar } from "./components/Navbar/Navbar";
 import { useRoutes } from "./hooks/routes.hook";
 import { useWindowDimensions } from "./hooks/windowDimensions.hook";
 import { HistoryContainer } from "./pages/HistoryContainer/HistoryContainer";
 import { HomeContainer } from "./pages/HomeContainer/HomeContainer";
 import { ParkingDetailsContainer } from "./pages/ParkingDetailsContainer/ParkingDetailsContainer";
+import { ProfileContainer } from "./pages/ProfileContainer/ProfileContainer";
 import { SignInContainer } from "./pages/SignInContainer/SignInContainer";
 import { SignUpContainer } from "./pages/SignUpContainer/SignUpContainer";
 
@@ -25,8 +26,8 @@ const App: React.FC = () => {
           path={routes.parkingDetails()}
           component={ParkingDetailsContainer}
         />
+        <Route exact path={routes.profile()} component={ProfileContainer} />
       </>
-      <Redirect from={routes.startup()} to={routes.signIn()} />
     </Switch>
   );
 };

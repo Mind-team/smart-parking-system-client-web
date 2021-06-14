@@ -1,20 +1,32 @@
 import { useEffect, useState } from "react";
-import { ParkingRecord } from "../../common/ParkingRecord.interface";
+import { Redirect } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
 import { SignInDto } from "../../common/SignInDto";
 import { UserRecord } from "../../common/UserRecord.interface";
 import { useAPI } from "../../hooks/api.hook";
 import { useHttp } from "../../hooks/http.hook";
+import { useMode } from "../../hooks/mode.hook";
+import { useRoutes } from "../../hooks/routes.hook";
 import { useWindowDimensions } from "../../hooks/windowDimensions.hook";
-import { History } from "./History";
+import { Profile } from "./Profile";
 
-export const HistoryContainer = () => {
-  const [req, api, width] = [
+export const ProfileContainer = () => {
+  const [req, api, routes, modeConfig, width] = [
     useHttp(),
     useAPI(),
+    useRoutes(),
+    useMode()[2],
     useWindowDimensions().width,
   ];
   const [data, setData] = useState<UserRecord>();
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(true);
+  const [isAuth, setAuth] = useState(true);
+
+  const handleLogout = () => {
+    localStorage.removeItem("phoneNumber");
+    localStorage.removeItem("password");
+    setAuth(false);
+  };
 
   useEffect(() => {
     const [phoneNumber, password] = [
@@ -22,6 +34,7 @@ export const HistoryContainer = () => {
       localStorage.getItem("password"),
     ];
     if (!(phoneNumber && password)) {
+      setAuth(false);
       return;
     }
     req<SignInDto, UserRecord>({
@@ -43,12 +56,21 @@ export const HistoryContainer = () => {
     });
   }, []);
 
-  if (loading) {
+  if (isLoading) {
     return <>Loading</>;
   }
-  return width > 760 ? (
-    <History parkings={data?.parkingHistory as ParkingRecord[]} />
-  ) : (
-    <History parkings={data?.parkingHistory as ParkingRecord[]} />
+
+  if (!isAuth) {
+    return <Redirect to={routes.signIn()} />;
+  }
+
+  return (
+    <ThemeProvider theme={modeConfig}>
+      {width > 760 ? (
+        <Profile user={data as UserRecord} handleLogout={handleLogout} />
+      ) : (
+        <Profile user={data as UserRecord} handleLogout={handleLogout} />
+      )}
+    </ThemeProvider>
   );
 };
