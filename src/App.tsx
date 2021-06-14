@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { Navbar } from "./components/Navbar/Navbar";
 import { useRoutes } from "./hooks/routes.hook";
 import { useWindowDimensions } from "./hooks/windowDimensions.hook";
