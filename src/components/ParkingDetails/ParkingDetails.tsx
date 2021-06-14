@@ -16,11 +16,10 @@ export const ParkingDetails: FC<{ parking: ParkingRecord }> = ({ parking }) => {
           Дата выезда:
           {useDateFormater(new Date(parking.departureCarTime)).fullDate}
         </Line>
-        <Line>Время въезда: </Line>
-        <Line>Время выезда: </Line>
+        <Line>Время въезда: {useDateFormater(new Date(parking.entryCarTime)).fullTime}</Line>
+        <Line>Время выезда: {useDateFormater(new Date(parking.departureCarTime)).fullTime}</Line>
         <Line>Регистрационный знак транспорта: {parking.carPlate}</Line>
-        <Line>Время на паркинге: {parking.parkingTimeMin}</Line>
-        <Line>Сумма: {parking.priceRub}</Line>
+        <Line>Сумма: {parking.priceRub}₽</Line>
       </Content>
     </Wrapper>
   );
