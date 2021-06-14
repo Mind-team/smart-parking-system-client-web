@@ -8,7 +8,7 @@ import { useWindowDimensions } from "../../hooks/windowDimensions.hook";
 import { History } from "./History";
 
 export const HistoryContainer = () => {
-  const [req, routes, width] = [
+  const [req, api, width] = [
     useHttp(),
     useAPI(),
     useWindowDimensions().width,
@@ -25,7 +25,7 @@ export const HistoryContainer = () => {
       return;
     }
     req<SignInDto, UserRecord>({
-      url: routes.signIn(),
+      url: api.signIn(),
       method: "POST",
       body: {
         phoneNumber,
