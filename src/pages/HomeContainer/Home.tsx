@@ -55,21 +55,28 @@ export const Home: FC<Props> = ({ parking }) => {
               </Line>
             </TopicBody>
           </TopicWrapper>
-          <TopicWrapper>
-            <TopicTitle>
-              {parking.isCompleted ? "Последняя операция" : "Текущая парковка"}
-            </TopicTitle>
-            <ParkingWidget
-              title={parking.parkingTitle}
-              date={
-                parking.isCompleted
-                  ? useDateFormater(new Date(parking.departureCarTime)).fullDate
-                  : `${Math.round(parking.parkingTimeMin)} минут`
-              }
-              price={parking.priceRub}
-              route={api.parkingDetails(parking._id)}
-            />
-          </TopicWrapper>
+          {parking._id ? (
+            <TopicWrapper>
+              <TopicTitle>
+                {parking.isCompleted
+                  ? "Последняя операция"
+                  : "Текущая парковка"}
+              </TopicTitle>
+              <ParkingWidget
+                title={parking.parkingTitle}
+                date={
+                  parking.isCompleted
+                    ? useDateFormater(new Date(parking.departureCarTime))
+                      .fullDate
+                    : `${Math.round(parking.parkingTimeMin)} минут`
+                }
+                price={parking.priceRub}
+                route={api.parkingDetails(parking._id)}
+              />
+            </TopicWrapper>
+          ) : (
+            ""
+          )}
         </ContentWrapper>
       </Wrapper>
     </ThemeProvider>
