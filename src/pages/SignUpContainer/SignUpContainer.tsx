@@ -1,16 +1,23 @@
-import React, { useState } from "react";
+import { FC, useState } from "react";
+import { Redirect } from "react-router-dom";
 import { ServerResponse } from "../../common/ServerResponse.interface";
 import { SignUpDto } from "../../common/SignUpDto";
 import { useHttp } from "../../hooks/http.hook";
+import { useRoutes } from "../../hooks/routes.hook";
 import { useWindowDimensions } from "../../hooks/windowDimensions.hook";
 import { SignUp } from "./SignUp";
 import { SignUpMobile } from "./SignUpMobile";
 
-export const SignUpContainer = () => {
-  const req = useHttp();
+export const SignUpContainer: FC = () => {
+  const [req, routes, width] = [
+    useHttp(),
+    useRoutes(),
+    useWindowDimensions().width,
+  ];
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [plate, setPlate] = useState<string>("");
+  const [isAuth, setAuth] = useState(false);
 
   const handleInput = (
     event: any,
@@ -39,9 +46,22 @@ export const SignUpContainer = () => {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((result) => result);
+    }).then((result) => {
+      if (!result.isExpected) {
+        // TODO: Handle
+        return;
+      }
+      localStorage.setItem("phoneNumber", phoneNumber);
+      localStorage.setItem("password", password);
+      setAuth(true);
+    });
   };
-  return useWindowDimensions().width > 760 ? (
+
+  if (isAuth) {
+    return <Redirect to={routes.signIn()} />;
+  }
+
+  return width > 760 ? (
     <SignUp handleInput={handleInput} handleSubmit={handleSubmit} />
   ) : (
     <SignUpMobile handleInput={handleInput} handleSubmit={handleSubmit} />
