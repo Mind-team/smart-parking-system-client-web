@@ -55,7 +55,7 @@ export const Home: FC<Props> = ({ parking }) => {
               </Line>
             </TopicBody>
           </TopicWrapper>
-          {parking._id ? (
+          {parking.entryCarTime ? (
             <TopicWrapper>
               <TopicTitle>
                 {parking.isCompleted
