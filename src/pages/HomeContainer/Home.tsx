@@ -68,7 +68,7 @@ export const Home: FC<Props> = ({ parking }) => {
                   parking.isCompleted
                     ? useDateFormater(new Date(parking.departureCarTime))
                       .fullDate
-                    : `${Math.round(parking.parkingTimeMin)} минут`
+                    : `${Math.round(parking.parkingTimeMin)} мин.`
                 }
                 price={parking.priceRub}
                 route={api.parkingDetails(parking._id)}
