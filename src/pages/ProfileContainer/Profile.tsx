@@ -14,7 +14,7 @@ export const Profile: FC<Props> = ({ user, handleLogout }) => {
       <Card>
         <Line>Номер телефона: {user.phoneNumber.value}</Line>
         <Line>
-          Регистрационные знаки: {user.plates.map((plate) => plate.value)}
+          Регистрационный знак: {user.plates.map((plate) => plate.value)}
         </Line>
         <Button title="Выйти" onClick={handleLogout} />
       </Card>
