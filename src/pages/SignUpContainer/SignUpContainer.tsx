@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import toast from "react-hot-toast";
 import { Redirect } from "react-router-dom";
 import { ServerResponse } from "../../common/ServerResponse.interface";
 import { SignUpDto } from "../../common/SignUpDto";
@@ -35,6 +36,7 @@ export const SignUpContainer: FC = () => {
   };
 
   const handleSubmit = () => {
+    const toastId = toast.loading("Loading...");
     req<SignUpDto, ServerResponse<null>>({
       url: "http://localhost:5000/user/signUp",
       method: "POST",
@@ -48,11 +50,14 @@ export const SignUpContainer: FC = () => {
       },
     }).then((result) => {
       if (!result.isExpected) {
-        // TODO: Handle
+        toast.dismiss(toastId);
+        toast.error(result.message);
         return;
       }
       localStorage.setItem("phoneNumber", phoneNumber);
       localStorage.setItem("password", password);
+      toast.dismiss(toastId);
+      toast.success("Success");
       setAuth(true);
     });
   };

@@ -19,6 +19,7 @@ import {
   MindLogo,
 } from "../../styles/SignUp.styles";
 import { SignUpProps } from "./SignUpProps";
+import { Toaster } from "react-hot-toast";
 
 export const SignUp: React.FC<SignUpProps> = ({
   handleInput,
@@ -27,6 +28,7 @@ export const SignUp: React.FC<SignUpProps> = ({
   const [mode, toggleMode, modeConfig] = useMode();
   return (
     <ThemeProvider theme={modeConfig}>
+      <Toaster />
       <Wrapper>
         <LeftSide>
           <MindLogo src={mode === "Light" ? logoLight : logoDark} />
