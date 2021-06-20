@@ -1,17 +1,22 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast";
 import { Redirect } from "react-router";
 import { ParkingRecord } from "../../common/ParkingRecord.interface";
 import { SignInDto } from "../../common/SignInDto";
 import { useAPI } from "../../hooks/api.hook";
 import { useHttp } from "../../hooks/http.hook";
+import { useNotification } from "../../hooks/notification.hook";
+import { useRoutes } from "../../hooks/routes.hook";
 import { useWindowDimensions } from "../../hooks/windowDimensions.hook";
 import { Home } from "./Home";
 
-export const HomeContainer = () => {
-  const [req, api, width] = [
+export const HomeContainer: FC = () => {
+  const [req, api, width, routes, notification] = [
     useHttp(),
     useAPI(),
     useWindowDimensions().width,
+    useRoutes(),
+    useNotification(),
   ];
   const [lastParking, setLastParking] = useState<ParkingRecord>();
   const [loading, setLoading] = useState(true);
@@ -19,11 +24,13 @@ export const HomeContainer = () => {
   const [isAuth, setAuth] = useState(true);
 
   useEffect(() => {
+    notification.loading();
     const [phoneNumber, password] = [
       localStorage.getItem("phoneNumber"),
       localStorage.getItem("password"),
     ];
     if (!(phoneNumber && password)) {
+      notification.cancel().error("You are not auth");
       setAuth(false);
       setLoading(false);
       return;
@@ -38,25 +45,33 @@ export const HomeContainer = () => {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((result) => {
-      if (!result.isExpected) {
+    })
+      .then((result) => {
+        if (!result.isExpected) {
+          notification.cancel().error(result.message);
+          setError(true);
+          return;
+        }
+        notification.cancel();
+        setLastParking(result.value);
+        setLoading(false);
+      })
+      .catch((error) => {
+        notification.cancel().error("Something wrong with internet");
         setError(true);
-      }
-      setLastParking(result.value);
-      setLoading(false);
-    });
+      });
   }, []);
 
   if (error) {
-    return <>Error</>;
+    return <Toaster />;
   }
 
   if (loading) {
-    return <>Loading</>;
+    return <Toaster />;
   }
 
   if (!isAuth) {
-    return <Redirect to="signIn" />;
+    return <Redirect to={routes.signIn()} />;
   }
 
   return width > 760 ? (
