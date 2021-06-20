@@ -42,19 +42,21 @@ export const HistoryContainer = () => {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((result) => {
-      if (!result.isExpected) {
-        notification.cancel().error(result.message);
+    })
+      .then((result) => {
+        if (!result.isExpected) {
+          notification.cancel().error(result.message);
+          setAuth(false);
+          return;
+        }
+        notification.cancel();
+        setData(result.value);
+        setLoading(false);
+      })
+      .catch((error) => {
+        notification.cancel().error("Something wrong with internet");
         setAuth(false);
-        return;
-      }
-      notification.cancel();
-      setData(result.value);
-      setLoading(false);
-    }).catch((error) => {
-      notification.cancel().error("Something wrong with internet");
-      setAuth(false);
-    });
+      });
   }, []);
 
   if (loading) {
