@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { Redirect } from "react-router-dom";
 import { SignInDto } from "../../common/SignInDto";
 import { UserRecord } from "../../common/UserRecord.interface";
@@ -20,12 +21,7 @@ export const SignInContainer = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleInput = (event: any, type: "phoneNumber" | "password") =>
-    type === "phoneNumber"
-      ? setPhoneNumber(event.target.value)
-      : setPassword(event.target.value);
-
-  const handleSubmit = () =>
+  const fetch = () =>
     req<SignInDto, UserRecord>({
       url: api.signIn(),
       method: "POST",
@@ -36,15 +32,27 @@ export const SignInContainer = () => {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((result) => {
+    });
+
+  const handleInput = (event: any, type: "phoneNumber" | "password") =>
+    type === "phoneNumber"
+      ? setPhoneNumber(event.target.value)
+      : setPassword(event.target.value);
+
+  const handleSubmit = () => {
+    const toastId = toast.loading("Loading...");
+    fetch().then((result) => {
+      toast.dismiss(toastId);
       if (!result.isExpected) {
-        // TODO: Error handler
+        toast.error(result.message);
         return;
       }
+      toast.success("Success");
       localStorage.setItem("phoneNumber", phoneNumber);
       localStorage.setItem("password", password);
       setUserData(result.value);
     });
+  };
 
   useEffect(() => {
     const [phoneNumber, password] = [
@@ -54,19 +62,8 @@ export const SignInContainer = () => {
     if (!(phoneNumber && password)) {
       return;
     }
-    req<SignInDto, UserRecord>({
-      url: api.signIn(),
-      method: "POST",
-      body: {
-        phoneNumber,
-        password,
-      },
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((result) => {
+    fetch().then((result) => {
       if (!result.isExpected) {
-        // TODO: Error handler
         return;
       }
       setUserData(result.value);

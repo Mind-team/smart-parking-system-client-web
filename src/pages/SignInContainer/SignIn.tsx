@@ -23,6 +23,7 @@ import {
 } from "../../styles/SignIn.styles";
 import { SignInProps } from "./SignInProps";
 import { NavLink } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 export const SignIn: React.FC<SignInProps> = ({
   handleInput,
@@ -32,6 +33,7 @@ export const SignIn: React.FC<SignInProps> = ({
 
   return (
     <ThemeProvider theme={modeConfig}>
+      <Toaster />
       <Wrapper>
         <LeftSide>
           <MindLogo src={mode === "Light" ? logoLight : logoDark} />
