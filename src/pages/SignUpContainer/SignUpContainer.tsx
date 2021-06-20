@@ -1,19 +1,20 @@
 import { FC, useState } from "react";
-import toast from "react-hot-toast";
 import { Redirect } from "react-router-dom";
 import { ServerResponse } from "../../common/ServerResponse.interface";
 import { SignUpDto } from "../../common/SignUpDto";
 import { useHttp } from "../../hooks/http.hook";
+import { useNotification } from "../../hooks/notification.hook";
 import { useRoutes } from "../../hooks/routes.hook";
 import { useWindowDimensions } from "../../hooks/windowDimensions.hook";
 import { SignUp } from "./SignUp";
 import { SignUpMobile } from "./SignUpMobile";
 
 export const SignUpContainer: FC = () => {
-  const [req, routes, width] = [
+  const [req, routes, width, notification] = [
     useHttp(),
     useRoutes(),
     useWindowDimensions().width,
+    useNotification(),
   ];
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -36,7 +37,7 @@ export const SignUpContainer: FC = () => {
   };
 
   const handleSubmit = () => {
-    const toastId = toast.loading("Loading...");
+    notification.loading();
     req<SignUpDto, ServerResponse<null>>({
       url: "http://localhost:5000/user/signUp",
       method: "POST",
@@ -50,14 +51,12 @@ export const SignUpContainer: FC = () => {
       },
     }).then((result) => {
       if (!result.isExpected) {
-        toast.dismiss(toastId);
-        toast.error(result.message);
+        notification.cancel().error(result.message);
         return;
       }
       localStorage.setItem("phoneNumber", phoneNumber);
       localStorage.setItem("password", password);
-      toast.dismiss(toastId);
-      toast.success("Success");
+      notification.cancel().success("Success");
       setAuth(true);
     });
   };
