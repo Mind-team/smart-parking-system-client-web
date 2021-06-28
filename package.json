@@ -58,7 +58,7 @@
     "@typescript-eslint/parser": "^4.12.0",
     "eslint": "^7.17.0",
     "eslint-config-jesse": "^2.2.3",
-    "gh-pages": "^3.1.0",
+    "gh-pages": "^3.2.3",
     "type-coverage": "^2.17.0"
   }
 }
