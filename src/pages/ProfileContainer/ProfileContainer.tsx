@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast";
 import { Redirect } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { SignInDto } from "../../common/SignInDto";
@@ -6,20 +7,23 @@ import { UserRecord } from "../../common/UserRecord.interface";
 import { useAPI } from "../../hooks/api.hook";
 import { useHttp } from "../../hooks/http.hook";
 import { useMode } from "../../hooks/mode.hook";
+import { useNotification } from "../../hooks/notification.hook";
 import { useRoutes } from "../../hooks/routes.hook";
 import { useWindowDimensions } from "../../hooks/windowDimensions.hook";
 import { Profile } from "./Profile";
 
-export const ProfileContainer = () => {
-  const [req, api, routes, modeConfig, width] = [
+export const ProfileContainer: FC = () => {
+  const [req, api, routes, modeConfig, width, notification] = [
     useHttp(),
     useAPI(),
     useRoutes(),
     useMode()[2],
     useWindowDimensions().width,
+    useNotification(),
   ];
   const [data, setData] = useState<UserRecord>();
   const [isLoading, setLoading] = useState(true);
+  const [isError, setError] = useState(false);
   const [isAuth, setAuth] = useState(true);
 
   const handleLogout = () => {
@@ -29,11 +33,13 @@ export const ProfileContainer = () => {
   };
 
   useEffect(() => {
+    notification.loading();
     const [phoneNumber, password] = [
       localStorage.getItem("phoneNumber"),
       localStorage.getItem("password"),
     ];
     if (!(phoneNumber && password)) {
+      notification.cancel().error("You are not auth");
       setAuth(false);
       return;
     }
@@ -49,19 +55,29 @@ export const ProfileContainer = () => {
       },
     }).then((result) => {
       if (!result.isExpected) {
+        notification.cancel().error(result.message);
+        setError(true);
         return;
       }
+      notification.cancel();
       setData(result.value);
       setLoading(false);
+    }).catch((err) => {
+      notification.cancel().error("Something wrong with internet");
+      setError(true);
     });
   }, []);
 
-  if (isLoading) {
-    return <>Loading</>;
-  }
-
   if (!isAuth) {
     return <Redirect to={routes.signIn()} />;
+  }
+
+  if (isError) {
+    return <Toaster />;
+  }
+
+  if (isLoading) {
+    return <Toaster />;
   }
 
   return (
