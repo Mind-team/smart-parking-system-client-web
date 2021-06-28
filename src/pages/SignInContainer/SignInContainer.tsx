@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import { Redirect } from "react-router-dom";
 import { SignInDto } from "../../common/SignInDto";
 import { UserRecord } from "../../common/UserRecord.interface";
