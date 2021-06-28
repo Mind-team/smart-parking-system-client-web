@@ -3,16 +3,18 @@ import { Redirect } from "react-router-dom";
 import { ServerResponse } from "../../common/ServerResponse.interface";
 import { SignUpDto } from "../../common/SignUpDto";
 import { useHttp } from "../../hooks/http.hook";
+import { useNotification } from "../../hooks/notification.hook";
 import { useRoutes } from "../../hooks/routes.hook";
 import { useWindowDimensions } from "../../hooks/windowDimensions.hook";
 import { SignUp } from "./SignUp";
 import { SignUpMobile } from "./SignUpMobile";
 
 export const SignUpContainer: FC = () => {
-  const [req, routes, width] = [
+  const [req, routes, width, notification] = [
     useHttp(),
     useRoutes(),
     useWindowDimensions().width,
+    useNotification(),
   ];
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -35,6 +37,7 @@ export const SignUpContainer: FC = () => {
   };
 
   const handleSubmit = () => {
+    notification.loading();
     req<SignUpDto, ServerResponse<null>>({
       url: "http://localhost:5000/user/signUp",
       method: "POST",
@@ -48,11 +51,12 @@ export const SignUpContainer: FC = () => {
       },
     }).then((result) => {
       if (!result.isExpected) {
-        // TODO: Handle
+        notification.cancel().error(result.message);
         return;
       }
       localStorage.setItem("phoneNumber", phoneNumber);
       localStorage.setItem("password", password);
+      notification.cancel().success("Success");
       setAuth(true);
     });
   };

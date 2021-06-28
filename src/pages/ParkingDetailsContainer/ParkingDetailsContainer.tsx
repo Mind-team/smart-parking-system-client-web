@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Redirect, useParams } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { ParkingRecord } from "../../common/ParkingRecord.interface";
@@ -9,23 +9,30 @@ import { useMode } from "../../hooks/mode.hook";
 import { useRoutes } from "../../hooks/routes.hook";
 import { ParkingDetails } from "../../components/ParkingDetails/ParkingDetails";
 import { Wrapper } from "./ParkingDetails.styles";
+import { useNotification } from "../../hooks/notification.hook";
+import { Toaster } from "react-hot-toast";
 
-export const ParkingDetailsContainer = () => {
-  const req = useHttp();
+export const ParkingDetailsContainer: FC = () => {
+  const [req, routes, theme, notification] = [
+    useHttp(),
+    useRoutes(),
+    useMode()[2],
+    useNotification(),
+  ];
   const { id } = useParams<{ id: string }>();
-  const routes = useRoutes();
-  const theme = useMode()[2];
   const [parking, setParking] = useState<ParkingRecord>();
   const [isLoading, setLoading] = useState(true);
   const [isAuth, setAuth] = useState(true);
   const [isError, setError] = useState(false);
 
   useEffect(() => {
+    notification.loading();
     const [phoneNumber, password] = [
       localStorage.getItem("phoneNumber"),
       localStorage.getItem("password"),
     ];
     if (!(phoneNumber && password)) {
+      notification.cancel().error("You are not auth");
       setAuth(false);
       return;
     }
@@ -41,10 +48,19 @@ export const ParkingDetailsContainer = () => {
       },
     })
       .then((res) => {
+        if (!res.isExpected) {
+          notification.cancel().error(res.message);
+          setError(true);
+          return;
+        }
+        notification.cancel();
         setParking(res.value?.parkingHistory.filter((el) => el._id === id)[0]);
         setLoading(false);
       })
-      .catch((err) => setError(true));
+      .catch((err) => {
+        notification.cancel().error("Something wrong with internet");
+        setError(true);
+      });
   }, []);
 
   if (!isAuth) {
@@ -52,11 +68,11 @@ export const ParkingDetailsContainer = () => {
   }
 
   if (isError) {
-    return <>Error</>;
+    return <Toaster />;
   }
 
   if (isLoading) {
-    return <>Loading</>;
+    return <Toaster />;
   }
 
   return (
