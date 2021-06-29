@@ -7,9 +7,17 @@ export const fetchUserData = () => {
   return async(dispatch: Dispatch<UserAction>): Promise<void> => {
     try {
       dispatch({ type: UserActionType.FETCH_DATA });
+      const [phoneNumber, password] = [
+        localStorage.getItem("phoneNumber"),
+        localStorage.getItem("password"),
+      ];
+      if (!phoneNumber || !password) {
+        dispatch({ type: UserActionType.NOT_AUTHORIZED });
+        return;
+      }
       const body = JSON.stringify({
-        phoneNumber: localStorage.getItem("phoneNumber"),
-        password: localStorage.getItem("password"),
+        phoneNumber,
+        password,
       });
       const response = await fetch("http://localhost:5000/user/signIn", {
         method: "POST",
