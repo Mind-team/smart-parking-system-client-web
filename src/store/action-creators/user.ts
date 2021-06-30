@@ -39,3 +39,11 @@ export const fetchUserData = () => {
     }
   };
 };
+
+export const logout = () => {
+  return (dispatch: Dispatch<UserAction>): void => {
+    localStorage.removeItem("phoneNumber");
+    localStorage.removeItem("password");
+    dispatch({ type: UserActionType.LOGOUT });
+  };
+};

@@ -17,6 +17,7 @@ export enum UserActionType {
   "FETCH_DATA_SUCCESS",
   "FETCH_DATA_ERROR",
   "NOT_AUTHORIZED",
+  "LOGOUT",
 }
 
 interface FetchUserAction {
@@ -33,15 +34,20 @@ interface ErrorFetchUserAction {
   payload: string;
 }
 
-interface NotAuthorized {
+interface NotAuthorizedUserAction {
   type: UserActionType.NOT_AUTHORIZED;
+}
+
+interface LogoutUserAction {
+  type: UserActionType.LOGOUT;
 }
 
 export type UserAction =
   | FetchUserAction
   | SuccessFetchUserAction
   | ErrorFetchUserAction
-  | NotAuthorized
+  | NotAuthorizedUserAction
+  | LogoutUserAction
 
 export const userReducer = (
   state = defaultState,
@@ -55,7 +61,9 @@ export const userReducer = (
     case UserActionType.FETCH_DATA_ERROR:
       return { user: null, isLoading: false, isError: [true, action.payload] };
     case UserActionType.NOT_AUTHORIZED:
-      return { user: null, isLoading: false, isError: [true, "NotAuth"] };
+      return { user: null, isLoading: false, isError: [true, "You are not auth"] };
+    case UserActionType.LOGOUT:
+      return { user: null, isLoading: false, isError: [false] };
     default:
       return state;
   }
