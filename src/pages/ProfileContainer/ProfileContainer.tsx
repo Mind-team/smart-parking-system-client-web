@@ -3,8 +3,6 @@ import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { UserRecord } from "../../common/UserRecord.interface";
-import { useAPI } from "../../hooks/api.hook";
-import { useHttp } from "../../hooks/http.hook";
 import { useMode } from "../../hooks/mode.hook";
 import { useNotification } from "../../hooks/notification.hook";
 import { useRoutes } from "../../hooks/routes.hook";

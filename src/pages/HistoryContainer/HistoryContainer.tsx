@@ -10,14 +10,15 @@ import { History } from "./History";
 import { Redirect } from "react-router-dom";
 import { useRoutes } from "../../hooks/routes.hook";
 
-export const HistoryContainer: FC = () => {
+export const HistoryContainer: FC = () => {  
   const { user, isLoading, isError } = useTypedSelector((state) => state.user);
-  const dispatch = useDispatch();
-  const [width, notification, routes] = [
+  const [width, notification, routes, dispatch] = [
     useWindowDimensions().width,
     useNotification(),
     useRoutes(),
+    useDispatch(),
   ];
+
   useEffect(() => {
     dispatch(fetchUserData());
   }, []);
