@@ -12,9 +12,8 @@ import { fetchUserData, logout } from "../../store/action-creators/user";
 import { Profile } from "./Profile";
 
 export const ProfileContainer: FC = () => {
-  const { user, isLoading, isError } = useTypedSelector((state) => state.user);
+  const { user, isLoading, isError, isAuth } = useTypedSelector((state) => state.user);
   const dispatch = useDispatch();
-  const [isAuth, setAuth] = useState(true);
   const [routes, modeConfig, width, notification] = [
     useRoutes(),
     useMode()[2],
@@ -24,12 +23,17 @@ export const ProfileContainer: FC = () => {
 
   const handleLogout = () => {
     dispatch(logout());
-    setAuth(false);
   };
   
   useEffect(() => {
-    dispatch(fetchUserData());
+    if (!user) {
+      dispatch(fetchUserData());
+    }
   }, []);
+
+  if (isLoading) {
+    return <></>;
+  }
 
   if (!isAuth) {
     return <Redirect to={routes.signIn()} />;
@@ -38,10 +42,6 @@ export const ProfileContainer: FC = () => {
   if (isError[0]) {
     notification.cancel().error(isError[1] as string);
     return <Redirect to={routes.signIn()} />;
-  }
-
-  if (isLoading) {
-    return <></>;
   }
 
   return (
