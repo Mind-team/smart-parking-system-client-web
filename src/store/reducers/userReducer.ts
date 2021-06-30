@@ -4,12 +4,14 @@ interface UserState {
   user: UserRecord | null;
   isLoading: boolean;
   isError: [false] | [true, string];
+  isAuth: boolean;
 }
 
 const defaultState: UserState = {
   user: null,
   isLoading: true,
   isError: [false],
+  isAuth: false,
 };
 
 export enum UserActionType {
@@ -55,15 +57,15 @@ export const userReducer = (
 ): UserState => {
   switch (action.type) {
     case UserActionType.FETCH_DATA:
-      return { user: null, isLoading: true, isError: [false] };
+      return { user: null, isLoading: true, isError: [false], isAuth: true };
     case UserActionType.FETCH_DATA_SUCCESS:
-      return { user: action.payload, isLoading: false, isError: [false] };
+      return { user: action.payload, isLoading: false, isError: [false], isAuth: true };
     case UserActionType.FETCH_DATA_ERROR:
-      return { user: null, isLoading: false, isError: [true, action.payload] };
+      return { user: null, isLoading: false, isError: [true, action.payload], isAuth: true };
     case UserActionType.NOT_AUTHORIZED:
-      return { user: null, isLoading: false, isError: [true, "You are not auth"] };
+      return { user: null, isLoading: false, isError: [true, "You are not auth"], isAuth: false };
     case UserActionType.LOGOUT:
-      return { user: null, isLoading: false, isError: [false] };
+      return { user: null, isLoading: false, isError: [false], isAuth: false };
     default:
       return state;
   }
