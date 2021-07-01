@@ -55,7 +55,7 @@ export const HomeContainer: FC = () => {
         setLastParking(result.value);
         setLoading(false);
       })
-      .catch((error) => {
+      .catch(() => {
         notification.cancel().error("Something wrong with internet");
         setError(true);
       });

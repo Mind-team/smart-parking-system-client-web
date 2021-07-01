@@ -12,7 +12,9 @@ import { fetchUserData, logout } from "../../store/action-creators/user";
 import { Profile } from "./Profile";
 
 export const ProfileContainer: FC = () => {
-  const { user, isLoading, isError, isAuth } = useTypedSelector((state) => state.user);
+  const { user, isLoading, isError, isAuth } = useTypedSelector(
+    (state) => state.user
+  );
   const dispatch = useDispatch();
   const [routes, modeConfig, width, notification] = [
     useRoutes(),
@@ -21,10 +23,8 @@ export const ProfileContainer: FC = () => {
     useNotification(),
   ];
 
-  const handleLogout = () => {
-    dispatch(logout());
-  };
-  
+  const handleLogout = () => dispatch(logout());
+
   useEffect(() => {
     if (!user) {
       dispatch(fetchUserData());

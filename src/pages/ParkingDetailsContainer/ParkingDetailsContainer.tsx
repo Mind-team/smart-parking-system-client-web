@@ -12,12 +12,12 @@ import { useTypedSelector } from "../../hooks/typedSelector.hook";
 
 export const ParkingDetailsContainer: FC = () => {
   const { user, isAuth, isError } = useTypedSelector((state) => state.user);
+  const { id } = useParams<{ id: string }>();
   const [routes, theme, notification] = [
     useRoutes(),
     useMode()[2],
     useNotification(),
   ];
-  const { id } = useParams<{ id: string }>();
 
   if (!isAuth) {
     return <Redirect to={routes.signIn()} />;
@@ -31,7 +31,13 @@ export const ParkingDetailsContainer: FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <Wrapper>
-        <ParkingDetails parking={user?.parkingHistory.filter((el) => el._id === id)[0] as ParkingRecord} />
+        <ParkingDetails
+          parking={
+            user?.parkingHistory.filter(
+              (el) => el._id === id
+            )[0] as ParkingRecord
+          }
+        />
       </Wrapper>
     </ThemeProvider>
   );

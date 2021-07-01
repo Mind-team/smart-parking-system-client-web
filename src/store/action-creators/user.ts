@@ -3,12 +3,16 @@ import { UserRecord } from "../../common/UserRecord.interface";
 import { UserAction, UserActionType } from "../reducers/userReducer";
 import { ServerResponse } from "../../common/ServerResponse.interface";
 
-const signInAPI = async(phoneNumber: string, password: string): Promise<ServerResponse<UserRecord>> => {
+const signInAPI = async(
+  phoneNumber: string,
+  password: string
+): Promise<ServerResponse<UserRecord>> => {
   const body = JSON.stringify({
     phoneNumber,
     password,
   });
-  const response = await fetch("http://localhost:5000/user/signIn", { // TODO: remove hard link
+  const response = await fetch("http://localhost:5000/user/signIn", {
+    // TODO: remove hard link
     method: "POST",
     body,
     headers: {
