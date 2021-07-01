@@ -5,14 +5,16 @@ import { useNotification } from "../../hooks/notification.hook";
 import { useRoutes } from "../../hooks/routes.hook";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
 import { useWindowDimensions } from "../../hooks/windowDimensions.hook";
-import { fetchUserData } from "../../store/action-creators/user";
+import {
+  checkLocalStorage,
+  logout,
+  signIn,
+} from "../../store/action-creators/user";
 import { SignIn } from "./SignIn";
 import { SignInMobile } from "./SignInMobile";
 
 export const SignInContainer: FC = () => {
-  const { isLoading, isError, isAuth } = useTypedSelector(
-    (state) => state.user
-  );
+  const { isError, isAuth } = useTypedSelector((state) => state.user);
   const [routes, width, notification, dispatch] = [
     useRoutes(),
     useWindowDimensions().width,
@@ -30,19 +32,20 @@ export const SignInContainer: FC = () => {
   const handleSubmit = () => {
     localStorage.setItem("phoneNumber", phoneNumber);
     localStorage.setItem("password", password);
-    dispatch(fetchUserData());
+    dispatch(signIn());
   };
 
   useEffect(() => {
-    dispatch(fetchUserData());
+    dispatch(checkLocalStorage());
   }, []);
-
-  if (isLoading) {
-    return <></>;
-  }
 
   if (isAuth) {
     return <Redirect to={routes.home()} />;
+  }
+
+  if (isError[0]) {
+    notification.cancel().error(isError[1]);
+    dispatch(logout());
   }
 
   return (
