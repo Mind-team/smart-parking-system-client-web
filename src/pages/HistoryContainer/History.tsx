@@ -12,8 +12,8 @@ interface Props {
 }
 
 export const History: FC<Props> = ({ parkings }) => {
-  const modeConfig = useMode()[2];
-  const api = useAPI();
+  const [modeConfig, api] = [useMode()[2], useAPI()];
+
   return (
     <ThemeProvider theme={modeConfig}>
       <Wrapper>
@@ -25,9 +25,7 @@ export const History: FC<Props> = ({ parkings }) => {
             <WidgetWrapper key={index}>
               <ParkingWidget
                 title={parking.parkingTitle}
-                date={
-                  useDateFormater(new Date(parking.entryCarTime)).fullDate
-                }
+                date={useDateFormater(new Date(parking.entryCarTime)).fullDate}
                 price={parking.priceRub}
                 route={api.parkingDetails(parking._id)}
               />

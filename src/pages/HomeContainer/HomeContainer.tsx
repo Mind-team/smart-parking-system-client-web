@@ -24,7 +24,6 @@ export const HomeContainer: FC = () => {
   const [isAuth, setAuth] = useState(true);
 
   useEffect(() => {
-    notification.loading();
     const [phoneNumber, password] = [
       localStorage.getItem("phoneNumber"),
       localStorage.getItem("password"),
@@ -56,7 +55,7 @@ export const HomeContainer: FC = () => {
         setLastParking(result.value);
         setLoading(false);
       })
-      .catch((error) => {
+      .catch(() => {
         notification.cancel().error("Something wrong with internet");
         setError(true);
       });

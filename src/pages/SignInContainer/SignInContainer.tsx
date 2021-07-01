@@ -1,39 +1,28 @@
 import { FC, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { SignInDto } from "../../common/SignInDto";
-import { UserRecord } from "../../common/UserRecord.interface";
-import { useAPI } from "../../hooks/api.hook";
-import { useHttp } from "../../hooks/http.hook";
 import { useNotification } from "../../hooks/notification.hook";
 import { useRoutes } from "../../hooks/routes.hook";
+import { useTypedSelector } from "../../hooks/typedSelector.hook";
 import { useWindowDimensions } from "../../hooks/windowDimensions.hook";
+import {
+  checkLocalStorage,
+  logout,
+  signIn,
+} from "../../store/action-creators/user";
 import { SignIn } from "./SignIn";
 import { SignInMobile } from "./SignInMobile";
 
 export const SignInContainer: FC = () => {
-  const [req, routes, api, width, notification] = [
-    useHttp(),
+  const { isError, isAuth } = useTypedSelector((state) => state.user);
+  const [routes, width, notification, dispatch] = [
     useRoutes(),
-    useAPI(),
     useWindowDimensions().width,
     useNotification(),
+    useDispatch(),
   ];
-  const [userData, setUserData] = useState<UserRecord>();
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
-
-  const fetch = (params?: [string, string]) => 
-    req<SignInDto, UserRecord>({
-      url: api.signIn(),
-      method: "POST",
-      body: {
-        phoneNumber: params?.[0] ?? phoneNumber,
-        password: params?.[1] ?? password,
-      },
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
 
   const handleInput = (event: any, type: "phoneNumber" | "password") =>
     type === "phoneNumber"
@@ -41,37 +30,22 @@ export const SignInContainer: FC = () => {
       : setPassword(event.target.value);
 
   const handleSubmit = () => {
-    notification.loading();
-    fetch().then((result) => {
-      if (!result.isExpected) {
-        notification.cancel().error(result.message);
-        return;
-      }
-      notification.cancel().loading();
-      localStorage.setItem("phoneNumber", phoneNumber);
-      localStorage.setItem("password", password);
-      setUserData(result.value);
-    });
+    localStorage.setItem("phoneNumber", phoneNumber);
+    localStorage.setItem("password", password);
+    dispatch(signIn());
   };
 
   useEffect(() => {
-    const [phoneNumber, password] = [
-      localStorage.getItem("phoneNumber"),
-      localStorage.getItem("password"),
-    ];
-    if (!(phoneNumber && password)) {
-      return;
-    }
-    fetch([phoneNumber, password]).then((result) => {
-      if (!result.isExpected) {
-        return;
-      }
-      setUserData(result.value);
-    });
+    dispatch(checkLocalStorage());
   }, []);
 
-  if (userData) {
+  if (isAuth) {
     return <Redirect to={routes.home()} />;
+  }
+
+  if (isError[0]) {
+    notification.cancel().error(isError[1]);
+    dispatch(logout());
   }
 
   return (
