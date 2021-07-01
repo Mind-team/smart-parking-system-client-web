@@ -24,7 +24,6 @@ export const HomeContainer: FC = () => {
   const [isAuth, setAuth] = useState(true);
 
   useEffect(() => {
-    notification.loading();
     const [phoneNumber, password] = [
       localStorage.getItem("phoneNumber"),
       localStorage.getItem("password"),

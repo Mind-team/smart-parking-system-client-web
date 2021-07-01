@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
