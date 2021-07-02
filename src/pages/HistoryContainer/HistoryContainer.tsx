@@ -5,18 +5,19 @@ import { ParkingRecord } from "../../common/ParkingRecord.interface";
 import { fetchUserData } from "../../store/action-creators/user";
 import { useNotification } from "../../hooks/notification.hook";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
-import { useWindowDimensions } from "../../hooks/windowDimensions.hook";
 import { History } from "./History";
 import { Redirect } from "react-router-dom";
 import { useRoutes } from "../../hooks/routes.hook";
+import { ThemeProvider } from "styled-components";
+import { useMode } from "../../hooks/mode.hook";
 
 export const HistoryContainer: FC = () => {
   const { user, isLoading, isError } = useTypedSelector((state) => state.user);
-  const [width, notification, routes, dispatch] = [
-    useWindowDimensions().width,
+  const [notification, routes, dispatch, modeConfig] = [
     useNotification(),
     useRoutes(),
     useDispatch(),
+    useMode()[2],
   ];
 
   useEffect(() => {
@@ -24,7 +25,14 @@ export const HistoryContainer: FC = () => {
   }, []);
 
   if (isLoading) {
-    return <></>;
+    return (
+      <div
+        style={{
+          backgroundColor: modeConfig.additionalBGColor,
+          height: "100%",
+        }}
+      ></div>
+    );
   }
 
   if (isError[0]) {
@@ -36,9 +44,9 @@ export const HistoryContainer: FC = () => {
     return <Toaster />;
   }
 
-  return width > 760 ? (
-    <History parkings={user?.parkingHistory as ParkingRecord[]} />
-  ) : (
-    <History parkings={user?.parkingHistory as ParkingRecord[]} />
+  return (
+    <ThemeProvider theme={modeConfig}>
+      <History parkings={user?.parkingHistory as ParkingRecord[]} />
+    </ThemeProvider>
   );
 };
