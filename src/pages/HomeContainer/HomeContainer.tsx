@@ -16,7 +16,7 @@ export const HomeContainer: FC = () => {
     useHttp(),
     useAPI(),
     useRoutes(),
-    useNotification(),
+    useNotification(useMode()[2]),
     useMode()[2],
   ];
   const [lastParking, setLastParking] = useState<ParkingRecord>();

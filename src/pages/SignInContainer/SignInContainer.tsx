@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { useMode } from "../../hooks/mode.hook";
 import { useNotification } from "../../hooks/notification.hook";
 import { useRoutes } from "../../hooks/routes.hook";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
@@ -18,7 +19,7 @@ export const SignInContainer: FC = () => {
   const [routes, width, notification, dispatch] = [
     useRoutes(),
     useWindowDimensions().width,
-    useNotification(),
+    useNotification(useMode()[2]),
     useDispatch(),
   ];
   const [phoneNumber, setPhoneNumber] = useState("");

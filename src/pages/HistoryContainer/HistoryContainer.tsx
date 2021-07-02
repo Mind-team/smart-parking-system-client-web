@@ -14,7 +14,7 @@ import { useMode } from "../../hooks/mode.hook";
 export const HistoryContainer: FC = () => {
   const { user, isLoading, isError } = useTypedSelector((state) => state.user);
   const [notification, routes, dispatch, modeConfig] = [
-    useNotification(),
+    useNotification(useMode()[2]),
     useRoutes(),
     useDispatch(),
     useMode()[2],

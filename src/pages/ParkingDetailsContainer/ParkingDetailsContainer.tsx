@@ -16,7 +16,7 @@ export const ParkingDetailsContainer: FC = () => {
   const [routes, theme, notification] = [
     useRoutes(),
     useMode()[2],
-    useNotification(),
+    useNotification(useMode()[2]),
   ];
 
   if (!isAuth) {
