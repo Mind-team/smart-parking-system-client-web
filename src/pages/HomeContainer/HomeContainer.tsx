@@ -73,7 +73,7 @@ export const HomeContainer: FC = () => {
           backgroundColor: config.additionalBGColor,
           height: "100%",
         }}
-      ></div>
+      />
     );
   }
 
