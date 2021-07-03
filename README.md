@@ -11,7 +11,8 @@
 
 ## Стек технологий <a name="techStack" />
 - Node JS
-- React JS
+- React JS 
+- Redux
 - Styled components
 - TypeScript
 
@@ -34,6 +35,7 @@
 - /src/img - изображения
 - /src/pages - страницы
 - /src/styles - стили
+- /src/redux - редакс
 
 ## Продукт <a name="product" />
 Приложение для клиента, в котором пользователь может зарегистрироваться, посмотреть историю паркингов 
