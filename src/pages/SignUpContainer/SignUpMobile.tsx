@@ -17,9 +17,9 @@ import lightModeIcon from "../../img/lightMode.svg";
 import darkModeIcon from "../../img/darkMode.svg";
 import { SignUpProps } from "./SignUpProps";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
-import { AppearanceMode } from "../../store/reducers/appearanceModeReducer";
+import { AppearanceMode } from "../../redux/reducers/appearanceModeReducer";
 import { useDispatch } from "react-redux";
-import { toggleMode } from "../../store/action-creators/appearanceMode";
+import { toggleMode } from "../../redux/action-creators/appearanceMode";
 
 export const SignUpMobile: React.FC<SignUpProps> = ({
   handleInput,

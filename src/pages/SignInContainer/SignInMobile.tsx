@@ -18,9 +18,9 @@ import darkModeIcon from "../../img/darkMode.svg";
 import { SignInProps } from "./SignInProps";
 import { NavLink } from "react-router-dom";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
-import { AppearanceMode } from "../../store/reducers/appearanceModeReducer";
+import { AppearanceMode } from "../../redux/reducers/appearanceModeReducer";
 import { useDispatch } from "react-redux";
-import { toggleMode } from "../../store/action-creators/appearanceMode";
+import { toggleMode } from "../../redux/action-creators/appearanceMode";
 
 export const SignInMobile: React.FC<SignInProps> = ({
   handleInput,

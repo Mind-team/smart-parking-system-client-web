@@ -9,7 +9,7 @@ import {
   checkLocalStorage,
   logout,
   signIn,
-} from "../../store/action-creators/user";
+} from "../../redux/action-creators/user";
 import { SignIn } from "./SignIn";
 import { SignInMobile } from "./SignInMobile";
 

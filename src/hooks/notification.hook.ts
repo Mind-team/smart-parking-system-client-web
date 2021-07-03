@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
 import { lightModeConfig } from "../styles/ModeConfig";
-import { ModeConfig } from "../store/reducers/appearanceModeReducer";
+import { ModeConfig } from "../redux/reducers/appearanceModeReducer";
 
 type Standard = (message?: string) => void;
 

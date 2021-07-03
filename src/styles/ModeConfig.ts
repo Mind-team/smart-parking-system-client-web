@@ -1,4 +1,4 @@
-import { ModeConfig } from "../store/reducers/appearanceModeReducer";
+import { ModeConfig } from "../redux/reducers/appearanceModeReducer";
 
 export interface LightModeConfig extends ModeConfig {
   backgroundColor: "#ffffff";

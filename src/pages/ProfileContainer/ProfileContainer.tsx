@@ -7,8 +7,8 @@ import { useNotification } from "../../hooks/notification.hook";
 import { useRoutes } from "../../hooks/routes.hook";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
 import { useWindowDimensions } from "../../hooks/windowDimensions.hook";
-import { toggleMode } from "../../store/action-creators/appearanceMode";
-import { fetchUserData, logout } from "../../store/action-creators/user";
+import { toggleMode } from "../../redux/action-creators/appearanceMode";
+import { fetchUserData, logout } from "../../redux/action-creators/user";
 import { Profile } from "./Profile";
 
 export const ProfileContainer: FC = () => {
