@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   height: 100%;
   width: 100%;
   overflow-y: hidden;
-  background-color: ${props => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 export const LeftSide = styled.div`
@@ -18,7 +18,8 @@ export const LeftSide = styled.div`
   align-items: center;
   flex-basis: calc(193vw * ${widthRate});
   height: 100%;
-  background-color: ${props => props.theme.additionalBGColor ?? props.theme.backgroundColor};
+  background-color: ${(props) =>
+    props.theme.additionalBGColor ?? props.theme.backgroundColor};
 `;
 
 export const MindLogo = styled.img`
@@ -51,18 +52,18 @@ export const Form = styled.div`
 `;
 
 export const FormTitle = styled.p`
-display: flex;
-align-self: center;
-font-size: 35px;
-font-weight: 700;
-color: ${props => props.theme.textColor};
+  display: flex;
+  align-self: center;
+  font-size: 35px;
+  font-weight: 700;
+  color: ${(props) => props.theme.textColor};
 `;
 
 export const InputTitle = styled.p`
   font-weight: 300;
   font-size: 30px;
   align-items: center;
-  color: ${props => props.theme.textColor};;
+  color: ${(props) => props.theme.textColor};
   margin-bottom: calc(23vh * ${heightRate});
   margin-left: calc(26vw * ${widthRate});
 `;
@@ -78,10 +79,10 @@ export const FormInputs = styled.div`
 export const FormInput = styled.input`
   display: flex;
   align-self: center;
-  height: calc(76vh * ${heightRate}); 
+  height: calc(76vh * ${heightRate});
   margin-bottom: calc(50vh * ${heightRate});
-  color: ${props => props.theme.textColor};
-  border: 2px solid ${props => props.theme.textColor};
+  color: ${(props) => props.theme.textColor};
+  border: 2px solid ${(props) => props.theme.textColor};
   box-sizing: border-box;
   border-radius: 14px;
   outline: none;
@@ -91,15 +92,15 @@ export const FormInput = styled.input`
   line-height: 41px;
   cursor: pointer;
   padding-left: calc(25vw * ${widthRate});
-  background-color: ${props => props.theme.backgroundColor};
-  @media(max-width: 1790px) {
+  background-color: ${(props) => props.theme.backgroundColor};
+  @media (max-width: 1790px) {
     font-size: 25px;
   }
   ::placeholder {
-    color: ${props => props.theme.textColor};
+    color: ${(props) => props.theme.textColor};
   }
   :hover {
     transition: 400ms;
-    border-color: ${props => props.theme.actionColor};
+    border-color: ${(props) => props.theme.actionColor};
   }
 `;

@@ -50,4 +50,3 @@ export const LineContent = styled.p`
   font-size: 21px;
   color: ${(props) => props.theme.textColor};
 `;
-

@@ -10,7 +10,7 @@ const defaultState: UserState = {
 
 export const userReducer: Reducer<UserState> = (
   state = defaultState,
-  action: UserAction
+  action: UserAction,
 ) => {
   switch (action.type) {
     case UserActionType.CHECK_LOCAL_STORAGE:

@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${props => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 export const MindLogo = styled.img`
@@ -28,12 +28,12 @@ export const FormTitle = styled.p`
   font-weight: 500;
   font-size: 20px;
   line-height: 26px;
-  color: ${props => props.theme.textColor};
+  color: ${(props) => props.theme.textColor};
   margin-top: calc(54vh * ${heightRate});
 `;
 
 export const Inputs = styled.div`
-  display: flex;  
+  display: flex;
   flex-direction: column;
   justify-self: center;
   margin-top: calc(52vh * ${heightRate});
@@ -43,7 +43,7 @@ export const InputTitle = styled.p`
   font-weight: 400;
   font-size: 20px;
   align-items: center;
-  color: ${props => props.theme.textColor};;
+  color: ${(props) => props.theme.textColor};
   margin-bottom: calc(10vh * ${heightRate});
   margin-left: calc(19vw * ${widthRate});
 `;

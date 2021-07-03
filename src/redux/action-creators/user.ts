@@ -3,9 +3,9 @@ import { UserRecord } from "../../common/UserRecord.interface";
 import { UserAction, UserActionType } from "../types/user";
 import { ServerResponse } from "../../common/ServerResponse.interface";
 
-const signInAPI = async(
+const signInAPI = async (
   phoneNumber: string,
-  password: string
+  password: string,
 ): Promise<ServerResponse<UserRecord>> => {
   const body = JSON.stringify({
     phoneNumber,
@@ -24,7 +24,7 @@ const signInAPI = async(
 };
 
 export const fetchUserData = () => {
-  return async(dispatch: Dispatch<UserAction>): Promise<void> => {
+  return async (dispatch: Dispatch<UserAction>): Promise<void> => {
     try {
       dispatch({ type: UserActionType.FETCH_DATA });
       const [phoneNumber, password] = [
@@ -58,7 +58,7 @@ export const logout = () => {
 };
 
 export const signIn = () => {
-  return async(dispatch: Dispatch<UserAction>): Promise<void> => {
+  return async (dispatch: Dispatch<UserAction>): Promise<void> => {
     try {
       dispatch({ type: UserActionType.SIGN_IN });
       const [phoneNumber, password] = [
@@ -92,7 +92,7 @@ export const signIn = () => {
 };
 
 export const checkLocalStorage = () => {
-  return async(dispatch: Dispatch<UserAction>): Promise<void> => {
+  return async (dispatch: Dispatch<UserAction>): Promise<void> => {
     dispatch({ type: UserActionType.CHECK_LOCAL_STORAGE });
     const [phoneNumber, password] = [
       localStorage.getItem("phoneNumber"),

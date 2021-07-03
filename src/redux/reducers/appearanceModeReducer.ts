@@ -4,7 +4,7 @@ import {
   AppearanceMode,
   AppearanceModeAction,
   AppearanceModeActionType,
-  AppearanceModeState
+  AppearanceModeState,
 } from "../types/appearanceMode";
 
 const defaultState: AppearanceModeState = {
@@ -14,7 +14,7 @@ const defaultState: AppearanceModeState = {
 
 export const appearanceModeReducer: Reducer<AppearanceModeState> = (
   state = defaultState,
-  action: AppearanceModeAction
+  action: AppearanceModeAction,
 ) => {
   switch (action.type) {
     case AppearanceModeActionType.SWITCH_TO_LIGHT_MODE:

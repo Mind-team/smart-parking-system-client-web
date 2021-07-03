@@ -5,7 +5,7 @@ const { wFullHD, hFullHD } = useProportions();
 
 export const Wrapper = styled.div`
   display: flex;
-  background-color: ${props => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.backgroundColor};
   height: calc(110vh * ${hFullHD});
   width: 100%;
   justify-content: center;
@@ -21,7 +21,7 @@ export const Content = styled.div`
 export const NavbarElement = styled.p`
   font-size: 20px;
   font-weight: 400;
-  color: ${props => props.theme.textColor};
+  color: ${(props) => props.theme.textColor};
   cursor: pointer;
 `;
 
@@ -29,5 +29,5 @@ export const NavLinkStyles = {
   textDecoration: "none",
   display: "flex",
   alignItems: "center",
-  cursor: "pointer"
+  cursor: "pointer",
 };

@@ -1,10 +1,5 @@
 export const useProportions = () => {
-  const [
-    wFullHD, 
-    hFullHD, 
-    wMobile, 
-    hMobile
-  ] = [
+  const [wFullHD, hFullHD, wMobile, hMobile] = [
     100 / 1920,
     100 / 1080,
     100 / 375,

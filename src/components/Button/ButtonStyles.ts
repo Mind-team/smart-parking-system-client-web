@@ -4,7 +4,7 @@ const widthRate = 100 / 1920;
 const heightRate = 100 / 1080;
 
 export const ButtonWrapper = styled.button`
-  background: #61A0EA;
+  background: #61a0ea;
   border-radius: 14px;
   outline: none;
   border: 0;
@@ -19,7 +19,7 @@ export const ButtonWrapper = styled.button`
   cursor: pointer;
   :hover {
     transition: 400ms;
-    box-shadow: 0px 0px 15px ${props => props.theme.actionColor};
+    box-shadow: 0px 0px 15px ${(props) => props.theme.actionColor};
   }
 `;
 

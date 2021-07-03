@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   display: flex;
   height: 100%;
   flex-direction: column;
-  background-color: ${props => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 export const Logo = styled.img`
@@ -33,7 +33,7 @@ export const FormTitle = styled.p`
   font-weight: 500;
   font-size: 20px;
   line-height: 26px;
-  color: ${props => props.theme.textColor};
+  color: ${(props) => props.theme.textColor};
 `;
 
 export const FormSubtitle = styled.p`
@@ -41,7 +41,7 @@ export const FormSubtitle = styled.p`
   font-weight: 400;
   font-size: 15px;
   line-height: 21px;
-  color: ${props => props.theme.actionColor};
+  color: ${(props) => props.theme.actionColor};
   margin-top: 15px;
   cursor: pointer;
 `;
@@ -61,5 +61,3 @@ export const AppearanceModeIcon = styled.img`
   align-self: center;
   margin-top: calc(90vh * ${heightRate});
 `;
-
-

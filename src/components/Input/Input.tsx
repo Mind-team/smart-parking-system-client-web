@@ -19,5 +19,14 @@ export const Input: React.FC<Partial<Props>> = ({
   fontSize = "35px",
   fontSizeMobile = "25px",
   ...props
-}) => 
-  <InputWrapper type={type} placeholder={placeholder} height={height} paddingLeft={paddingLeft} fontSize={fontSize} fontSizeMobile={fontSizeMobile} {...props} />;
+}) => (
+  <InputWrapper
+    type={type}
+    placeholder={placeholder}
+    height={height}
+    paddingLeft={paddingLeft}
+    fontSize={fontSize}
+    fontSizeMobile={fontSizeMobile}
+    {...props}
+  />
+);

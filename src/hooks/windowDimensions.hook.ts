@@ -6,7 +6,10 @@ interface WindowDimensions {
 }
 
 export const useWindowDimensions = () => {
-  const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>({ width: innerWidth, height: innerHeight });
+  const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>({
+    width: innerWidth,
+    height: innerHeight,
+  });
 
   useEffect(() => {
     window.addEventListener("resize", () => {

@@ -11,7 +11,7 @@ import { SignUpMobile } from "./SignUpMobile";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
 
 export const SignUpContainer: FC = () => {
-  const { config } = useTypedSelector((state => state.appearanceMode));
+  const { config } = useTypedSelector((state) => state.appearanceMode);
   const [req, routes, width, notification] = [
     useHttp(),
     useRoutes(),
@@ -25,7 +25,7 @@ export const SignUpContainer: FC = () => {
 
   const handleInput = (
     event: any,
-    type: "phoneNumber" | "password" | "plate"
+    type: "phoneNumber" | "password" | "plate",
   ) => {
     if (type === "phoneNumber") {
       setPhoneNumber(event.target.value);

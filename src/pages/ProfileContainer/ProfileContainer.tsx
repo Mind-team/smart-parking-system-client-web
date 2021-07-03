@@ -11,7 +11,7 @@ import { useActions } from "../../hooks/reduxActions.hook";
 
 export const ProfileContainer: FC = () => {
   const { user, isLoading, isError, isAuth } = useTypedSelector(
-    (state) => state.user
+    (state) => state.user,
   );
   const { config } = useTypedSelector((state) => state.appearanceMode);
   const { logout, fetchUserData, toggleMode } = useActions();
