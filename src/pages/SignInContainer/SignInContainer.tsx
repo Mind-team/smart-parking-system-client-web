@@ -10,7 +10,7 @@ import { useActions } from "../../hooks/reduxActions.hook";
 
 export const SignInContainer: FC = () => {
   const { isError, isAuth } = useTypedSelector((state) => state.user);
-  const { config } = useTypedSelector((state => state.appearanceMode));
+  const { config } = useTypedSelector((state) => state.appearanceMode);
   const [routes, width, notification] = [
     useRoutes(),
     useWindowDimensions().width,
