@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { Navbar } from "./components/Navbar/Navbar";
@@ -13,8 +12,8 @@ import { detectMode } from "./store/action-creators/appearanceMode";
 
 const App: React.FC = () => {
   const routes = useRoutes();
-  const dispatch = useDispatch();
-  dispatch(detectMode());
+  useDispatch()(detectMode());
+
   return (
     <Switch>
       <Route exact path={routes.signUp()} component={SignUpContainer} />

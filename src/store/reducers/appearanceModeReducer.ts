@@ -1,8 +1,5 @@
 import { Reducer } from "redux";
-import {
-  darkModeConfig,
-  lightModeConfig,
-} from "../../styles/ModeConfig";
+import { darkModeConfig, lightModeConfig } from "../../styles/ModeConfig";
 
 export interface ModeConfig {
   backgroundColor: string;

@@ -47,9 +47,17 @@ export const ProfileContainer: FC = () => {
   return (
     <ThemeProvider theme={config}>
       {width > 760 ? (
-        <Profile user={user as UserRecord} handleLogout={handleLogout} changeMode={() => dispatch(toggleMode())} />
+        <Profile
+          user={user as UserRecord}
+          handleLogout={handleLogout}
+          changeMode={() => dispatch(toggleMode())}
+        />
       ) : (
-        <Profile user={user as UserRecord} handleLogout={handleLogout} changeMode={() => dispatch(toggleMode())} />
+        <Profile
+          user={user as UserRecord}
+          handleLogout={handleLogout}
+          changeMode={() => dispatch(toggleMode())}
+        />
       )}
     </ThemeProvider>
   );
