@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { UserRecord } from "../../common/UserRecord.interface";
 import { Button } from "../../components/Button/Button";
-import { Card, Line, Wrapper } from "./Profile.styles";
+import { Card, Line, LineWithAction, Wrapper } from "./Profile.styles";
 
 interface Props {
   user: UserRecord;
@@ -17,7 +17,7 @@ export const Profile: FC<Props> = ({ user, handleLogout, changeMode }) => {
         <Line>
           Регистрационный знак: {user.plates.map((plate) => plate.value)}
         </Line>
-        <Line onClick={changeMode}>Сменить тему</Line>
+        <LineWithAction onClick={changeMode}>Сменить тему</LineWithAction>
         <Button title="Выйти" onClick={handleLogout} />
       </Card>
     </Wrapper>
