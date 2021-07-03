@@ -1,6 +1,12 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
-import { WidgetWrapper, Details, InfoLine, Price, NavLinkStyles } from "./ParkingWidget.styles";
+import {
+  WidgetWrapper,
+  Details,
+  InfoLine,
+  Price,
+  NavLinkStyles,
+} from "./ParkingWidget.styles";
 
 interface Props {
   title: string;
@@ -9,12 +15,7 @@ interface Props {
   route: string;
 }
 
-export const ParkingWidget: FC<Props> = ({
-  title,
-  date,
-  price,
-  route,
-}) => {
+export const ParkingWidget: FC<Props> = ({ title, date, price, route }) => {
   return (
     <WidgetWrapper>
       <InfoLine>

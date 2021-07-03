@@ -11,7 +11,9 @@ export const useDateFormater = (date: number | Date) => {
     ${day > 10 ? day : "0" + day}.${month > 10 ? month : "0" + month}.${year}
   `;
   const fullTime = `
-    ${hours > 10 ? hours : "0" + hours}:${minutes > 10 ? minutes : "0" + minutes}
+    ${hours > 10 ? hours : "0" + hours}:${
+    minutes > 10 ? minutes : "0" + minutes
+  }
   `;
 
   return { fullDate, fullTime };

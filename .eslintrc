@@ -5,7 +5,8 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "rules": {
-    "no-use-before-define": "off"
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   },
-  "extends": ["jesse", "plugin:@typescript-eslint/recommended"]
+  "extends": ["jesse", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"]
 }

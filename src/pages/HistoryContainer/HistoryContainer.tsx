@@ -13,10 +13,7 @@ export const HistoryContainer: FC = () => {
   const { user, isLoading, isError } = useTypedSelector((state) => state.user);
   const { config } = useTypedSelector((state) => state.appearanceMode);
   const { fetchUserData } = useActions();
-  const [notification, routes] = [
-    useNotification(config),
-    useRoutes(),
-  ];
+  const [notification, routes] = [useNotification(config), useRoutes()];
 
   useEffect(() => {
     fetchUserData();

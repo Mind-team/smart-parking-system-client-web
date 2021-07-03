@@ -3,5 +3,5 @@ import * as TodoActionCreators from "./appearanceMode";
 
 export default {
   ...TodoActionCreators,
-  ...UserActionCreators
+  ...UserActionCreators,
 };

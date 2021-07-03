@@ -12,7 +12,7 @@ interface Notification {
 }
 
 export const useNotification = (
-  modeConfig: ModeConfig = lightModeConfig
+  modeConfig: ModeConfig = lightModeConfig,
 ): Notification => {
   const notification = {
     loading: (message?: string) =>

@@ -12,9 +12,7 @@ export const Button: React.FC<Partial<Props>> = ({
 }) => {
   return (
     <ButtonWrapper {...props}>
-      <ButtonTitle>
-        {title}
-      </ButtonTitle>
+      <ButtonTitle>{title}</ButtonTitle>
     </ButtonWrapper>
   );
 };

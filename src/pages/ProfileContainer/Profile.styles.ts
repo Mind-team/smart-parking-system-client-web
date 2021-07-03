@@ -5,11 +5,11 @@ const { wFullHD, hFullHD } = useProportions();
 
 export const Wrapper = styled.div`
   height: calc(970vh * ${hFullHD});
-  background-color: ${props => props.theme.additionalBGColor};
+  background-color: ${(props) => props.theme.additionalBGColor};
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${props => props.theme.textColor};
+  color: ${(props) => props.theme.textColor};
   font-size: 25px;
 `;
 
@@ -21,8 +21,8 @@ export const Card = styled.div`
   width: calc(1015vw * ${wFullHD});
   padding: 48px 0px;
   border-radius: 35px;
-  background-color: ${props => props.theme.backgroundColor};
-  color: ${props => props.theme.textColor};
+  background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.textColor};
   font-size: 25px;
   box-shadow: 0px 0px 10px rgba(25, 25, 25, 0.15);
 `;

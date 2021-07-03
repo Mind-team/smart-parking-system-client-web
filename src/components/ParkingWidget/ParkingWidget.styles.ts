@@ -8,7 +8,7 @@ export const WidgetWrapper = styled.div`
   height: calc(300vh * ${hFullHD});
   border-radius: 35px;
   display: flex;
-  background-color: ${props => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.backgroundColor};
   box-shadow: 0px 0px 10px rgba(25, 25, 25, 0.15);
   flex-direction: column;
   justify-content: space-around;
@@ -16,7 +16,7 @@ export const WidgetWrapper = styled.div`
 
 export const InfoLine = styled.div`
   display: flex;
-  color: ${props => props.theme.textColor};
+  color: ${(props) => props.theme.textColor};
   justify-content: space-around;
   font-weight: normal;
   font-size: 25px;
@@ -25,14 +25,14 @@ export const InfoLine = styled.div`
 
 export const Price = styled.div`
   align-self: center;
-  color: ${props => props.theme.textColor};
+  color: ${(props) => props.theme.textColor};
   font-weight: 500;
   font-size: 56px;
 `;
 
 export const Details = styled.div`
   align-self: center;
-  color: ${props => props.theme.actionColor};
+  color: ${(props) => props.theme.actionColor};
   font-size: 25px;
   cursor: pointer;
   padding-bottom: 12px;
@@ -41,5 +41,5 @@ export const Details = styled.div`
 export const NavLinkStyles = {
   textDecoration: "none",
   display: "flex",
-  justifyContent: "center"
+  justifyContent: "center",
 };

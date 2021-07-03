@@ -11,32 +11,32 @@ interface Styles {
 }
 
 export const InputWrapper = styled.input<Styles>`
-  height: calc(${props => props.height} * ${heightRate}); 
+  height: calc(${(props) => props.height} * ${heightRate});
   margin-bottom: calc(50vh * ${heightRate});
-  color: ${props => props.theme.textColor};
-  border: 2px solid ${props => props.theme.textColor};
+  color: ${(props) => props.theme.textColor};
+  border: 2px solid ${(props) => props.theme.textColor};
   box-sizing: border-box;
   border-radius: 14px;
   outline: none;
   font-style: normal;
   font-weight: 400;
-  font-size: ${props => props.fontSize};
+  font-size: ${(props) => props.fontSize};
   line-height: 41px;
   cursor: pointer;
-  padding-left: calc(${props => props.paddingLeft} * ${widthRate});
-  background-color: ${props => props.theme.backgroundColor};
-  @media(max-width: 1790px) {
-    font-size: ${props => props.fontSizeMobile};
+  padding-left: calc(${(props) => props.paddingLeft} * ${widthRate});
+  background-color: ${(props) => props.theme.backgroundColor};
+  @media (max-width: 1790px) {
+    font-size: ${(props) => props.fontSizeMobile};
   }
   ::placeholder {
-    color: ${props => props.theme.textColor};
+    color: ${(props) => props.theme.textColor};
   }
   :hover {
     transition: 400ms;
-    border-color: ${props => props.theme.actionColor};
+    border-color: ${(props) => props.theme.actionColor};
     ::placeholder {
       transition: 400ms;
-      color: ${props => props.theme.actionColor};
+      color: ${(props) => props.theme.actionColor};
     }
   }
 `;

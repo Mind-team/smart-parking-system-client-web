@@ -13,10 +13,7 @@ export const ParkingDetailsContainer: FC = () => {
   const { user, isAuth, isError } = useTypedSelector((state) => state.user);
   const { config } = useTypedSelector((state) => state.appearanceMode);
   const { id } = useParams<{ id: string }>();
-  const [routes, notification] = [
-    useRoutes(),
-    useNotification(config),
-  ];
+  const [routes, notification] = [useRoutes(), useNotification(config)];
 
   if (!isAuth) {
     return <Redirect to={routes.signIn()} />;
@@ -33,7 +30,7 @@ export const ParkingDetailsContainer: FC = () => {
         <ParkingDetails
           parking={
             user?.parkingHistory.filter(
-              (el) => el._id === id
+              (el) => el._id === id,
             )[0] as ParkingRecord
           }
         />
