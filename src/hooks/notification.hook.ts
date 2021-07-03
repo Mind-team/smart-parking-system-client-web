@@ -1,5 +1,6 @@
 import toast from "react-hot-toast";
 import { lightModeConfig } from "../styles/ModeConfig";
+import { ModeConfig } from "../store/reducers/appearanceModeReducer";
 
 type Standard = (message?: string) => void;
 
@@ -10,7 +11,9 @@ interface Notification {
   cancel: () => Notification;
 }
 
-export const useNotification = (modeConfig = lightModeConfig): Notification => {
+export const useNotification = (
+  modeConfig: ModeConfig = lightModeConfig
+): Notification => {
   const notification = {
     loading: (message?: string) =>
       toast.loading(message ?? "Loading", {
