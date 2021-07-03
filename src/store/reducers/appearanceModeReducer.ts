@@ -1,28 +1,27 @@
+import { Reducer } from "redux";
 import {
   darkModeConfig,
-  DarkModeConfig,
   lightModeConfig,
-  LightModeConfig,
 } from "../../styles/ModeConfig";
+
+export interface ModeConfig {
+  backgroundColor: string;
+  textColor: string;
+  actionColor: string;
+  additionalBGColor?: string;
+}
 
 export enum AppearanceMode {
   light = "LIGHT",
   dark = "DARK",
 }
 
-interface LightAppearanceModeState {
-  title: AppearanceMode.light;
-  config: LightModeConfig;
+export interface AppearanceModeState {
+  title: AppearanceMode;
+  config: ModeConfig;
 }
 
-interface DarkAppearanceModeState {
-  title: AppearanceMode.dark;
-  config: DarkModeConfig;
-}
-
-export type AppearanceModeState = LightAppearanceModeState | DarkAppearanceModeState;
-
-const defaultState: LightAppearanceModeState = {
+const defaultState = {
   title: AppearanceMode.light,
   config: lightModeConfig,
 };
@@ -42,10 +41,10 @@ interface SwitchToDarkMode {
 
 export type AppearanceModeAction = SwitchToLightMode | SwitchToDarkMode;
 
-export const appearanceModeReducer = (
+export const appearanceModeReducer: Reducer<AppearanceModeState> = (
   state = defaultState,
   action: AppearanceModeAction
-): AppearanceModeState => {
+) => {
   switch (action.type) {
     case AppearanceModeActionType.SWITCH_TO_LIGHT_MODE:
       return { title: AppearanceMode.light, config: lightModeConfig };
