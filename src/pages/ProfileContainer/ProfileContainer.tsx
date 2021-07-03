@@ -1,5 +1,4 @@
 import { FC, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { UserRecord } from "../../common/UserRecord.interface";
@@ -7,27 +6,26 @@ import { useNotification } from "../../hooks/notification.hook";
 import { useRoutes } from "../../hooks/routes.hook";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
 import { useWindowDimensions } from "../../hooks/windowDimensions.hook";
-import { toggleMode } from "../../redux/action-creators/appearanceMode";
-import { fetchUserData, logout } from "../../redux/action-creators/user";
 import { Profile } from "./Profile";
+import { useActions } from "../../hooks/reduxActions.hook";
 
 export const ProfileContainer: FC = () => {
   const { user, isLoading, isError, isAuth } = useTypedSelector(
     (state) => state.user
   );
   const { config } = useTypedSelector((state) => state.appearanceMode);
-  const dispatch = useDispatch();
+  const { logout, fetchUserData, toggleMode } = useActions();
   const [routes, width, notification] = [
     useRoutes(),
     useWindowDimensions().width,
     useNotification(config),
   ];
 
-  const handleLogout = () => dispatch(logout());
+  const handleLogout = () => logout();
 
   useEffect(() => {
     if (!user) {
-      dispatch(fetchUserData());
+      fetchUserData();
     }
   }, []);
 
@@ -50,13 +48,13 @@ export const ProfileContainer: FC = () => {
         <Profile
           user={user as UserRecord}
           handleLogout={handleLogout}
-          changeMode={() => dispatch(toggleMode())}
+          changeMode={() => toggleMode()}
         />
       ) : (
         <Profile
           user={user as UserRecord}
           handleLogout={handleLogout}
-          changeMode={() => dispatch(toggleMode())}
+          changeMode={() => toggleMode()}
         />
       )}
     </ThemeProvider>

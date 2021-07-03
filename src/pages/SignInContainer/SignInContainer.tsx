@@ -1,27 +1,22 @@
 import { FC, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useNotification } from "../../hooks/notification.hook";
 import { useRoutes } from "../../hooks/routes.hook";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
 import { useWindowDimensions } from "../../hooks/windowDimensions.hook";
-import {
-  checkLocalStorage,
-  logout,
-  signIn,
-} from "../../redux/action-creators/user";
 import { SignIn } from "./SignIn";
 import { SignInMobile } from "./SignInMobile";
+import { useActions } from "../../hooks/reduxActions.hook";
 
 export const SignInContainer: FC = () => {
   const { isError, isAuth } = useTypedSelector((state) => state.user);
   const { config } = useTypedSelector((state => state.appearanceMode));
-  const [routes, width, notification, dispatch] = [
+  const [routes, width, notification] = [
     useRoutes(),
     useWindowDimensions().width,
     useNotification(config),
-    useDispatch(),
   ];
+  const { signIn, checkLocalStorage, logout } = useActions();
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
 
@@ -33,11 +28,11 @@ export const SignInContainer: FC = () => {
   const handleSubmit = () => {
     localStorage.setItem("phoneNumber", phoneNumber);
     localStorage.setItem("password", password);
-    dispatch(signIn());
+    signIn();
   };
 
   useEffect(() => {
-    dispatch(checkLocalStorage());
+    checkLocalStorage();
   }, []);
 
   if (isAuth) {
@@ -46,7 +41,7 @@ export const SignInContainer: FC = () => {
 
   if (isError[0]) {
     notification.cancel().error(isError[1]);
-    dispatch(logout());
+    logout();
   }
 
   return (
