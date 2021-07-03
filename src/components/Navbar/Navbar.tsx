@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import {
   Content,
   NavbarElement,
@@ -11,7 +11,7 @@ import { ThemeProvider } from "styled-components";
 import { useRoutes } from "../../hooks/routes.hook";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
 
-export const Navbar: React.FC = () => {
+export const Navbar: FC = () => {
   const { config } = useTypedSelector((state) => state.appearanceMode);
   const routes = useRoutes();
   return (

@@ -30,7 +30,7 @@ export const HistoryContainer: FC = () => {
           backgroundColor: config.additionalBGColor,
           height: "100%",
         }}
-      ></div>
+      />
     );
   }
 
