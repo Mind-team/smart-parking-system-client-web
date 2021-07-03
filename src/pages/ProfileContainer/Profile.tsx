@@ -6,9 +6,10 @@ import { Card, Line, Wrapper } from "./Profile.styles";
 interface Props {
   user: UserRecord;
   handleLogout: () => void;
+  changeMode: () => void;
 }
 
-export const Profile: FC<Props> = ({ user, handleLogout }) => {
+export const Profile: FC<Props> = ({ user, handleLogout, changeMode }) => {
   return (
     <Wrapper>
       <Card>
@@ -16,6 +17,7 @@ export const Profile: FC<Props> = ({ user, handleLogout }) => {
         <Line>
           Регистрационный знак: {user.plates.map((plate) => plate.value)}
         </Line>
+        <Line onClick={changeMode}>Сменить тему</Line>
         <Button title="Выйти" onClick={handleLogout} />
       </Card>
     </Wrapper>

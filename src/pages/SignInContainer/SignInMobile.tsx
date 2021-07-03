@@ -11,23 +11,27 @@ import {
 import logoLight from "../../img/mindLogoLight.svg";
 import logoDark from "../../img/mindLogoDark.svg";
 import { ThemeProvider } from "styled-components";
-import { useMode } from "../../hooks/mode.hook";
 import { Input } from "../../components/Input/Input";
 import { Button } from "../../components/Button/Button";
 import lightModeIcon from "../../img/lightMode.svg";
 import darkModeIcon from "../../img/darkMode.svg";
 import { SignInProps } from "./SignInProps";
 import { NavLink } from "react-router-dom";
+import { useTypedSelector } from "../../hooks/typedSelector.hook";
+import { AppearanceMode } from "../../store/reducers/appearanceModeReducer";
+import { useDispatch } from "react-redux";
+import { toggleMode } from "../../store/action-creators/appearanceMode";
 
 export const SignInMobile: React.FC<SignInProps> = ({
   handleInput,
   handleSubmit,
 }) => {
-  const [mode, toggleMode, modeConfig] = useMode();
+  const { config, title } = useTypedSelector((state) => state.appearanceMode);
+  const dispatch = useDispatch();
   return (
-    <ThemeProvider theme={modeConfig}>
+    <ThemeProvider theme={config}>
       <Wrapper>
-        <Logo src={mode === "Light" ? logoLight : logoDark} />
+        <Logo src={title === AppearanceMode.light ? logoLight : logoDark} />
         <Form>
           <FormTitle>Умная парковочная система</FormTitle>
           <NavLink to="/signUp" style={{ textDecoration: "none" }}>
@@ -53,8 +57,8 @@ export const SignInMobile: React.FC<SignInProps> = ({
         </Form>
         <Button title="Войти" onClick={handleSubmit} />
         <AppearanceModeIcon
-          src={mode === "Light" ? darkModeIcon : lightModeIcon}
-          onClick={toggleMode}
+          src={title === AppearanceMode.light ? darkModeIcon : lightModeIcon}
+          onClick={() => dispatch(toggleMode())}
         />
       </Wrapper>
     </ThemeProvider>

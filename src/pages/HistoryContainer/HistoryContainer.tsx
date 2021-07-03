@@ -9,15 +9,14 @@ import { History } from "./History";
 import { Redirect } from "react-router-dom";
 import { useRoutes } from "../../hooks/routes.hook";
 import { ThemeProvider } from "styled-components";
-import { useMode } from "../../hooks/mode.hook";
 
 export const HistoryContainer: FC = () => {
   const { user, isLoading, isError } = useTypedSelector((state) => state.user);
-  const [notification, routes, dispatch, modeConfig] = [
+  const { config } = useTypedSelector((state) => state.appearanceMode);
+  const [notification, routes, dispatch] = [
     useNotification(),
     useRoutes(),
     useDispatch(),
-    useMode()[2],
   ];
 
   useEffect(() => {
@@ -28,7 +27,7 @@ export const HistoryContainer: FC = () => {
     return (
       <div
         style={{
-          backgroundColor: modeConfig.additionalBGColor,
+          backgroundColor: config.additionalBGColor,
           height: "100%",
         }}
       ></div>
@@ -45,7 +44,7 @@ export const HistoryContainer: FC = () => {
   }
 
   return (
-    <ThemeProvider theme={modeConfig}>
+    <ThemeProvider theme={config}>
       <History parkings={user?.parkingHistory as ParkingRecord[]} />
     </ThemeProvider>
   );

@@ -1,9 +1,4 @@
-export interface ModeConfig {
-  backgroundColor: string;
-  textColor: string;
-  actionColor: string;
-  additionalBGColor?: string;
-}
+import { ModeConfig } from "../store/reducers/appearanceModeReducer";
 
 export interface LightModeConfig extends ModeConfig {
   backgroundColor: "#ffffff";

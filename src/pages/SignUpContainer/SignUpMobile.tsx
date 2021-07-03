@@ -1,6 +1,5 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import { useMode } from "../../hooks/mode.hook";
 import {
   Wrapper,
   MindLogo,
@@ -17,16 +16,21 @@ import { AppearanceModeIcon } from "../../styles/SignInMobile.styles";
 import lightModeIcon from "../../img/lightMode.svg";
 import darkModeIcon from "../../img/darkMode.svg";
 import { SignUpProps } from "./SignUpProps";
+import { useTypedSelector } from "../../hooks/typedSelector.hook";
+import { AppearanceMode } from "../../store/reducers/appearanceModeReducer";
+import { useDispatch } from "react-redux";
+import { toggleMode } from "../../store/action-creators/appearanceMode";
 
 export const SignUpMobile: React.FC<SignUpProps> = ({
   handleInput,
   handleSubmit,
 }) => {
-  const [mode, toggleMode, modeConfig] = useMode();
+  const { title, config } = useTypedSelector((state) => state.appearanceMode);
+  const dispatch = useDispatch();
   return (
-    <ThemeProvider theme={modeConfig}>
+    <ThemeProvider theme={config}>
       <Wrapper>
-        <MindLogo src={mode === "Light" ? logoLight : logoDark} />
+        <MindLogo src={title === AppearanceMode.light ? logoLight : logoDark} />
         <Form>
           <FormTitle>Умная парковочная система</FormTitle>
           <Inputs>
@@ -58,8 +62,8 @@ export const SignUpMobile: React.FC<SignUpProps> = ({
           </Inputs>
           <Button title="Зарегистрироваться" onClick={handleSubmit} />
           <AppearanceModeIcon
-            src={mode === "Light" ? darkModeIcon : lightModeIcon}
-            onClick={toggleMode}
+            src={title === AppearanceMode.light ? darkModeIcon : lightModeIcon}
+            onClick={() => dispatch(toggleMode())}
           />
         </Form>
       </Wrapper>
