@@ -30,3 +30,7 @@ export const Card = styled.div`
 export const Line = styled.div`
   margin-bottom: 15px;
 `;
+
+export const LineWithAction = styled(Line)`
+  cursor: pointer;
+`;

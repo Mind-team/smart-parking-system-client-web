@@ -1,3 +1,5 @@
+import { FC } from "react";
+import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { Navbar } from "./components/Navbar/Navbar";
 import { useRoutes } from "./hooks/routes.hook";
@@ -7,9 +9,11 @@ import { ParkingDetailsContainer } from "./pages/ParkingDetailsContainer/Parking
 import { ProfileContainer } from "./pages/ProfileContainer/ProfileContainer";
 import { SignInContainer } from "./pages/SignInContainer/SignInContainer";
 import { SignUpContainer } from "./pages/SignUpContainer/SignUpContainer";
+import { detectMode } from "./store/action-creators/appearanceMode";
 
-const App: React.FC = () => {
+const App: FC = () => {
   const routes = useRoutes();
+  useDispatch()(detectMode());
 
   return (
     <Switch>
