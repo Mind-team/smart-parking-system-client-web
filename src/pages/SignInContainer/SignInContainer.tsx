@@ -15,10 +15,11 @@ import { SignInMobile } from "./SignInMobile";
 
 export const SignInContainer: FC = () => {
   const { isError, isAuth } = useTypedSelector((state) => state.user);
+  const { config } = useTypedSelector((state => state.appearanceMode));
   const [routes, width, notification, dispatch] = [
     useRoutes(),
     useWindowDimensions().width,
-    useNotification(),
+    useNotification(config),
     useDispatch(),
   ];
   const [phoneNumber, setPhoneNumber] = useState("");

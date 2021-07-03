@@ -8,13 +8,15 @@ import { useRoutes } from "../../hooks/routes.hook";
 import { useWindowDimensions } from "../../hooks/windowDimensions.hook";
 import { SignUp } from "./SignUp";
 import { SignUpMobile } from "./SignUpMobile";
+import { useTypedSelector } from "../../hooks/typedSelector.hook";
 
 export const SignUpContainer: FC = () => {
+  const { config } = useTypedSelector((state => state.appearanceMode));
   const [req, routes, width, notification] = [
     useHttp(),
     useRoutes(),
     useWindowDimensions().width,
-    useNotification(),
+    useNotification(config),
   ];
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [password, setPassword] = useState<string>("");
