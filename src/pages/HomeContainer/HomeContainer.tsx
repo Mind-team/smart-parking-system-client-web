@@ -6,18 +6,18 @@ import { ParkingRecord } from "../../common/ParkingRecord.interface";
 import { SignInDto } from "../../common/SignInDto";
 import { useAPI } from "../../hooks/api.hook";
 import { useHttp } from "../../hooks/http.hook";
-import { useMode } from "../../hooks/mode.hook";
 import { useNotification } from "../../hooks/notification.hook";
 import { useRoutes } from "../../hooks/routes.hook";
+import { useTypedSelector } from "../../hooks/typedSelector.hook";
 import { Home } from "./Home";
 
 export const HomeContainer: FC = () => {
-  const [req, api, routes, notification, modeConfig] = [
+  const { config } = useTypedSelector((state) => state.appearanceMode);
+  const [req, api, routes, notification] = [
     useHttp(),
     useAPI(),
     useRoutes(),
-    useNotification(useMode()[2]),
-    useMode()[2],
+    useNotification(),
   ];
   const [lastParking, setLastParking] = useState<ParkingRecord>();
   const [loading, setLoading] = useState(true);
@@ -70,7 +70,7 @@ export const HomeContainer: FC = () => {
     return (
       <div
         style={{
-          backgroundColor: modeConfig.additionalBGColor,
+          backgroundColor: config.additionalBGColor,
           height: "100%",
         }}
       ></div>
@@ -82,7 +82,7 @@ export const HomeContainer: FC = () => {
   }
 
   return (
-    <ThemeProvider theme={modeConfig}>
+    <ThemeProvider theme={config}>
       <Home parking={lastParking as ParkingRecord} />
     </ThemeProvider>
   );

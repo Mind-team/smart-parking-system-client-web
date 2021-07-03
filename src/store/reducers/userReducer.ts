@@ -1,3 +1,4 @@
+import { Reducer } from "redux";
 import { UserRecord } from "../../common/UserRecord.interface";
 
 type Error = string;
@@ -85,10 +86,10 @@ export type UserAction =
   | CheckLocalStorageUserAction
   | EmptyLocalStorageUserAction;
 
-export const userReducer = (
+export const userReducer: Reducer<UserState> = (
   state = defaultState,
   action: UserAction
-): UserState => {
+) => {
   switch (action.type) {
     case UserActionType.CHECK_LOCAL_STORAGE:
     case UserActionType.EMPTY_LOCAL_STORAGE:

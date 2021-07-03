@@ -2,7 +2,6 @@ import { FC } from "react";
 import { Redirect, useParams } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { ParkingRecord } from "../../common/ParkingRecord.interface";
-import { useMode } from "../../hooks/mode.hook";
 import { useRoutes } from "../../hooks/routes.hook";
 import { ParkingDetails } from "../../components/ParkingDetails/ParkingDetails";
 import { Wrapper } from "./ParkingDetails.styles";
@@ -12,11 +11,11 @@ import { useTypedSelector } from "../../hooks/typedSelector.hook";
 
 export const ParkingDetailsContainer: FC = () => {
   const { user, isAuth, isError } = useTypedSelector((state) => state.user);
+  const { config } = useTypedSelector((state) => state.appearanceMode);
   const { id } = useParams<{ id: string }>();
-  const [routes, theme, notification] = [
+  const [routes, notification] = [
     useRoutes(),
-    useMode()[2],
-    useNotification(useMode()[2]),
+    useNotification(),
   ];
 
   if (!isAuth) {
@@ -29,7 +28,7 @@ export const ParkingDetailsContainer: FC = () => {
   }
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={config}>
       <Wrapper>
         <ParkingDetails
           parking={

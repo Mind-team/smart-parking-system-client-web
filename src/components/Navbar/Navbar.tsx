@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import {
   Content,
   NavbarElement,
@@ -8,18 +8,18 @@ import {
 import { MindLogo } from "../Icons/MindLogo";
 import { NavLink } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { useMode } from "../../hooks/mode.hook";
 import { useRoutes } from "../../hooks/routes.hook";
+import { useTypedSelector } from "../../hooks/typedSelector.hook";
 
-export const Navbar: React.FC = () => {
-  const modeConfig = useMode()[2];
+export const Navbar: FC = () => {
+  const { config } = useTypedSelector((state) => state.appearanceMode);
   const routes = useRoutes();
   return (
-    <ThemeProvider theme={modeConfig}>
+    <ThemeProvider theme={config}>
       <Wrapper>
         <Content>
           <MindLogo
-            color={modeConfig.textColor}
+            color={config.textColor}
             width="30px"
             height="30px"
             strokeWidth={3}

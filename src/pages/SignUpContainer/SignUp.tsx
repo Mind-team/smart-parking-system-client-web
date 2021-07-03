@@ -5,7 +5,6 @@ import darkModeIcon from "../../img/darkMode.svg";
 import lightModeIcon from "../../img/lightMode.svg";
 import logoLight from "../../img/mindLogoLight.svg";
 import logoDark from "../../img/mindLogoDark.svg";
-import { useMode } from "../../hooks/mode.hook";
 import { ThemeProvider } from "styled-components";
 import {
   InputTitle,
@@ -20,21 +19,29 @@ import {
 } from "../../styles/SignUp.styles";
 import { SignUpProps } from "./SignUpProps";
 import { Toaster } from "react-hot-toast";
+import { useTypedSelector } from "../../hooks/typedSelector.hook";
+import { useDispatch } from "react-redux";
+import { AppearanceMode } from "../../store/reducers/appearanceModeReducer";
+import { toggleMode } from "../../store/action-creators/appearanceMode";
 
 export const SignUp: React.FC<SignUpProps> = ({
   handleInput,
   handleSubmit,
 }) => {
-  const [mode, toggleMode, modeConfig] = useMode();
+  const { title, config } = useTypedSelector((state) => state.appearanceMode);
+  const dispatch = useDispatch();
+
   return (
-    <ThemeProvider theme={modeConfig}>
+    <ThemeProvider theme={config}>
       <Toaster />
       <Wrapper>
         <LeftSide>
-          <MindLogo src={mode === "Light" ? logoLight : logoDark} />
+          <MindLogo
+            src={title === AppearanceMode.light ? logoLight : logoDark}
+          />
           <AppearanceModeIcon
-            src={mode === "Light" ? darkModeIcon : lightModeIcon}
-            onClick={toggleMode}
+            src={title === AppearanceMode.light ? darkModeIcon : lightModeIcon}
+            onClick={() => dispatch(toggleMode())}
           />
         </LeftSide>
         <RightSide>
@@ -61,7 +68,7 @@ export const SignUp: React.FC<SignUpProps> = ({
                 onChange={(e: any) => handleInput(e, "plate")}
               />
             </FormInputs>
-            <Button title="Зарегистрироваться" onClick={handleSubmit}/>
+            <Button title="Зарегистрироваться" onClick={handleSubmit} />
           </Form>
         </RightSide>
       </Wrapper>

@@ -5,7 +5,6 @@ import illustration from "../../img/illustrationLight.svg";
 import illustrationDark from "../../img/illustrationDark.svg";
 import lightModeIcon from "../../img/lightMode.svg";
 import darkModeIcon from "../../img/darkMode.svg";
-import { useMode } from "../../hooks/mode.hook";
 import { ThemeProvider } from "styled-components";
 import { Button } from "../../components/Button/Button";
 import { Input } from "../../components/Input/Input";
@@ -24,27 +23,36 @@ import {
 import { SignInProps } from "./SignInProps";
 import { NavLink } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import { useTypedSelector } from "../../hooks/typedSelector.hook";
+import { AppearanceMode } from "../../store/reducers/appearanceModeReducer";
+import { useDispatch } from "react-redux";
+import { toggleMode } from "../../store/action-creators/appearanceMode";
 
 export const SignIn: React.FC<SignInProps> = ({
   handleInput,
   handleSubmit,
 }) => {
-  const [mode, toggleMode, modeConfig] = useMode();
+  const { title, config } = useTypedSelector((state) => state.appearanceMode);
+  const dispatch = useDispatch();
 
   return (
-    <ThemeProvider theme={modeConfig}>
+    <ThemeProvider theme={config}>
       <Toaster />
       <Wrapper>
         <LeftSide>
-          <MindLogo src={mode === "Light" ? logoLight : logoDark} />
+          <MindLogo
+            src={title === AppearanceMode.light ? logoLight : logoDark}
+          />
           <Illustration
-            src={mode === "Light" ? illustration : illustrationDark}
+            src={
+              title === AppearanceMode.light ? illustration : illustrationDark
+            }
           />
         </LeftSide>
         <RightSide>
           <AppearanceModeIcon
-            src={mode === "Light" ? darkModeIcon : lightModeIcon}
-            onClick={toggleMode}
+            src={title === AppearanceMode.light ? darkModeIcon : lightModeIcon}
+            onClick={() => dispatch(toggleMode())}
           />
           <Form>
             <FormTitle>Умная парковочная система</FormTitle>
