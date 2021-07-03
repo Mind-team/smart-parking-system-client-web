@@ -1,6 +1,6 @@
 import { Dispatch } from "react";
 import { UserRecord } from "../../common/UserRecord.interface";
-import { UserAction, UserActionType } from "../reducers/userReducer";
+import { UserAction, UserActionType } from "../types/user";
 import { ServerResponse } from "../../common/ServerResponse.interface";
 
 const signInAPI = async(

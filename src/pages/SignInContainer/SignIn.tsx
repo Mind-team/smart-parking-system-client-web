@@ -24,7 +24,7 @@ import { SignInProps } from "./SignInProps";
 import { NavLink } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
-import { AppearanceMode } from "../../redux/reducers/appearanceModeReducer";
+import { AppearanceMode } from "../../redux/types/appearanceMode";
 import { useDispatch } from "react-redux";
 import { toggleMode } from "../../redux/action-creators/appearanceMode";
 

@@ -21,8 +21,8 @@ import { SignUpProps } from "./SignUpProps";
 import { Toaster } from "react-hot-toast";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
 import { useDispatch } from "react-redux";
-import { AppearanceMode } from "../../redux/reducers/appearanceModeReducer";
 import { toggleMode } from "../../redux/action-creators/appearanceMode";
+import { AppearanceMode } from "../../redux/types/appearanceMode";
 
 export const SignUp: React.FC<SignUpProps> = ({
   handleInput,

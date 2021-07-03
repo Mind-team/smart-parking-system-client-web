@@ -3,7 +3,7 @@ import {
   AppearanceMode,
   AppearanceModeAction,
   AppearanceModeActionType,
-} from "../reducers/appearanceModeReducer";
+} from "../types/appearanceMode";
 
 export const toggleMode = () => {
   return (dispatch: Dispatch<AppearanceModeAction>): void => {
