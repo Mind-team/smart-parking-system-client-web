@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { useMode } from "../../hooks/mode.hook";
 import { useNotification } from "../../hooks/notification.hook";
 import { useRoutes } from "../../hooks/routes.hook";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
@@ -16,10 +15,11 @@ import { SignInMobile } from "./SignInMobile";
 
 export const SignInContainer: FC = () => {
   const { isError, isAuth } = useTypedSelector((state) => state.user);
+  const { config } = useTypedSelector((state => state.appearanceMode));
   const [routes, width, notification, dispatch] = [
     useRoutes(),
     useWindowDimensions().width,
-    useNotification(useMode()[2]),
+    useNotification(config),
     useDispatch(),
   ];
   const [phoneNumber, setPhoneNumber] = useState("");

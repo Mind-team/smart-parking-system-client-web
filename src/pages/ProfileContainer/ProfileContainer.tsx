@@ -20,7 +20,7 @@ export const ProfileContainer: FC = () => {
   const [routes, width, notification] = [
     useRoutes(),
     useWindowDimensions().width,
-    useNotification(useMode()[2]),
+    useNotification(config),
   ];
 
   const handleLogout = () => dispatch(logout());

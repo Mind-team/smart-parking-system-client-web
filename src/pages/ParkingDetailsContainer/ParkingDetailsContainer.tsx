@@ -15,7 +15,7 @@ export const ParkingDetailsContainer: FC = () => {
   const { id } = useParams<{ id: string }>();
   const [routes, notification] = [
     useRoutes(),
-    useNotification(),
+    useNotification(config),
   ];
 
   if (!isAuth) {
