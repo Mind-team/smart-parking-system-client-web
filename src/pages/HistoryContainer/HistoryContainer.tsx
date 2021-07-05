@@ -10,7 +10,9 @@ import { ThemeProvider } from "styled-components";
 import { useActions } from "../../hooks/reduxActions.hook";
 
 export const HistoryContainer: FC = () => {
-  const { user, isLoading, isError } = useTypedSelector((state) => state.user);
+  const { user, isLoading, isError, isAuth } = useTypedSelector(
+    (state) => state.user,
+  );
   const { config } = useTypedSelector((state) => state.appearanceMode);
   const { fetchUserData } = useActions();
   const [notification, routes] = [useNotification(config), useRoutes()];
@@ -30,11 +32,12 @@ export const HistoryContainer: FC = () => {
     );
   }
 
+  if (!isAuth) {
+    notification.cancel().error("You are not auth");
+    return <Redirect to={routes.signIn()} />;
+  }
+
   if (isError[0]) {
-    if (isError[1] === "NotAuth") {
-      notification.cancel().error("You are not auth");
-      return <Redirect to={routes.signIn()} />;
-    }
     notification.cancel().error(isError[1]);
     return <Toaster />;
   }

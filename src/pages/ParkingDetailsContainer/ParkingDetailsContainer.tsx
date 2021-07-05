@@ -16,6 +16,7 @@ export const ParkingDetailsContainer: FC = () => {
   const [routes, notification] = [useRoutes(), useNotification(config)];
 
   if (!isAuth) {
+    notification.cancel().error("You are not auth");
     return <Redirect to={routes.signIn()} />;
   }
 
