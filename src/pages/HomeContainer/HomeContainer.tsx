@@ -25,6 +25,7 @@ export const HomeContainer: FC = () => {
   const [isAuth, setAuth] = useState(true);
 
   useEffect(() => {
+    let cleanupFunction = false;
     const [phoneNumber, password] = [
       localStorage.getItem("phoneNumber"),
       localStorage.getItem("password"),
@@ -52,14 +53,19 @@ export const HomeContainer: FC = () => {
           setError(true);
           return;
         }
-        notification.cancel();
-        setLastParking(result.value);
-        setLoading(false);
+        if (!cleanupFunction) {
+          notification.cancel();
+          setLastParking(result.value);
+          setLoading(false);
+        }
       })
       .catch(() => {
         notification.cancel().error("Something wrong with internet");
         setError(true);
       });
+    return () => {
+      cleanupFunction = true;
+    };
   }, []);
 
   if (error) {
