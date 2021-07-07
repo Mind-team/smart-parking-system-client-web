@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { ParkingRecord } from "../../common/ParkingRecord.interface";
+import { Parking } from "../../common/Parking.dto";
 import { useDateFormater } from "../../hooks/dateFormater.hook";
 import { Content, Line, Wrapper } from "./ParkingDetails.styles";
 
-export const ParkingDetails: FC<{ parking: ParkingRecord }> = ({ parking }) => {
+export const ParkingDetails: FC<{ parking: Parking }> = ({ parking }) => {
   const entryData = useDateFormater(new Date(parking.entryCarTime));
   const departureData = useDateFormater(new Date(parking.departureCarTime));
 

@@ -1,12 +1,12 @@
 import { FC } from "react";
-import { ParkingRecord } from "../../common/ParkingRecord.interface";
+import { Parking } from "../../common/Parking.dto";
 import { ParkingWidget } from "../../components/ParkingWidget/ParkingWidget";
 import { useAPI } from "../../hooks/api.hook";
 import { useDateFormater } from "../../hooks/dateFormater.hook";
 import { WidgetWrapper, Wrapper } from "../../styles/History.styles";
 
 interface Props {
-  parkings: ParkingRecord[];
+  parkings: Parking[];
 }
 
 export const History: FC<Props> = ({ parkings }) => {

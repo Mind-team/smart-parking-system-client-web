@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Redirect, useParams } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { ParkingRecord } from "../../common/ParkingRecord.interface";
+import { Parking } from "../../common/Parking.dto";
 import { useRoutes } from "../../hooks/routes.hook";
 import { ParkingDetails } from "../../components/ParkingDetails/ParkingDetails";
 import { Wrapper } from "./ParkingDetails.styles";
@@ -29,11 +29,7 @@ export const ParkingDetailsContainer: FC = () => {
     <ThemeProvider theme={config}>
       <Wrapper>
         <ParkingDetails
-          parking={
-            user?.parkingHistory.filter(
-              (el) => el._id === id,
-            )[0] as ParkingRecord
-          }
+          parking={user?.parkings.filter((el) => el._id === id)[0] as Parking}
         />
       </Wrapper>
     </ThemeProvider>

@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { ServerResponse } from "../../common/ServerResponse.interface";
-import { SignUpDto } from "../../common/SignUpDto";
+import { SignUpDto } from "../../common/SignUp.dto";
 import { useHttp } from "../../hooks/http.hook";
 import { useNotification } from "../../hooks/notification.hook";
 import { useRoutes } from "../../hooks/routes.hook";

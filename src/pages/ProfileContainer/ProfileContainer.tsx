@@ -1,7 +1,7 @@
 import { FC, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { UserRecord } from "../../common/UserRecord.interface";
+import { User } from "../../common/User.dto";
 import { useNotification } from "../../hooks/notification.hook";
 import { useRoutes } from "../../hooks/routes.hook";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
@@ -46,13 +46,13 @@ export const ProfileContainer: FC = () => {
     <ThemeProvider theme={config}>
       {width > 760 ? (
         <Profile
-          user={user as UserRecord}
+          user={user as User}
           handleLogout={handleLogout}
           changeMode={() => toggleMode()}
         />
       ) : (
         <Profile
-          user={user as UserRecord}
+          user={user as User}
           handleLogout={handleLogout}
           changeMode={() => toggleMode()}
         />

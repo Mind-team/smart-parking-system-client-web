@@ -1,12 +1,12 @@
 import { Dispatch } from "react";
-import { UserRecord } from "../../common/UserRecord.interface";
+import { User } from "../../common/User.dto";
 import { UserAction, UserActionType } from "../types/user";
 import { ServerResponse } from "../../common/ServerResponse.interface";
 
 const signInAPI = async (
   phoneNumber: string,
   password: string,
-): Promise<ServerResponse<UserRecord>> => {
+): Promise<ServerResponse<User>> => {
   const body = JSON.stringify({
     phoneNumber,
     password,
@@ -19,7 +19,7 @@ const signInAPI = async (
       "Content-Type": "application/json",
     },
   });
-  const res: ServerResponse<UserRecord> = await response.json();
+  const res: ServerResponse<User> = await response.json();
   return res;
 };
 
@@ -38,7 +38,7 @@ export const fetchUserData = () => {
       const res = await signInAPI(phoneNumber, password);
       dispatch({
         type: UserActionType.FETCH_DATA_SUCCESS,
-        payload: res.value as UserRecord,
+        payload: res.value as User,
       });
     } catch (error) {
       dispatch({
@@ -80,7 +80,7 @@ export const signIn = () => {
       }
       dispatch({
         type: UserActionType.SIGN_IN_SUCCESS,
-        payload: res.value as UserRecord,
+        payload: res.value as User,
       });
     } catch (error) {
       dispatch({

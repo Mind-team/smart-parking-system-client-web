@@ -1,9 +1,9 @@
-import { UserRecord } from "../../common/UserRecord.interface";
+import { User } from "../../common/User.dto";
 
 type Error = string;
 
 export interface UserState {
-  user: UserRecord | null;
+  user: User | null;
   isLoading: boolean;
   isError: [false] | [true, Error];
   isAuth: boolean;
@@ -28,7 +28,7 @@ interface FetchUserAction {
 
 interface SuccessFetchUserAction {
   type: UserActionType.FETCH_DATA_SUCCESS;
-  payload: UserRecord;
+  payload: User;
 }
 
 interface ErrorFetchUserAction {
@@ -50,7 +50,7 @@ interface SignInUserAction {
 
 interface SuccessSignInUserAction {
   type: UserActionType.SIGN_IN_SUCCESS;
-  payload: UserRecord;
+  payload: User;
 }
 
 interface ErrorSignInUserAction {

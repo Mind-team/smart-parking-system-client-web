@@ -1,4 +1,4 @@
-export interface ParkingRecord {
+export interface Parking {
   _id: string;
   parkingTitle: string;
   carPlate: string;
