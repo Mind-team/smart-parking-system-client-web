@@ -1,5 +1,5 @@
 export interface Parking {
-  _id: string;
+  id: string;
   parkingTitle: string;
   carPlate: string;
   entryCarTime: string;

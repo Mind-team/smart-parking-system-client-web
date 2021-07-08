@@ -63,7 +63,7 @@ export const Home: FC<Props> = ({ parking }) => {
                   : `${Math.round(parking.parkingTimeMin)} мин.`
               }
               price={parking.priceRub}
-              route={api.parkingDetails(parking._id)}
+              route={api.parkingDetails(parking.id)}
             />
           </TopicWrapper>
         ) : (

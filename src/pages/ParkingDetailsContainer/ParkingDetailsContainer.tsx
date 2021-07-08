@@ -29,7 +29,7 @@ export const ParkingDetailsContainer: FC = () => {
     <ThemeProvider theme={config}>
       <Wrapper>
         <ParkingDetails
-          parking={user?.parkings.filter((el) => el._id === id)[0] as Parking}
+          parking={user?.parkings.filter((el) => el.id === id)[0] as Parking}
         />
       </Wrapper>
     </ThemeProvider>
