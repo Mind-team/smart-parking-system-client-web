@@ -13,9 +13,16 @@ interface Props {
   date: string;
   price: number;
   route: string;
+  isDetails?: boolean;
 }
 
-export const ParkingWidget: FC<Props> = ({ title, date, price, route }) => {
+export const ParkingWidget: FC<Props> = ({
+  title,
+  date,
+  price,
+  route,
+  isDetails = true,
+}) => {
   return (
     <WidgetWrapper>
       <InfoLine>
@@ -23,9 +30,13 @@ export const ParkingWidget: FC<Props> = ({ title, date, price, route }) => {
         <div>{date}</div>
       </InfoLine>
       <Price>{price}₽</Price>
-      <NavLink to={route} style={NavLinkStyles}>
-        <Details>Подробнее</Details>
-      </NavLink>
+      {isDetails ? (
+        <NavLink to={route} style={NavLinkStyles}>
+          <Details>Подробнее</Details>
+        </NavLink>
+      ) : (
+        <div></div>
+      )}
     </WidgetWrapper>
   );
 };
