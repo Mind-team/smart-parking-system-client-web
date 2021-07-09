@@ -8,10 +8,12 @@ import { Wrapper } from "./ParkingDetails.styles";
 import { useNotification } from "../../hooks/notification.hook";
 import { Toaster } from "react-hot-toast";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
+import { useActions } from "../../hooks/reduxActions.hook";
 
 export const ParkingDetailsContainer: FC = () => {
   const { user, isAuth, isError } = useTypedSelector((state) => state.user);
   const { config } = useTypedSelector((state) => state.appearanceMode);
+  const { fetchUserData } = useActions();
   const { id } = useParams<{ id: string }>();
   const [routes, notification] = [useRoutes(), useNotification(config)];
 
@@ -25,11 +27,18 @@ export const ParkingDetailsContainer: FC = () => {
     return <Toaster />;
   }
 
+  if (!user) {
+    fetchUserData();
+  }
+
   return (
     <ThemeProvider theme={config}>
       <Wrapper>
         <ParkingDetails
-          parking={user?.parkings.filter((el) => el.id === id)[0] as Parking}
+          parking={
+            user?.parkings.filter((el) => el.id === id)[0] ??
+            (user?.parkings[user?.parkings.length - 1] as Parking)
+          }
         />
       </Wrapper>
     </ThemeProvider>
