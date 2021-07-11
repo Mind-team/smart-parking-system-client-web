@@ -14,7 +14,12 @@ export const Profile: FC<Props> = ({ user, handleLogout, changeMode }) => {
     <Wrapper>
       <Card>
         <Line>Номер телефона: {user.phoneNumber}</Line>
-        <Line>Регистрационный знак: {user.plates.map((value) => value)}</Line>
+        <Line>
+          Регистрационный знак{user.plates.length > 1 ? "и" : ""}:{" "}
+          {user.plates.map((value, index) =>
+            index === user.plates.length - 1 ? `${value}` : `${value}, `,
+          )}
+        </Line>
         <LineWithAction onClick={changeMode}>Сменить тему</LineWithAction>
         <Button title="Выйти" onClick={handleLogout} />
       </Card>
