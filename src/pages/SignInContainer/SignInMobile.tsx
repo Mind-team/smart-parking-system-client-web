@@ -7,7 +7,7 @@ import {
   FormTitle,
   Inputs,
   AppearanceModeIcon,
-} from "../../styles/SignInMobile.styles";
+} from "./SignInMobile.styles";
 import logoLight from "../../img/mindLogoLight.svg";
 import logoDark from "../../img/mindLogoDark.svg";
 import { ThemeProvider } from "styled-components";

@@ -19,7 +19,7 @@ import {
   MindLogo,
   RightSide,
   Wrapper,
-} from "../../styles/SignIn.styles";
+} from "./SignIn.styles";
 import { SignInProps } from "./SignInProps";
 import { NavLink } from "react-router-dom";
 import { Toaster } from "react-hot-toast";

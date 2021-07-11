@@ -7,12 +7,12 @@ import {
   FormTitle,
   Inputs,
   InputTitle,
-} from "../../styles/SignUpMobile.styles";
+} from "./SignUpMobile.styles";
 import logoLight from "../../img/mindLogoLight.svg";
 import logoDark from "../../img/mindLogoDark.svg";
 import { Input } from "../../components/Input/Input";
 import { Button } from "../../components/Button/Button";
-import { AppearanceModeIcon } from "../../styles/SignInMobile.styles";
+import { AppearanceModeIcon } from "../SignInContainer/SignInMobile.styles";
 import lightModeIcon from "../../img/lightMode.svg";
 import darkModeIcon from "../../img/darkMode.svg";
 import { SignUpProps } from "./SignUpProps";

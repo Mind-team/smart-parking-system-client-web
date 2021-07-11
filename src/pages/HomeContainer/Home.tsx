@@ -12,7 +12,7 @@ import {
   TopicTitle,
   TopicWrapper,
   Wrapper,
-} from "../../styles/Home.styles";
+} from "./Home.styles";
 
 interface Props {
   parking: Parking;

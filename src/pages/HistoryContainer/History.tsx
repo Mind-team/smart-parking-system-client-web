@@ -3,7 +3,7 @@ import { Parking } from "../../common/Parking.dto";
 import { ParkingWidget } from "../../components/ParkingWidget/ParkingWidget";
 import { useAPI } from "../../hooks/api.hook";
 import { useDateFormater } from "../../hooks/dateFormater.hook";
-import { WidgetWrapper, Wrapper } from "../../styles/History.styles";
+import { WidgetWrapper, Wrapper } from "./History.styles";
 
 interface Props {
   parkings: Parking[];

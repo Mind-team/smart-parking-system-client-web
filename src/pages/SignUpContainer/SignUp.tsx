@@ -16,7 +16,7 @@ import {
   LeftSide,
   Wrapper,
   MindLogo,
-} from "../../styles/SignUp.styles";
+} from "./SignUp.styles";
 import { SignUpProps } from "./SignUpProps";
 import { Toaster } from "react-hot-toast";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
