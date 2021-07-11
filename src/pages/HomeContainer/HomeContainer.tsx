@@ -10,9 +10,11 @@ import { useNotification } from "../../hooks/notification.hook";
 import { useRoutes } from "../../hooks/routes.hook";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
 import { Home } from "./Home";
+import { useActions } from "../../hooks/reduxActions.hook";
 
 export const HomeContainer: FC = () => {
   const { config } = useTypedSelector((state) => state.appearanceMode);
+  const { fetchUserData } = useActions();
   const [req, api, routes, notification] = [
     useHttp(),
     useAPI(),
@@ -63,6 +65,7 @@ export const HomeContainer: FC = () => {
         notification.cancel().error("Something wrong with internet");
         setError(true);
       });
+    fetchUserData();
     return () => {
       cleanupFunction = true;
     };
