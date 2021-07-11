@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { Toaster } from "react-hot-toast";
-import { ParkingRecord } from "../../common/ParkingRecord.interface";
+import { Parking } from "../../common/Parking.dto";
 import { useNotification } from "../../hooks/notification.hook";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
 import { History } from "./History";
@@ -44,7 +44,7 @@ export const HistoryContainer: FC = () => {
 
   return (
     <ThemeProvider theme={config}>
-      <History parkings={user?.parkingHistory as ParkingRecord[]} />
+      <History parkings={user?.parkings as Parking[]} />
     </ThemeProvider>
   );
 };

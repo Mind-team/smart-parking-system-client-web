@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { ParkingRecord } from "../../common/ParkingRecord.interface";
+import { Parking } from "../../common/Parking.dto";
 import { ParkingWidget } from "../../components/ParkingWidget/ParkingWidget";
 import { useAPI } from "../../hooks/api.hook";
 import { useDateFormater } from "../../hooks/dateFormater.hook";
@@ -15,7 +15,7 @@ import {
 } from "../../styles/Home.styles";
 
 interface Props {
-  parking: ParkingRecord;
+  parking: Parking;
 }
 
 export const Home: FC<Props> = ({ parking }) => {
@@ -60,10 +60,15 @@ export const Home: FC<Props> = ({ parking }) => {
               date={
                 parking.isCompleted
                   ? useDateFormater(new Date(parking.departureCarTime)).fullDate
-                  : `${Math.round(parking.parkingTimeMin)} мин.`
+                  : `${Math.round(
+                      (new Date(parking.departureCarTime).getTime() -
+                        new Date(parking.entryCarTime).getTime()) /
+                        60000,
+                    )} мин.`
               }
               price={parking.priceRub}
-              route={api.parkingDetails(parking._id)}
+              route={api.parkingDetails(parking.id)}
+              isDetails={parking.isCompleted ? true : false}
             />
           </TopicWrapper>
         ) : (

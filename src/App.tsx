@@ -9,7 +9,7 @@ import { ParkingDetailsContainer } from "./pages/ParkingDetailsContainer/Parking
 import { ProfileContainer } from "./pages/ProfileContainer/ProfileContainer";
 import { SignInContainer } from "./pages/SignInContainer/SignInContainer";
 import { SignUpContainer } from "./pages/SignUpContainer/SignUpContainer";
-import { detectMode } from "./redux/action-creators/appearanceMode";
+import { detectMode } from "./store/action-creators/appearanceMode";
 
 const App: FC = () => {
   const routes = useRoutes();

@@ -2,8 +2,8 @@ import { FC, useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import { Redirect } from "react-router";
 import { ThemeProvider } from "styled-components";
-import { ParkingRecord } from "../../common/ParkingRecord.interface";
-import { SignInDto } from "../../common/SignInDto";
+import { Parking } from "../../common/Parking.dto";
+import { SignInDto } from "../../common/SignIn.dto";
 import { useAPI } from "../../hooks/api.hook";
 import { useHttp } from "../../hooks/http.hook";
 import { useNotification } from "../../hooks/notification.hook";
@@ -19,7 +19,7 @@ export const HomeContainer: FC = () => {
     useRoutes(),
     useNotification(config),
   ];
-  const [lastParking, setLastParking] = useState<ParkingRecord>();
+  const [lastParking, setLastParking] = useState<Parking>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [isAuth, setAuth] = useState(true);
@@ -36,7 +36,7 @@ export const HomeContainer: FC = () => {
       setLoading(false);
       return;
     }
-    req<SignInDto, ParkingRecord>({
+    req<SignInDto, Parking>({
       url: api.lastParkingHistoryElement(),
       method: "POST",
       body: {
@@ -89,7 +89,7 @@ export const HomeContainer: FC = () => {
 
   return (
     <ThemeProvider theme={config}>
-      <Home parking={lastParking as ParkingRecord} />
+      <Home parking={lastParking as Parking} />
     </ThemeProvider>
   );
 };
