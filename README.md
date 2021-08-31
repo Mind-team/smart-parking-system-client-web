@@ -5,7 +5,6 @@
 1. [Стек технологий](#techStack)
 2. [Требования для использования](#requirements)
 3. [Порядок установки](#install)
-4. [Структура приложения](#structure)
 5. [Продукт](#product)
 6. [Разработчику](#dev)
 
@@ -21,21 +20,10 @@
 
 ## Порядок установки <a name="install">
 1. Нужно установить [Node JS](https://nodejs.org/en/) LTS версию 
-2. В корне проекта в терминале прописать команду `npm i`
-3. Для полноценной работы клиента нужно запустить [сервер](https://github.com/Mind-team/smart-parking-system-server#install) 
-4. В терминале пропишите команду `npm run start`
-
-## Структура приложения <a name="structure" />
-- /.github/workflows - github actions
-- /public - public
-- /src - исходный код
-- /src/common - dto 
-- /src/components - компоненты
-- /src/hooks - кастомные хуки
-- /src/img - изображения
-- /src/pages - страницы
-- /src/styles - стили
-- /src/redux - редакс
+2. Клонировать репозиторий
+3. В корне проекта в терминале прописать команду `npm i`
+4. Для полноценной работы клиента нужно запустить [сервер](https://github.com/Mind-team/smart-parking-system-server#install) 
+5. В терминале пропишите команду `npm run start`
 
 ## Продукт <a name="product" />
 Приложение для клиента, в котором пользователь может зарегистрироваться, посмотреть историю паркингов 
