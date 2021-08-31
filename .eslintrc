@@ -3,10 +3,31 @@
     "es6": true
   },
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint"],
   "rules": {
-    "no-use-before-define": "off",
-    "@typescript-eslint/no-explicit-any": "off"
+    "require-jsdoc": "off",
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "react/react-in-jsx-scope": "off",
+    "no-var": "error",
+    "semi": ["error", "always", { "omitLastInOneLineBlock": true }],
+    "no-extra-semi": "warn",
+    "jsx-quotes": ["error", "prefer-double"],
+    "quotes": ["error", "double"],
+    "quote-props": ["error", "as-needed"],
+    "react/prop-types": 0
   },
-  "extends": ["jesse", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"]
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "google",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "settings": {
+    "react": {
+      "version": "999.999.999"
+    }
+  },
+  "ignorePatterns": ["*.css", "*d.ts"]
 }
