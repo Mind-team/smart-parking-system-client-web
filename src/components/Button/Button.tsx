@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonTitle, ButtonWrapper } from "./ButtonStyles";
+import { ButtonTitle, ButtonWrapper } from "./Button.styles";
 
 interface Props {
   title: string;

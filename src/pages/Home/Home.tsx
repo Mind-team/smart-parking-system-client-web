@@ -1,8 +1,10 @@
+/* eslint-disable indent */
+// TODO: Fix
 import { FC } from "react";
 import { Parking } from "../../common/Parking.dto";
 import { ParkingWidget } from "../../components/ParkingWidget/ParkingWidget";
 import { useAPI } from "../../hooks/api.hook";
-import { useDateFormater } from "../../hooks/dateFormater.hook";
+import { useDateFormatter } from "../../hooks/dateFormater.hook";
 import {
   ContentWrapper,
   TopicBody,
@@ -59,7 +61,8 @@ export const Home: FC<Props> = ({ parking }) => {
               title={parking.parkingTitle}
               date={
                 parking.isCompleted
-                  ? useDateFormater(new Date(parking.departureCarTime)).fullDate
+                  ? useDateFormatter(new Date(parking.departureCarTime))
+                      .fullDate
                   : `${Math.round(
                       (new Date(parking.departureCarTime).getTime() -
                         new Date(parking.entryCarTime).getTime()) /

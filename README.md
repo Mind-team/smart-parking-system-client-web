@@ -5,7 +5,6 @@
 1. [Стек технологий](#techStack)
 2. [Требования для использования](#requirements)
 3. [Порядок установки](#install)
-4. [Структура приложения](#structure)
 5. [Продукт](#product)
 6. [Разработчику](#dev)
 
@@ -21,45 +20,13 @@
 
 ## Порядок установки <a name="install">
 1. Нужно установить [Node JS](https://nodejs.org/en/) LTS версию 
-2. В корне проекта в терминале прописать команду `npm i`
-3. Для полноценной работы клиента нужно запустить [сервер](https://github.com/Mind-team/smart-parking-system-server#install) 
-4. В терминале пропишите команду `npm run start`
-
-## Структура приложения <a name="structure" />
-- /.github/workflows - github actions
-- /public - public
-- /src - исходный код
-- /src/common - dto 
-- /src/components - компоненты
-- /src/hooks - кастомные хуки
-- /src/img - изображения
-- /src/pages - страницы
-- /src/styles - стили
-- /src/redux - редакс
+2. Клонировать репозиторий
+3. В корне проекта в терминале прописать команду `npm i`
+4. Для полноценной работы клиента нужно запустить [сервер](https://github.com/Mind-team/smart-parking-system-server#install) 
+5. В терминале пропишите команду `npm run start`
 
 ## Продукт <a name="product" />
 Приложение для клиента, в котором пользователь может зарегистрироваться, посмотреть историю паркингов 
 
 ## Разработчику <a name="dev">
-
-## Getting Started with React project
-This project was bootstrapped with [react-project](https://github.com/Ermolaev-Inc/react-project)
-  
-## Available Scripts
-### `npm run start` or `yarn start`
-Runs the app in dev mode
-
-### `npm run build` or `yarn build`
-Builds the app for production to the build folder
-
-### `npm run lint` or `yarn lint`
-Checks compliance with the code style ([Jesse](https://github.com/ErmolaevID/Jesse))
-
-### `npm run lint-fix` or `yarn lint-fix`
-Fixes code style errors ([Jesse](https://github.com/ErmolaevID/Jesse))
-
-### `npm run format` or `yarn format`
-Format code with prettier
-
-### `npm run test:coverage` or `yarn test:coverage`
-Checks the code coverage by types
+[react-comet](https://github.com/Ermolaev-Inc/react-comet), [comet cli](https://github.com/Ermolaev-Inc/comet-cli)

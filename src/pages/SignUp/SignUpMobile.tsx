@@ -12,7 +12,7 @@ import logoLight from "../../img/mindLogoLight.svg";
 import logoDark from "../../img/mindLogoDark.svg";
 import { Input } from "../../components/Input/Input";
 import { Button } from "../../components/Button/Button";
-import { AppearanceModeIcon } from "../SignInContainer/SignInMobile.styles";
+import { AppearanceModeIcon } from "../SignIn/SignInMobile.styles";
 import lightModeIcon from "../../img/lightMode.svg";
 import darkModeIcon from "../../img/darkMode.svg";
 import { SignUpProps } from "./SignUpProps";
