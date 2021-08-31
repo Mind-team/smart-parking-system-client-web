@@ -41,25 +41,4 @@
 Приложение для клиента, в котором пользователь может зарегистрироваться, посмотреть историю паркингов 
 
 ## Разработчику <a name="dev">
-
-## Getting Started with React project
-This project was bootstrapped with [react-project](https://github.com/Ermolaev-Inc/react-project)
-  
-## Available Scripts
-### `npm run start` or `yarn start`
-Runs the app in dev mode
-
-### `npm run build` or `yarn build`
-Builds the app for production to the build folder
-
-### `npm run lint` or `yarn lint`
-Checks compliance with the code style ([Jesse](https://github.com/ErmolaevID/Jesse))
-
-### `npm run lint-fix` or `yarn lint-fix`
-Fixes code style errors ([Jesse](https://github.com/ErmolaevID/Jesse))
-
-### `npm run format` or `yarn format`
-Format code with prettier
-
-### `npm run test:coverage` or `yarn test:coverage`
-Checks the code coverage by types
+[react-comet](https://github.com/Ermolaev-Inc/react-comet), [comet cli](https://github.com/Ermolaev-Inc/comet-cli)
