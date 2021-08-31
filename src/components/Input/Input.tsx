@@ -1,5 +1,5 @@
 import React from "react";
-import { InputWrapper } from "./InputStyles";
+import { InputWrapper } from "./Input.styles";
 
 interface Props {
   type: "text" | "password";
