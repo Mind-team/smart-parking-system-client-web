@@ -1,6 +1,6 @@
 {
   "name": "smart-parking-system-client-web",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
