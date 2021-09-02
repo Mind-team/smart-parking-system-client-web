@@ -29,4 +29,4 @@
 Приложение для клиента, в котором пользователь может зарегистрироваться, посмотреть историю паркингов 
 
 ## Разработчику <a name="dev">
-[react-comet](https://github.com/Ermolaev-Inc/react-comet), [comet cli](https://github.com/Ermolaev-Inc/comet-cli)
+[react-comet](https://github.com/Ermolaev-Inc/react-comet), [comet cli](https://github.com/Ermolaev-Inc/comet-cli), [contributing rules](https://github.com/Ermolaev-Inc/contributing)
