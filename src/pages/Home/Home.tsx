@@ -70,7 +70,7 @@ export const Home: FC<Props> = ({ parking }) => {
                     )} мин.`
               }
               price={parking.priceRub}
-              route={api.parkingDetails(parking.id)}
+              route={api.parkingDetails("lastParking")}
               isDetails={parking.isCompleted ? true : false}
             />
           </TopicWrapper>
