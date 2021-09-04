@@ -36,7 +36,7 @@ export const ParkingDetailsContainer: FC = () => {
       <Wrapper>
         <ParkingDetails
           parking={
-            user?.parkings.filter((el) => el.id === id)[0] ??
+            user?.parkings[Number(id)] ??
             (user?.parkings[user?.parkings.length - 1] as Parking)
           }
         />

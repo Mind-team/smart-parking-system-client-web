@@ -24,7 +24,7 @@ export const History: FC<Props> = ({ parkings }) => {
               title={parking.parkingTitle}
               date={useDateFormatter(new Date(parking.entryCarTime)).fullDate}
               price={parking.priceRub}
-              route={api.parkingDetails(parking.id)}
+              route={api.parkingDetails(index.toString())}
             />
           </WidgetWrapper>
         );
