@@ -5,6 +5,8 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
+    "valid-jsdoc": "warn",
+    "react/no-unescaped-entities": "warn",
     "require-jsdoc": "off",
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "react/react-in-jsx-scope": "off",
