@@ -18,7 +18,3 @@ export const dictionary: Dictionary = {
 };
 
 export const LangContext = React.createContext(dictionary[Lang.ENG]);
-
-// export const useDictionary = (lang: Lang) => {
-//   return dictionary[lang];
-// };

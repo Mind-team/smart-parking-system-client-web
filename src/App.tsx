@@ -12,13 +12,13 @@ import { SignUpContainer } from "./pages/SignUp/SignUpContainer";
 import { detectMode } from "./store/action-creators/appearanceMode";
 import { dictionary, LangContext } from "./context/lang.context";
 import { Lang } from "./enums/lang.enum";
+import { useLang } from "./hooks/lang.hook";
 
 const App: FC = () => {
   const routes = useRoutes();
   useDispatch()(detectMode());
-
   return (
-    <LangContext.Provider value={dictionary[Lang.RUS]}>
+    <LangContext.Provider value={dictionary[useLang()]}>
       <Switch>
         <Route exact path={routes.signUp()} component={SignUpContainer} />
         <Route exact path={routes.signIn()} component={SignInContainer} />
