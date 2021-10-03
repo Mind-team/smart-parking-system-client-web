@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import {
   Content,
   NavbarElement,
@@ -10,8 +10,10 @@ import { NavLink } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { useRoutes } from "../../hooks/routes.hook";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
+import { LangContext } from "../../context/lang.context";
 
 export const Navbar: FC = () => {
+  const lang = useContext(LangContext);
   const { config } = useTypedSelector((state) => state.appearanceMode);
   const routes = useRoutes();
   return (
@@ -25,7 +27,7 @@ export const Navbar: FC = () => {
             strokeWidth={3}
           />
           <NavLink to={routes.home()} style={NavLinkStyles}>
-            <NavbarElement>Главная</NavbarElement>
+            <NavbarElement>{lang.home(true)}</NavbarElement>
           </NavLink>
           <NavLink to={routes.history()} style={NavLinkStyles}>
             <NavbarElement>История</NavbarElement>
