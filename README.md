@@ -9,14 +9,14 @@
 6. [Разработчику](#dev)
 
 ## Стек технологий <a name="techStack" />
-- Node JS
 - React JS 
 - Redux
 - Styled components
+- Storybook
 - TypeScript
 
 ## Требования для использования <a name="requirements" />
-- Node JS LTS Version
+- [Node JS LTS Version](https://nodejs.org/en/)
 
 ## Порядок установки <a name="install">
 1. Нужно установить [Node JS](https://nodejs.org/en/) LTS версию 
