@@ -1,4 +1,10 @@
 export interface ModeConfig {
+  accent: string;
+  background: string;
+  header: string;
+  plainText: string;
+  widgetBackground: string;
+  // TODO: remove old
   backgroundColor: string;
   textColor: string;
   actionColor: string;

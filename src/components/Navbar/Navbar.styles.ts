@@ -1,33 +1,36 @@
 import styled from "styled-components";
-import { useProportions } from "../../hooks/windowProportions.hook";
-
-const { wFullHD, hFullHD } = useProportions();
 
 export const Wrapper = styled.div`
-  display: flex;
-  background-color: ${(props) => props.theme.backgroundColor};
-  height: calc(110vh * ${hFullHD});
   width: 100%;
-  justify-content: center;
-  align-items: center;
+  height: 7.2916666667%;
+  min-height: 56px;
+  background-color: ${(props) => props.theme.header};
 `;
 
-export const Content = styled.div`
+export const NavMenu = styled.nav``;
+
+export const List = styled.ul`
+  margin: 0;
+  padding: 17px 0;
   display: flex;
-  justify-content: space-between;
-  width: calc(1060vw * ${wFullHD});
+  justify-content: center;
 `;
 
-export const NavbarElement = styled.p`
-  font-size: 20px;
-  font-weight: 400;
-  color: ${(props) => props.theme.textColor};
-  cursor: pointer;
+export const ListElement = styled.li`
+  font-size: 18px;
+  display: inline;
+  padding: 0 33px;
 `;
 
-export const NavLinkStyles = {
+export const Link = {
   textDecoration: "none",
-  display: "flex",
-  alignItems: "center",
   cursor: "pointer",
 };
+
+export const Text = styled.span`
+  color: ${(props) => props.theme.plainText};
+  transition: 0.5s;
+  &:hover {
+    opacity: 50%;
+  }
+`;

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import { Navbar } from "./components/Navbar/Navbar";
+import { Navbar } from "./components/old/Navbar/Navbar";
 import { useRoutes } from "./hooks/routes.hook";
 import { HistoryContainer } from "./pages/History/HistoryContainer";
 import { HomeContainer } from "./pages/Home/HomeContainer";
