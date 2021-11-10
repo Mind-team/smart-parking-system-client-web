@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   align-items: center;
   width: 434px;
   height: 302px;
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.widgetBackground};
   border-radius: 29px;
   box-shadow: 0 0 28px 0 rgba(0, 0, 0, 0.08);
   justify-content: space-between;
@@ -18,7 +18,7 @@ export const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 21px;
-  color: #000000;
+  color: ${(props) => props.theme.plainText};
 `;
 
 export const TitleWrapperUnfilled = styled.div`
@@ -27,12 +27,12 @@ export const TitleWrapperUnfilled = styled.div`
   display: flex;
   justify-content: center;
   font-size: 21px;
-  color: #000000;
+  color: ${(props) => props.theme.plainText};
 `;
 
 export const Sum = styled.div`
   font-size: 56px;
-  color: #000000;
+  color: ${(props) => props.theme.plainText};
   font-weight: 400;
 `;
 
