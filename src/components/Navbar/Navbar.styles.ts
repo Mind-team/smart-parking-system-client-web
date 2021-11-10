@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 7.2916666667%;
   min-height: 56px;
+  max-height: 70px;
   background-color: ${(props) => props.theme.header};
 `;
 
