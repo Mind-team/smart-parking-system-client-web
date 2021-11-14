@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { BrowserRouter } from "react-router-dom";
-import { ParkingWidgetMini } from "../components/ParkingWidgetMini/ParkingWidgetMini";
+import { ParkingWidgetMini } from "../components/ParkingWidgets/ParkingWidgetMini/ParkingWidgetMini";
 
 export default {
   title: "Parking Widget Mini",

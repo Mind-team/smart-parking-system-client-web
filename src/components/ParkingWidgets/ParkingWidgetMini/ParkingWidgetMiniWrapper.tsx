@@ -1,4 +1,4 @@
-import { useTypedSelector } from "../../hooks/typedSelector.hook";
+import { useTypedSelector } from "../../../hooks/typedSelector.hook";
 import { ThemeProvider } from "styled-components";
 import { ParkingWidgetMini, Props } from "./ParkingWidgetMini";
 import { FC } from "react";

@@ -7,7 +7,7 @@ import { useAPI } from "../../hooks/api.hook";
 import { useDateFormatter } from "../../hooks/dateFormater.hook";
 import * as S from "./Home.styles";
 import { RulesBlock } from "../../components/RulesBlock";
-import { ParkingWidgetMini } from "../../components/ParkingWidgetMini";
+import { ParkingWidgetMini } from "../../components/ParkingWidgets";
 import { UserInfoWidgetMini } from "../../components/UserInfoWidgetMini";
 
 interface Props {

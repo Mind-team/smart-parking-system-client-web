@@ -43,9 +43,3 @@ export const Details = styled.div`
   margin-bottom: 47px;
   cursor: pointer;
 `;
-
-export const NavLinkStyles = {
-  textDecoration: "none",
-  display: "flex",
-  justifyContent: "center",
-};

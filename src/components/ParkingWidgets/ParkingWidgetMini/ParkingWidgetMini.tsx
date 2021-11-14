@@ -1,15 +1,8 @@
 import * as S from "./ParkingWidgetMini.styles";
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
-import { NavLinkStyles } from "./ParkingWidgetMini.styles";
-
-interface FilledWidget {
-  title: string;
-  parkingTime: string;
-  entryCarDate: string;
-  price: number;
-  detailsRoute: string;
-}
+import { NavLinkStyles } from "../navLink.styles";
+import { FilledWidget } from "../filledWidget.interface";
 
 type UnfilledWidget = Pick<FilledWidget, "price" | "detailsRoute">;
 
