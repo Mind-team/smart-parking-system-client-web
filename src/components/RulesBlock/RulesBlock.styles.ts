@@ -27,7 +27,7 @@ export const LineWrapper = styled.div`
 
 export const LineNumber = styled.span`
   font-size: 40px;
-  color: rgba(136, 109, 236, 0.463);
+  color: ${(props) => props.theme.accent};
 `;
 
 export const LineDescription = styled.span`

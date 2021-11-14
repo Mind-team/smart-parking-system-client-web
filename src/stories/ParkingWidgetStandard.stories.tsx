@@ -24,7 +24,6 @@ export const Primary = Template.bind({});
 Primary.args = {
   title: "Гринвич",
   entryCarDate: "05.11.2021",
-  parkingTime: "1:50",
   price: 510,
   detailsRoute: "link",
 };

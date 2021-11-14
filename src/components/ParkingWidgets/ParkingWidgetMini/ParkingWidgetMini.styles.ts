@@ -38,7 +38,7 @@ export const Sum = styled.div`
 
 export const Details = styled.div`
   font-size: 21px;
-  color: #886dec;
+  color: ${(props) => props.theme.accent};
   font-weight: 400;
   margin-bottom: 47px;
   cursor: pointer;

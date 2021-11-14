@@ -4,6 +4,7 @@ import { ParkingWidget } from "../../components/ParkingWidget/ParkingWidget";
 import { useAPI } from "../../hooks/api.hook";
 import { useDateFormatter } from "../../hooks/dateFormater.hook";
 import { WidgetWrapper, Wrapper } from "./History.styles";
+import { ParkingWidgetStandard } from "../../components/ParkingWidgets";
 
 interface Props {
   parkings: Parking[];
@@ -20,11 +21,13 @@ export const History: FC<Props> = ({ parkings }) => {
         }
         return (
           <WidgetWrapper key={index}>
-            <ParkingWidget
+            <ParkingWidgetStandard
               title={parking.parkingTitle}
-              date={useDateFormatter(new Date(parking.entryCarTime)).fullDate}
+              entryCarDate={
+                useDateFormatter(new Date(parking.entryCarTime)).fullDate
+              }
               price={parking.priceRub}
-              route={api.parkingDetails(index.toString())}
+              detailsRoute={api.parkingDetails(index.toString())}
             />
           </WidgetWrapper>
         );

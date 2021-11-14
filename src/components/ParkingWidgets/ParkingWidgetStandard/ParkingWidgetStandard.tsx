@@ -4,7 +4,9 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { NavLinkStyles } from "../navLink.styles";
 
-export const ParkingWidgetStandard = (props: FilledWidget) => {
+export type ParkingWidgetStandardProps = Omit<FilledWidget, "parkingTime">;
+
+export const ParkingWidgetStandard = (props: ParkingWidgetStandardProps) => {
   const [isHover, setHover] = useState(false);
   return (
     <NavLink to={props.detailsRoute} style={NavLinkStyles}>

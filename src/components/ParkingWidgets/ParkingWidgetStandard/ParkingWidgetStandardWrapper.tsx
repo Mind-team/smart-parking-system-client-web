@@ -1,10 +1,14 @@
 import { useTypedSelector } from "../../../hooks/typedSelector.hook";
 import { ThemeProvider } from "styled-components";
 import { FC } from "react";
-import { ParkingWidgetStandard } from "./ParkingWidgetStandard";
-import { FilledWidget } from "../filledWidget.interface";
+import {
+  ParkingWidgetStandard,
+  ParkingWidgetStandardProps,
+} from "./ParkingWidgetStandard";
 
-export const ParkingWidgetStandardWrapper: FC<FilledWidget> = (args) => {
+export const ParkingWidgetStandardWrapper: FC<ParkingWidgetStandardProps> = (
+  args,
+) => {
   const { config } = useTypedSelector((state) => state.appearanceMode);
   return (
     <ThemeProvider theme={config}>
