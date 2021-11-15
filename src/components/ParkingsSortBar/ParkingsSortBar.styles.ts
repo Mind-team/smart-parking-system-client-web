@@ -10,7 +10,6 @@ export const Wrapper = styled.div`
   border-radius: 19px;
   box-shadow: inset 0 0 0 2px rgba(1, 1, 1, 0.15),
     inset 0 0 0 4px rgba(136, 109, 236, 0.68), 0 0 28px 0 rgba(0, 0, 0, 0.08);
-  border: 2px solid rgba(1, 1, 1, 0.147);
 `;
 
 export const Text = styled.span`
