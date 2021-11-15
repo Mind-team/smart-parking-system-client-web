@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useProportions } from "../../hooks/windowProportions.hook";
+import { useProportions } from "../../../hooks/windowProportions.hook";
 
 const { wFullHD } = useProportions();
 

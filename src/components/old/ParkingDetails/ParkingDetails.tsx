@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { Parking } from "../../common/Parking.dto";
-import { useDateFormatter } from "../../hooks/dateFormater.hook";
+import { Parking } from "../../../common/Parking.dto";
+import { useDateFormatter } from "../../../hooks/dateFormater.hook";
 import { Content, Line, Wrapper } from "./ParkingDetails.styles";
 
 export const ParkingDetails: FC<{ parking: Parking }> = ({ parking }) => {

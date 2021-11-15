@@ -2,7 +2,7 @@
 // TODO: Fix
 import { FC } from "react";
 import { Parking } from "../../common/Parking.dto";
-import { ParkingWidget } from "../../components/ParkingWidget/ParkingWidget";
+import { ParkingWidget } from "../../components/old/ParkingWidget/ParkingWidget";
 import { useAPI } from "../../hooks/api.hook";
 import { useDateFormatter } from "../../hooks/dateFormater.hook";
 import * as S from "./Home.styles";

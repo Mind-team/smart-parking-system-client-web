@@ -3,7 +3,7 @@ import { Redirect, useParams } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { Parking } from "../../common/Parking.dto";
 import { useRoutes } from "../../hooks/routes.hook";
-import { ParkingDetails } from "../../components/ParkingDetails/ParkingDetails";
+import { ParkingDetails } from "../../components/old/ParkingDetails/ParkingDetails";
 import { Wrapper } from "./ParkingDetails.styles";
 import { useNotification } from "../../hooks/notification.hook";
 import { Toaster } from "react-hot-toast";
