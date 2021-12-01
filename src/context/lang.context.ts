@@ -2,6 +2,7 @@ import { Lang } from "../enums/lang.enum";
 import React from "react";
 
 type Args = (...args: any[]) => string;
+
 export type Dictionary = {
   [title in Lang]: {
     home: Args;
