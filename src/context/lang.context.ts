@@ -1,38 +1,39 @@
 import { Lang } from "../enums/lang.enum";
 import React from "react";
 
+type Args = (...args: any[]) => string
 export type Dictionary = {
   [title in Lang]: {
-    home: (...args: any[]) => string;
-    history: (...args: any[]) => string;
-    parkings: (...args: any[]) => string;
-    profile: (...args: any[]) => string;
-    smartParkingSystem: (...args: any[]) => string;
-    notRegisteredYet: (...args: any[]) => string;
-    password: (...args: any[]) => string;
-    signIn: (...args: any[]) => string;
-    phoneNumber: (...args: any[]) => string;
-    registrationPlate: (...args: any[]) => string;
-    signUp: (...args: any[]) => string;
-    parkingRules: (...args: any[]) => string;
-    firstRule: (...args: any[]) => string;
-    secondRule: (...args: any[]) => string;
-    thirdRule: (...args: any[]) => string;
-    lastOperation: (...args: any[]) => string;
-    moreDetails: (...args: any[]) => string;
-    currentParking: (...args: any[]) => string;
-    munutes: (...args: any[]) => string;
-    parking: (...args: any[]) => string;
-    seeTheCheck: (...args: any[]) => string;
-    dateOfEntry: (...args: any[]) => string;
-    dateOfExit: (...args: any[]) => string;
-    timeOfExit: (...args: any[]) => string;
-    timeOfEntry: (...args: any[]) => string;
-    licensePlate: (...args: any[]) => string;
-    parkingTime: (...args: any[]) => string;
-    total: (...args: any[]) => string;
-    free: (...args: any[]) => string;
-    email: (...args: any[]) => string;
+    home: Args;
+    history: Args;
+    parkings: Args;
+    profile: Args;
+    smartParkingSystem: Args;
+    notRegisteredYet: Args;
+    password: Args;
+    signIn: Args;
+    phoneNumber: Args;
+    registrationPlate: Args;
+    signUp: Args;
+    parkingRules: Args;
+    firstRule: Args;
+    secondRule: Args;
+    thirdRule: Args;
+    lastOperation: Args;
+    moreDetails: Args;
+    currentParking: Args;
+    minutes: Args;
+    parking: Args;
+    seeTheCheck: Args;
+    dateOfEntry: Args;
+    dateOfExit: Args;
+    timeOfExit: Args;
+    timeOfEntry: Args;
+    licensePlate: Args;
+    parkingTime: Args;
+    total: Args;
+    free: Args;
+    email: Args;
   };
 };
 
@@ -79,7 +80,7 @@ export const dictionary: Dictionary = {
       capitalFirstWord ? "More details" : "more details",
     currentParking: (capitalFirstWord = false) =>
       capitalFirstWord ? "Current parking" : "current parking",
-    munutes: (capitalFirstWord = false) => (capitalFirstWord ? "Min." : "min."),
+    minutes: (capitalFirstWord = false) => (capitalFirstWord ? "Min." : "min."),
     parking: (capitalFirstWord = false) =>
       capitalFirstWord ? "Parking" : "parking",
     seeTheCheck: (capitalFirstWord = false) =>
@@ -147,7 +148,7 @@ export const dictionary: Dictionary = {
       capitalFirstWord ? "Подробнее" : "подробнее",
     currentParking: (capitalFirstWord = false) =>
       capitalFirstWord ? "Текущая парковка" : "текущая парковка",
-    munutes: (capitalFirstWord = false) => (capitalFirstWord ? "Мин." : "мин."),
+    minutes: (capitalFirstWord = false) => (capitalFirstWord ? "Мин." : "мин."),
     parking: (capitalFirstWord = false) =>
       capitalFirstWord ? "Паркинг" : "паркинг",
     seeTheCheck: (capitalFirstWord = false) =>
