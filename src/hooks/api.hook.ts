@@ -8,3 +8,5 @@ export const useAPI = () => {
     parkingDetails: (id: string) => `/parkingDetails/${id}`,
   };
 };
+
+// линт опять ругается на невидимые символы 
