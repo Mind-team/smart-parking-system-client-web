@@ -1,9 +1,9 @@
-import { User } from "../../common/User.dto";
+import { GetDriverDataResponseDto } from "../../dto/driver/get-driver-data-response.dto";
 
 type Error = string;
 
 export interface UserState {
-  user: User | null;
+  user: GetDriverDataResponseDto | null;
   isLoading: boolean;
   isError: [false] | [true, Error];
   isAuth: boolean;
@@ -28,7 +28,7 @@ interface FetchUserAction {
 
 interface SuccessFetchUserAction {
   type: UserActionType.FETCH_DATA_SUCCESS;
-  payload: User;
+  payload: null;
 }
 
 interface ErrorFetchUserAction {
@@ -50,7 +50,7 @@ interface SignInUserAction {
 
 interface SuccessSignInUserAction {
   type: UserActionType.SIGN_IN_SUCCESS;
-  payload: User;
+  payload: null;
 }
 
 interface ErrorSignInUserAction {

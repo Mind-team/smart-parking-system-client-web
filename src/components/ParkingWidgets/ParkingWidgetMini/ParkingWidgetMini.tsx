@@ -6,12 +6,12 @@ import { FilledWidget } from "../filledWidget.interface";
 
 type UnfilledWidget = Pick<FilledWidget, "price" | "detailsRoute">;
 
-type FilledWidgetProps = {
+export type FilledWidgetProps = {
   isFilled: true;
   data: FilledWidget;
 };
 
-type UnfilledWidgetProps = {
+export type UnfilledWidgetProps = {
   isFilled: false;
   data: UnfilledWidget;
 };

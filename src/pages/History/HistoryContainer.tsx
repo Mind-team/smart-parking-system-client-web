@@ -1,50 +1,26 @@
-import { FC, useEffect } from "react";
-import { Toaster } from "react-hot-toast";
-import { Parking } from "../../common/Parking.dto";
-import { useNotification } from "../../hooks/notification.hook";
+import { FC, useEffect, useState } from "react";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
 import { History } from "./History";
-import { Redirect } from "react-router-dom";
-import { useRoutes } from "../../hooks/routes.hook";
 import { ThemeProvider } from "styled-components";
-import { useActions } from "../../hooks/reduxActions.hook";
+import { useApi } from "../../hooks/network";
 
 export const HistoryContainer: FC = () => {
-  const { user, isLoading, isError, isAuth } = useTypedSelector(
-    (state) => state.user,
-  );
   const { config } = useTypedSelector((state) => state.appearanceMode);
-  const { fetchUserData } = useActions();
-  const [notification, routes] = [useNotification(config), useRoutes()];
+  const api = useApi();
+  const [pps, setPPS] = useState([]);
 
   useEffect(() => {
-    fetchUserData();
+    api
+      .getParkingProcesses(
+        localStorage.getItem("JwtToken") as string,
+        "84c312f4-9450-4867-8962-6804420a9ed1",
+      )
+      .then((parkingProcesses) => setPPS(parkingProcesses));
   }, []);
-
-  if (isLoading) {
-    return (
-      <div
-        style={{
-          backgroundColor: config.additionalBGColor,
-          height: "100%",
-        }}
-      />
-    );
-  }
-
-  if (!isAuth) {
-    notification.cancel().error("You are not auth");
-    return <Redirect to={routes.signIn()} />;
-  }
-
-  if (isError[0]) {
-    notification.cancel().error(isError[1]);
-    return <Toaster />;
-  }
 
   return (
     <ThemeProvider theme={config}>
-      <History parkings={user?.parkings as Parking[]} />
+      <History parkings={pps} />
     </ThemeProvider>
   );
 };

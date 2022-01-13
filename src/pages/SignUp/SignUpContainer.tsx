@@ -1,19 +1,17 @@
 import { FC, useState } from "react";
 import { Redirect } from "react-router-dom";
-import { ServerResponse } from "../../common/ServerResponse.interface";
-import { SignUpDto } from "../../common/SignUp.dto";
-import { useHttp } from "../../hooks/http.hook";
 import { useNotification } from "../../hooks/notification.hook";
 import { useRoutes } from "../../hooks/routes.hook";
 import { useWindowDimensions } from "../../hooks/windowDimensions.hook";
 import { SignUp } from "./SignUp";
 import { SignUpMobile } from "./SignUpMobile";
 import { useTypedSelector } from "../../hooks/typedSelector.hook";
+import { useNetwork } from "../../hooks/network";
 
 export const SignUpContainer: FC = () => {
   const { config } = useTypedSelector((state) => state.appearanceMode);
   const [req, routes, width, notification] = [
-    useHttp(),
+    useNetwork(),
     useRoutes(),
     useWindowDimensions().width,
     useNotification(config),
@@ -40,27 +38,27 @@ export const SignUpContainer: FC = () => {
 
   const handleSubmit = () => {
     notification.loading();
-    req<SignUpDto, ServerResponse<null>>({
-      url: "http://localhost:5000/user/signUp",
-      method: "POST",
-      body: {
-        phoneNumber,
-        password,
-        plates: [plate],
-      },
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((result) => {
-      if (!result.isExpected) {
-        notification.cancel().error(result.message);
-        return;
-      }
-      localStorage.setItem("phoneNumber", phoneNumber);
-      localStorage.setItem("password", password);
-      notification.cancel().success("Success");
-      setAuth(true);
-    });
+    // req<SignUpDto, ServerResponse<null>>({
+    //   url: "http://localhost:5000/user/signUp",
+    //   method: "POST",
+    //   body: {
+    //     phoneNumber,
+    //     password,
+    //     plates: [plate],
+    //   },
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // }).then((result) => {
+    //   if (!result.isExpected) {
+    //     notification.cancel().error(result.message);
+    //     return;
+    //   }
+    //   localStorage.setItem("phoneNumber", phoneNumber);
+    //   localStorage.setItem("password", password);
+    //   notification.cancel().success("Success");
+    //   setAuth(true);
+    // });
   };
 
   if (isAuth) {

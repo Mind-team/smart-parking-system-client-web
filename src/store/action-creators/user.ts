@@ -1,44 +1,32 @@
 import { Dispatch } from "react";
-import { User } from "../../common/User.dto";
 import { UserAction, UserActionType } from "../types/user";
-import { ServerResponse } from "../../common/ServerResponse.interface";
+import { GetDriverDataResponseDto } from "../../dto/driver/get-driver-data-response.dto";
 
 const signInAPI = async (
-  phoneNumber: string,
-  password: string,
-): Promise<ServerResponse<User>> => {
-  const body = JSON.stringify({
-    phoneNumber,
-    password,
-  });
-  const response = await fetch("http://localhost:5000/user/signIn", {
-    // TODO: remove hard link
-    method: "POST",
-    body,
+  jwtToken: string,
+): Promise<GetDriverDataResponseDto> => {
+  const response = await fetch("http://localhost:5000/api/v4/driver", {
     headers: {
       "Content-Type": "application/json",
+      Authorization: jwtToken,
     },
   });
-  const res: ServerResponse<User> = await response.json();
-  return res;
+  return await response.json();
 };
 
 export const fetchUserData = () => {
   return async (dispatch: Dispatch<UserAction>): Promise<void> => {
     try {
       dispatch({ type: UserActionType.FETCH_DATA });
-      const [phoneNumber, password] = [
-        localStorage.getItem("phoneNumber"),
-        localStorage.getItem("password"),
-      ];
-      if (!phoneNumber || !password) {
+      const jwtToken = localStorage.getItem("JwtToken");
+      if (!jwtToken) {
         dispatch({ type: UserActionType.NOT_AUTHORIZED });
         return;
       }
-      const res = await signInAPI(phoneNumber, password);
+      const res = await signInAPI(jwtToken);
       dispatch({
         type: UserActionType.FETCH_DATA_SUCCESS,
-        payload: res.value as User,
+        payload: null,
       });
     } catch (error) {
       dispatch({
@@ -72,16 +60,16 @@ export const signIn = () => {
         });
         return;
       }
-      const res = await signInAPI(phoneNumber, password);
-      if (!res.isExpected) {
-        dispatch({ type: UserActionType.SIGN_IN_ERROR, payload: res.message });
-        logout()(dispatch);
-        return;
-      }
-      dispatch({
-        type: UserActionType.SIGN_IN_SUCCESS,
-        payload: res.value as User,
-      });
+      // const res = await signInAPI(phoneNumber, password);
+      // if (!res.isExpected) {
+      //   dispatch({ type: UserActionType.SIGN_IN_ERROR, payload: res.message });
+      //   logout()(dispatch);
+      //   return;
+      // }
+      // dispatch({
+      //   type: UserActionType.SIGN_IN_SUCCESS,
+      //   payload: res.value as User,
+      // });
     } catch (error) {
       dispatch({
         type: UserActionType.SIGN_IN_ERROR,

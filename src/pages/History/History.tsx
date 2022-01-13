@@ -1,19 +1,22 @@
 import { FC } from "react";
-import { Parking } from "../../common/Parking.dto";
-import { ParkingWidget } from "../../components/old/ParkingWidget/ParkingWidget";
-import { useAPI } from "../../hooks/api.hook";
 import { useDateFormatter } from "../../hooks/dateFormater.hook";
 import { WidgetWrapper, Wrapper, SortBarWrapper } from "./History.styles";
 import { ParkingWidgetStandard } from "../../components/ParkingWidgets";
 import { ParkingsSortBar } from "../../components/ParkingsSortBar";
+import { useEndpoints } from "../../hooks/network/endpoints.hook";
+import { GetLastParkingProcessResponseDto } from "../../dto/parking-process/get-last-parking-process-response.dto";
+import { useRoutes } from "../../hooks/routes.hook";
 
 interface Props {
-  parkings: Parking[];
+  parkings: GetLastParkingProcessResponseDto[];
 }
 
 export const History: FC<Props> = ({ parkings }) => {
-  const api = useAPI();
-  const plates = Array.from(new Set(parkings.map((value) => value.carPlate)));
+  const api = useEndpoints();
+  const routes = useRoutes();
+  const plates = Array.from(
+    new Set(parkings.map((value) => value.driver.carPlate)),
+  );
 
   return (
     <Wrapper>
@@ -27,12 +30,12 @@ export const History: FC<Props> = ({ parkings }) => {
         return (
           <WidgetWrapper key={index}>
             <ParkingWidgetStandard
-              title={parking.parkingTitle}
+              title={parking.parking.title}
               entryCarDate={
                 useDateFormatter(new Date(parking.entryCarTime)).fullDate
               }
-              price={parking.priceRub}
-              detailsRoute={api.parkingDetails(index.toString())}
+              price={parking.payment.value ?? 512}
+              detailsRoute={routes.parkingDetails(parking._id)}
             />
           </WidgetWrapper>
         );

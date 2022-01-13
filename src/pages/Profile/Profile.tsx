@@ -1,23 +1,23 @@
 import { FC } from "react";
-import { User } from "../../common/User.dto";
 import { Button } from "../../components/Button/Button";
 import { Card, Line, LineWithAction, Wrapper } from "./Profile.styles";
+import { GetDriverDataResponseDto } from "../../dto/driver/get-driver-data-response.dto";
 
 interface Props {
-  user: User;
+  user: GetDriverDataResponseDto;
   handleLogout: () => void;
   changeMode: () => void;
 }
 
-export const Profile: FC<Props> = ({ user, handleLogout, changeMode }) => {
+export const Profile: FC<Props> = ({ user, changeMode, handleLogout }) => {
   return (
     <Wrapper>
       <Card>
         <Line>Номер телефона: {user.phoneNumber}</Line>
         <Line>
-          Регистрационный знак{user.plates.length > 1 ? "и" : ""}:{" "}
-          {user.plates.map((value, index) =>
-            index === user.plates.length - 1 ? `${value}` : `${value}, `,
+          Регистрационный знак{user.carPlates.length > 1 ? "и" : ""}:{" "}
+          {user.carPlates.map((value, index) =>
+            index === user.carPlates.length - 1 ? `${value}` : `${value}, `,
           )}
         </Line>
         <LineWithAction onClick={changeMode}>Сменить тему</LineWithAction>

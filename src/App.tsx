@@ -29,7 +29,7 @@ const App: FC = () => {
           <Route exact path={routes.profile()} component={ProfileContainer} />
           <Route
             exact
-            path={routes.parkingDetails()}
+            path={routes.parkingDetails(":id")}
             component={ParkingDetailsContainer}
           />
         </>
