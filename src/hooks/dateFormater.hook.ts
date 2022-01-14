@@ -1,7 +1,6 @@
 /* eslint-disable indent */
 // TODO: Fix
 export const useDateFormatter = (date: number | Date) => {
-  console.log(date);
   const _date = typeof date === "number" ? new Date(date) : date;
   const [day, month, year, hours, minutes] = [
     _date.getDate(),

@@ -19,7 +19,7 @@ const prepareParkingProcessToWidget = (
     title: pp.parking?.title ?? null,
     parkingTime: "5min",
     entryCarDate: useDateFormatter(new Date(pp.entryCarTime)).fullDate,
-    price: pp.payment?.value ?? null,
+    price: (pp.payment?.value ? Math.trunc(pp.payment?.value) : null) as number,
     detailsRoute: pp._id ?? null,
   };
 };

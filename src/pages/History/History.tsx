@@ -12,11 +12,14 @@ interface Props {
 }
 
 export const History: FC<Props> = ({ parkings }) => {
-  const api = useEndpoints();
   const routes = useRoutes();
   const plates = Array.from(
     new Set(parkings.map((value) => value.driver.carPlate)),
   );
+
+  if (!plates.length) {
+    return <></>;
+  }
 
   return (
     <Wrapper>
@@ -34,7 +37,7 @@ export const History: FC<Props> = ({ parkings }) => {
               entryCarDate={
                 useDateFormatter(new Date(parking.entryCarTime)).fullDate
               }
-              price={parking.payment.value ?? 512}
+              price={Math.trunc(parking.payment.value)}
               detailsRoute={routes.parkingDetails(parking._id)}
             />
           </WidgetWrapper>

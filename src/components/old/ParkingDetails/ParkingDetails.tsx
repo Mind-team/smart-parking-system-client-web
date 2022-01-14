@@ -22,7 +22,7 @@ export const ParkingDetails: FC<{
         <Line>Время въезда: {entryData.fullTime}</Line>
         <Line>Время выезда: {departureData.fullTime}</Line>
         <Line>Регистрационный знак транспорта: {parking.driver.carPlate}</Line>
-        <Line>Сумма: {parking.payment.value}₽</Line>
+        <Line>Сумма: {Math.trunc(parking.payment.value)}₽</Line>
       </Content>
     </Wrapper>
   );
