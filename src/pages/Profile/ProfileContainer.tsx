@@ -11,9 +11,7 @@ import { GetDriverDataResponseDto } from "../../dto/driver/get-driver-data-respo
 import { useApi } from "../../hooks/network";
 
 export const ProfileContainer: FC = () => {
-  const { isLoading, isError, isAuth } = useTypedSelector(
-    (state) => state.user,
-  );
+  const [isLoading, setLoading] = useState(true);
   const [user, setUser] = useState();
   const api = useApi();
   const { config } = useTypedSelector((state) => state.appearanceMode);
@@ -29,14 +27,15 @@ export const ProfileContainer: FC = () => {
   useEffect(() => {
     const jwtToken = localStorage.getItem("JwtToken");
     api.getDriverData(jwtToken as string).then((user) => setUser(user));
+    setLoading(false);
   }, []);
 
   if (isLoading) {
-    return <></>;
+    return <>Loading</>;
   }
 
   if (!user) {
-    return <></>;
+    return <>User</>;
   }
 
   return (
