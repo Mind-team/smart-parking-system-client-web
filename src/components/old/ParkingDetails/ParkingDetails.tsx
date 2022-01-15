@@ -7,7 +7,7 @@ export const ParkingDetails: FC<{
   parking: GetLastParkingProcessResponseDto | null;
 }> = ({ parking }) => {
   if (!parking) {
-    return <span>Something went wrong, sorry :(</span>;
+    return <></>;
   }
 
   const entryData = useDateFormatter(new Date(parking.entryCarTime));

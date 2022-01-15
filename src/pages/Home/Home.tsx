@@ -17,7 +17,7 @@ const prepareParkingProcessToWidget = (
 ) => {
   return {
     title: pp.parking?.title ?? null,
-    parkingTime: "5min",
+    parkingTime: useDateFormatter(new Date(pp.entryCarTime)).fullTime,
     entryCarDate: useDateFormatter(new Date(pp.entryCarTime)).fullDate,
     price: (pp.payment?.value ? Math.trunc(pp.payment?.value) : null) as number,
     detailsRoute: pp._id ?? null,
