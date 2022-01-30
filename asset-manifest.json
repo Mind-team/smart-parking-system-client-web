@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/smart-parking-system-client-web/static/css/main.dbfaef3d.chunk.css",
-    "main.js": "/smart-parking-system-client-web/static/js/main.353dc6d4.chunk.js",
-    "main.js.map": "/smart-parking-system-client-web/static/js/main.353dc6d4.chunk.js.map",
+    "main.js": "/smart-parking-system-client-web/static/js/main.d006dc3e.chunk.js",
+    "main.js.map": "/smart-parking-system-client-web/static/js/main.d006dc3e.chunk.js.map",
     "runtime-main.js": "/smart-parking-system-client-web/static/js/runtime-main.179b98ef.js",
     "runtime-main.js.map": "/smart-parking-system-client-web/static/js/runtime-main.179b98ef.js.map",
-    "static/js/2.beb7b84f.chunk.js": "/smart-parking-system-client-web/static/js/2.beb7b84f.chunk.js",
-    "static/js/2.beb7b84f.chunk.js.map": "/smart-parking-system-client-web/static/js/2.beb7b84f.chunk.js.map",
+    "static/js/2.be15d388.chunk.js": "/smart-parking-system-client-web/static/js/2.be15d388.chunk.js",
+    "static/js/2.be15d388.chunk.js.map": "/smart-parking-system-client-web/static/js/2.be15d388.chunk.js.map",
     "index.html": "/smart-parking-system-client-web/index.html",
     "static/css/main.dbfaef3d.chunk.css.map": "/smart-parking-system-client-web/static/css/main.dbfaef3d.chunk.css.map",
-    "static/js/2.beb7b84f.chunk.js.LICENSE.txt": "/smart-parking-system-client-web/static/js/2.beb7b84f.chunk.js.LICENSE.txt"
+    "static/js/2.be15d388.chunk.js.LICENSE.txt": "/smart-parking-system-client-web/static/js/2.be15d388.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.179b98ef.js",
-    "static/js/2.beb7b84f.chunk.js",
+    "static/js/2.be15d388.chunk.js",
     "static/css/main.dbfaef3d.chunk.css",
-    "static/js/main.353dc6d4.chunk.js"
+    "static/js/main.d006dc3e.chunk.js"
   ]
 }
