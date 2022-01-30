@@ -31,17 +31,26 @@ export const HomeContainer: FC = () => {
   const parkingApi = useParkingApi();
   const [parkingProcess, setParkingProcess] =
     useState<GetLastParkingProcessDto | null>();
+  const [plate, setPlate] = useState<string>("");
 
   useEffect(() => {
     Promise.all([driverApi.driver(), parkingApi.lastParkingProcess()]).then(
       (value) => {
         setParkingProcess(value[1]);
+        if (value[0] && value[0].carPlates[0]) {
+          setPlate(value[0].carPlates[0]);
+        }
       },
     );
   }, []);
 
   if (parkingProcess) {
-    return <Home parkingWidget={prepareToParkingWidget(parkingProcess)} />;
+    return (
+      <Home
+        parkingWidget={prepareToParkingWidget(parkingProcess)}
+        plate={plate}
+      />
+    );
   }
 
   return <></>;

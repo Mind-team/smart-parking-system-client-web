@@ -14,3 +14,9 @@ export const WidgetsWrapper = styled.div`
   margin-top: 26px;
   justify-content: space-between;
 `;
+
+export const MiniWidgetsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
