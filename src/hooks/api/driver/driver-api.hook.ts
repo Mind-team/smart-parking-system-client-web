@@ -2,20 +2,10 @@ import { useHttp } from "../../http";
 import { LoginDriverRequestDto } from "./dto/login-driver-request.dto";
 import { useEndpoint } from "../endpoint.hook";
 import { LoginDriverResponseDto } from "./dto/login-driver-response.dto";
+import { GetDriverResponseDto } from "./dto/get-driver-response.dto";
 
 const request = useHttp();
 const endpoint = useEndpoint();
-
-// function getCookie(name: string) {
-//   const matches = document.cookie.match(
-//     new RegExp(
-//       "(?:^|; )" +
-//         name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
-//         "=([^;]*)",
-//     ),
-//   );
-//   return matches ? decodeURIComponent(matches[1]) : undefined;
-// }
 
 const sendConfirmationCode = async (
   phoneNumber: LoginDriverRequestDto["phoneNumber"],
@@ -45,9 +35,25 @@ const login = async (data: LoginDriverRequestDto, apiVersion: string) => {
   });
 };
 
+const driver = async (accessToken: string | null, apiVersion: string) => {
+  if (!accessToken) {
+    return null; // HANDLE
+  }
+  return await request<null, GetDriverResponseDto>({
+    url: endpoint + apiVersion + "/driver",
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+};
+
 export const useDriverApi = () => {
+  const accessToken = localStorage.getItem("at");
   return {
     login,
     sendConfirmationCode,
+    driver: (apiVersion = "v4") => driver(accessToken, apiVersion),
   };
 };

@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useRoute } from "./hooks/routes";
 import { LoginWrapper } from "./pages/Login";
 import { HomeContainer } from "./pages/Home";
+import { MainLayout } from "./layouts/Main.layout";
 
 const App: FC = () => {
   const route = useRoute();
@@ -10,7 +11,9 @@ const App: FC = () => {
   return (
     <Routes>
       <Route path={route.auth.login} element={<LoginWrapper />} />
-      <Route path={route.home.main} element={<HomeContainer />} />
+      <Route path="/" element={<MainLayout />}>
+        <Route path={route.home.main} element={<HomeContainer />} />
+      </Route>
       <Route path="*" element={<Navigate to={route.auth.login} />} />
     </Routes>
   );

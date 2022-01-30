@@ -2,14 +2,10 @@ import { Login } from "./Login.page";
 import { FC, useState } from "react";
 import { useDriverApi } from "../../hooks/api";
 import { useNavigate } from "react-router-dom";
-import { useRoute } from "../../hooks/routes";
-import { useAuth } from "../../hooks/auth";
 
 export const LoginWrapper: FC = () => {
   const driverApi = useDriverApi();
-  const route = useRoute();
   const navigate = useNavigate();
-  const [auth, setAuth] = useAuth();
   const [isError, setError] = useState(false);
 
   const handleLoginClick = (phone: string, confirmationCode: string) => {
@@ -19,7 +15,7 @@ export const LoginWrapper: FC = () => {
         // if (response && "error" in response) {
         // }
         if (response && "accessToken" in response) {
-          setAuth({ accessToken: response.accessToken });
+          localStorage.setItem("at", response.accessToken);
           navigate("/home");
         }
       });
