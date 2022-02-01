@@ -1,9 +1,20 @@
 import { Home } from "./Home.page";
-import { useDriverApi } from "../../hooks/api";
 import { FC, useEffect, useState } from "react";
-import { useParkingApi } from "../../hooks/api/parking/parking-api.hook";
-import { GetLastParkingProcessDto } from "../../hooks/api/parking/dto/get-last-parking-process.dto";
 import { IParkingWidgetData } from "@ermolaev/mind-ui";
+import {
+  GetDriverResponseDto,
+  GetLastParkingProcessDto,
+  useDriverApi,
+  useParkingApi,
+  useCache,
+  isCorrectResponse,
+} from "@ermolaev/mind-common";
+import {
+  ICompletedParkingProcess,
+  IDriver,
+  ModelToken,
+  useModel,
+} from "../../hooks/models";
 
 const prepareToParkingWidget = (
   data: GetLastParkingProcessDto,
@@ -27,31 +38,60 @@ const prepareToParkingWidget = (
 };
 
 export const HomeContainer: FC = () => {
-  const driverApi = useDriverApi();
-  const parkingApi = useParkingApi();
+  const driverApi = useDriverApi(localStorage.getItem("at") as string);
+  const parkingApi = useParkingApi(localStorage.getItem("at") as string);
+  const cache = useCache();
   const [parkingProcess, setParkingProcess] =
-    useState<GetLastParkingProcessDto | null>();
+    useState<ICompletedParkingProcess>();
   const [plate, setPlate] = useState<string>("");
+  const [isError, setError] = useState(false);
 
   useEffect(() => {
     Promise.all([driverApi.driver(), parkingApi.lastParkingProcess()]).then(
-      (value) => {
-        setParkingProcess(value[1]);
-        if (value[0] && value[0].carPlates[0]) {
-          setPlate(value[0].carPlates[0]);
+      ([driver, parkingProcess]) => {
+        if (isCorrectResponse<GetLastParkingProcessDto>(parkingProcess)) {
+          const parkingProcessModel = useModel<
+            GetLastParkingProcessDto,
+            ICompletedParkingProcess
+          >(ModelToken.CompletedParkingProcess, parkingProcess);
+          if (!parkingProcessModel) {
+            setError(true);
+            return;
+          }
+          setParkingProcess(parkingProcessModel);
+        }
+        if (isCorrectResponse(driver)) {
+          const driverModel = useModel<GetDriverResponseDto, IDriver>(
+            ModelToken.Driver,
+            driver,
+          );
+          if (!driverModel) {
+            setError(true);
+            return;
+          }
+          setPlate(driverModel.carPlates[0]);
+          cache.save("driver", driverModel);
         }
       },
     );
   }, []);
 
+  if (isError) {
+    return <>Error</>;
+  }
+
   if (parkingProcess) {
     return (
       <Home
-        parkingWidget={prepareToParkingWidget(parkingProcess)}
+        parkingWidget={{
+          ...parkingProcess,
+          price: parkingProcess.payment.value,
+          detailsClick: () => console.log("1"),
+        }}
         plate={plate}
       />
     );
   }
 
-  return <></>;
+  return <>Loading</>;
 };

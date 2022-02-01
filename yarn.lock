@@ -1457,6 +1457,13 @@
   "resolved" "https://registry.npmjs.org/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz"
   "version" "0.2.5"
 
+"@ermolaev/mind-common@^1.0.0-beta.16":
+  "integrity" "sha512-K2PZV5kyvOhwOsFkB/NzJOdfkkhjBAt9RtdtXPr9UuQPJXWZ32BEJYF1VhBEYTe+BbgcK4xu+udug4cd/Z3Sxw=="
+  "resolved" "https://registry.npmjs.org/@ermolaev/mind-common/-/mind-common-1.0.0-beta.16.tgz"
+  "version" "1.0.0-beta.16"
+  dependencies:
+    "react" "^17.0.2"
+
 "@ermolaev/mind-ui@^0.3.1":
   "integrity" "sha512-lLaP9c9LJUUWGB+dw4zEtD3sTjeo8RjCNHBDs6HtYVAUEsO+zMs6LN85cA+7EgbvtKI2oIsS5KQ2cbCGT7lzMw=="
   "resolved" "https://registry.npmjs.org/@ermolaev/mind-ui/-/mind-ui-0.3.3.tgz"

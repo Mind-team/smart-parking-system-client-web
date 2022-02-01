@@ -1,12 +1,11 @@
 import { Rules } from "../../components";
 import * as S from "./Home.styles";
-import { FC, useContext } from "react";
+import { FC } from "react";
 import {
   InfoWidget,
   IParkingWidgetData,
   ParkingWidget,
 } from "@ermolaev/mind-ui";
-import { LanguageContext } from "../../context/languages";
 
 export interface IHomeProps {
   parkingWidget:

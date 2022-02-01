@@ -1,4 +1,4 @@
-export class GetDriverResponseDto {
+export interface IDriver {
   _id: string;
   phoneNumber: string;
   password: string;

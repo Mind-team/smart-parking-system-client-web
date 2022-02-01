@@ -1,4 +1,4 @@
-export class GetLastParkingProcessDto {
+export interface ICompletedParkingProcess {
   _id: string;
   parking: {
     _id: string;

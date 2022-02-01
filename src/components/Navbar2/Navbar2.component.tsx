@@ -23,7 +23,7 @@ export const Navbar2: FC = () => {
         </Link>
       </NavbarElement>
       <NavbarElement>
-        <Link to={route.home.main} style={LinkStyle}>
+        <Link to={route.history.main} style={LinkStyle}>
           {dict.navbar.history}
         </Link>
       </NavbarElement>

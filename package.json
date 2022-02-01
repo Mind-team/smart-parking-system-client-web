@@ -3,7 +3,23 @@
   "version": "2.0.0",
   "private": true,
   "homepage": "http://mind-team.github.io/smart-parking-system-client-web",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "buildCI": "CI= react-scripts build",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
+    "test": "react-scripts test",
+    "type:coverage": "type-coverage --detail",
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"src/**/*.(ts|tsx|js|jsx)\"",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
   "dependencies": {
+    "@ermolaev/mind-common": "^1.0.0-beta.16",
     "@ermolaev/mind-ui": "^1.0.0-beta.6",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -21,20 +37,26 @@
     "typescript": "^4.0.3",
     "web-vitals": "^0.2.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "buildCI": "CI= react-scripts build",
-    "lint": "eslint ./src",
-    "lint:fix": "eslint ./src --fix",
-    "test": "react-scripts test",
-    "type:coverage": "type-coverage --detail",
-    "eject": "react-scripts eject",
-    "format": "prettier --write \"src/**/*.(ts|tsx|js|jsx)\"",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-essentials": "^6.1.21",
+    "@storybook/addon-links": "^6.3.8",
+    "@storybook/node-logger": "^6.3.8",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.0.28",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/styled-components": "^5.1.7",
+    "@typescript-eslint/eslint-plugin": "^4.12.0",
+    "@typescript-eslint/parser": "^4.12.0",
+    "comet-cli": "^1.0.3",
+    "eslint": "^7.17.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.25.1",
+    "gh-pages": "^3.2.3",
+    "prettier": "2.3.2",
+    "type-coverage": "^2.17.0"
   },
   "eslintConfig": {
     "extends": [
@@ -63,26 +85,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@storybook/addon-actions": "^6.3.8",
-    "@storybook/addon-essentials": "^6.1.21",
-    "@storybook/addon-links": "^6.3.8",
-    "@storybook/node-logger": "^6.3.8",
-    "@storybook/preset-create-react-app": "^3.2.0",
-    "@storybook/react": "^6.0.28",
-    "@types/react-router-dom": "^5.1.7",
-    "@types/styled-components": "^5.1.7",
-    "@typescript-eslint/eslint-plugin": "^4.12.0",
-    "@typescript-eslint/parser": "^4.12.0",
-    "comet-cli": "^1.0.3",
-    "eslint": "^7.17.0",
-    "eslint-config-google": "^0.14.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-react": "^7.25.1",
-    "gh-pages": "^3.2.3",
-    "prettier": "2.3.2",
-    "type-coverage": "^2.17.0"
   }
 }
