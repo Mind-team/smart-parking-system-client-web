@@ -4,7 +4,7 @@ import { useRoute } from "./hooks/routes";
 import { LoginWrapper } from "./pages/Login";
 import { HomeContainer } from "./pages/Home";
 import { MainLayout } from "./layouts/Main.layout";
-import { HistoryContainer } from "./pages/History/History.container";
+import { HistoryContainer } from "./pages/History";
 
 const App: FC = () => {
   const route = useRoute();

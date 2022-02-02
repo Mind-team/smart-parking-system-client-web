@@ -19,7 +19,7 @@
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
-    "@ermolaev/mind-common": "^1.0.0-beta.16",
+    "@ermolaev/mind-common": "^1.0.0-beta.17",
     "@ermolaev/mind-ui": "^1.0.0-beta.6",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
