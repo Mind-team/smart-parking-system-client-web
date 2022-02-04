@@ -1457,30 +1457,18 @@
   "resolved" "https://registry.npmjs.org/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz"
   "version" "0.2.5"
 
-"@ermolaev/mind-common@^1.0.0-beta.17":
-  "integrity" "sha512-wJwBuiIaArhgcQBCxffKEwgZeTV00+lMX6+PyIAnSLNb+18EDTZqUGqMzJS4c8PkTB0SD4copWwUTKqbgkvGVA=="
-  "resolved" "https://registry.npmjs.org/@ermolaev/mind-common/-/mind-common-1.0.0-beta.17.tgz"
-  "version" "1.0.0-beta.17"
+"@ermolaev/mind-common@^1.0.0-beta.20":
+  "integrity" "sha512-sHvAATy/hKKwZaiZQsVB/h5oNRatSTZrZiYC4XUpmdS0S0okglX3x0AsOYU/pnFn4kI8mL/tZ6PKolOgCZN33A=="
+  "resolved" "https://registry.npmjs.org/@ermolaev/mind-common/-/mind-common-1.0.0-beta.20.tgz"
+  "version" "1.0.0-beta.20"
   dependencies:
     "react" "^17.0.2"
 
-"@ermolaev/mind-ui@^0.3.1":
-  "integrity" "sha512-lLaP9c9LJUUWGB+dw4zEtD3sTjeo8RjCNHBDs6HtYVAUEsO+zMs6LN85cA+7EgbvtKI2oIsS5KQ2cbCGT7lzMw=="
-  "resolved" "https://registry.npmjs.org/@ermolaev/mind-ui/-/mind-ui-0.3.3.tgz"
-  "version" "0.3.3"
+"@ermolaev/mind-ui@^1.0.0-beta.7":
+  "integrity" "sha512-4i8oPoRqzIl4dZgDTUmbUJrOMWdE45mmaINB+4OAPzsHhr1dUCE/fC4icTedqteWHm5SxOaeJ6nsOzojXHWajg=="
+  "resolved" "https://registry.npmjs.org/@ermolaev/mind-ui/-/mind-ui-1.0.0-beta.7.tgz"
+  "version" "1.0.0-beta.7"
   dependencies:
-    "@ermolaev/mind-ui" "^0.3.1"
-    "@types/react-router-dom" "^5.3.3"
-    "@types/styled-components" "^5.1.21"
-    "react-router-dom" "^6.2.1"
-    "styled-components" "^5.3.3"
-
-"@ermolaev/mind-ui@^1.0.0-beta.6":
-  "integrity" "sha512-jt78Wavwzrg7QL97lnpjc3ptRdoUD3FBAySxKZuUKkLp3/5BhYKR81Ujo32LJy6fg+F3dkad86ODGWkIW1qZDg=="
-  "resolved" "https://registry.npmjs.org/@ermolaev/mind-ui/-/mind-ui-1.0.0-beta.6.tgz"
-  "version" "1.0.0-beta.6"
-  dependencies:
-    "@ermolaev/mind-ui" "^0.3.1"
     "@types/react-router-dom" "^5.3.3"
     "@types/styled-components" "^5.1.21"
     "react-router-dom" "^6.2.1"

@@ -1,15 +1,12 @@
 import { Login } from "./Login.page";
 import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDriverApi, useCache } from "@ermolaev/mind-common";
+import { useDriverApi } from "@ermolaev/mind-common";
 
 export const LoginWrapper: FC = () => {
   const driverApi = useDriverApi("");
-  const cache = useCache();
   const navigate = useNavigate();
   const [isError, setError] = useState(false);
-
-  console.log(cache.read("driver"));
 
   const handleLoginClick = (phone: string, confirmationCode: string) => {
     driverApi

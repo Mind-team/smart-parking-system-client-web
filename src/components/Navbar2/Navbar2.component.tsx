@@ -16,27 +16,29 @@ export const Navbar2: FC = () => {
   };
 
   return (
-    <Navbar>
-      <NavbarElement>
-        <Link to={route.home.main} style={LinkStyle}>
-          {dict.navbar.home}
-        </Link>
-      </NavbarElement>
-      <NavbarElement>
-        <Link to={route.history.main} style={LinkStyle}>
-          {dict.navbar.history}
-        </Link>
-      </NavbarElement>
-      <NavbarElement>
-        <Link to={route.home.main} style={LinkStyle}>
-          {dict.navbar.parkings}
-        </Link>
-      </NavbarElement>
-      <NavbarElement>
-        <Link to={route.home.main} style={LinkStyle}>
-          {dict.navbar.profile}
-        </Link>
-      </NavbarElement>
-    </Navbar>
+    <div style={{ flexBasis: "56px" }}>
+      <Navbar>
+        <NavbarElement>
+          <Link to={route.home.main} style={LinkStyle}>
+            {dict.navbar.home}
+          </Link>
+        </NavbarElement>
+        <NavbarElement>
+          <Link to={route.history.main} style={LinkStyle}>
+            {dict.navbar.history}
+          </Link>
+        </NavbarElement>
+        <NavbarElement>
+          <Link to={route.home.main} style={LinkStyle}>
+            {dict.navbar.parkings}
+          </Link>
+        </NavbarElement>
+        <NavbarElement>
+          <Link to={route.home.main} style={LinkStyle}>
+            {dict.navbar.profile}
+          </Link>
+        </NavbarElement>
+      </Navbar>
+    </div>
   );
 };

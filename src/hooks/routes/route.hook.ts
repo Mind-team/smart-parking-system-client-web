@@ -34,7 +34,7 @@ const Route: IRoute = {
   },
   history: {
     main: BaseRoute.history,
-    details: BaseRoute.history + "/:id",
+    details: BaseRoute.history + "/details" + "/:id",
   },
 };
 

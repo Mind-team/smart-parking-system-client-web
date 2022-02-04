@@ -5,6 +5,7 @@ import { LoginWrapper } from "./pages/Login";
 import { HomeContainer } from "./pages/Home";
 import { MainLayout } from "./layouts/Main.layout";
 import { HistoryContainer } from "./pages/History";
+import { ParkingProcessDetailsContainer } from "./pages/History/ParkingProcessDetails";
 
 const App: FC = () => {
   const route = useRoute();
@@ -15,6 +16,10 @@ const App: FC = () => {
       <Route path="/" element={<MainLayout />}>
         <Route path={route.home.main} element={<HomeContainer />} />
         <Route path={route.history.main} element={<HistoryContainer />} />
+        <Route
+          path={route.history.details}
+          element={<ParkingProcessDetailsContainer />}
+        />
       </Route>
       <Route path="*" element={<Navigate to={route.auth.login} />} />
     </Routes>

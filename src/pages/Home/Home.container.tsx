@@ -1,12 +1,10 @@
 import { Home } from "./Home.page";
 import { FC, useEffect, useState } from "react";
-import { IParkingWidgetData } from "@ermolaev/mind-ui";
 import {
   GetDriverResponseDto,
   GetLastParkingProcessDto,
   useDriverApi,
   useParkingApi,
-  useCache,
   isCorrectResponse,
 } from "@ermolaev/mind-common";
 import {
@@ -16,31 +14,9 @@ import {
   useModel,
 } from "../../hooks/models";
 
-const prepareToParkingWidget = (
-  data: GetLastParkingProcessDto,
-): IParkingWidgetData | Pick<IParkingWidgetData, "price" | "detailsClick"> => {
-  if (data.isCompleted) {
-    return {
-      parkingName: data.parking.title,
-      date: data.entryCarTime,
-      price: Math.trunc(data.payment.value),
-      detailsClick: () => {
-        return;
-      },
-    };
-  }
-  return {
-    price: Math.trunc(data.payment.value),
-    detailsClick: () => {
-      return;
-    },
-  };
-};
-
 export const HomeContainer: FC = () => {
   const driverApi = useDriverApi(localStorage.getItem("at") as string);
   const parkingApi = useParkingApi(localStorage.getItem("at") as string);
-  const cache = useCache();
   const [parkingProcess, setParkingProcess] =
     useState<ICompletedParkingProcess>();
   const [plate, setPlate] = useState<string>("");
@@ -70,7 +46,6 @@ export const HomeContainer: FC = () => {
             return;
           }
           setPlate(driverModel.carPlates[0]);
-          cache.save("driver", driverModel);
         }
       },
     );

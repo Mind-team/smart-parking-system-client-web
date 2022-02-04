@@ -5,9 +5,13 @@ import { ParkingWidget, Sortbar } from "@ermolaev/mind-ui";
 
 interface IHistoryProps {
   parkingProcesses: ICompletedParkingProcess[];
+  onDetailsClick: (parkingProcessId: string) => void;
 }
 
-export const History: FC<IHistoryProps> = ({ parkingProcesses }) => {
+export const History: FC<IHistoryProps> = ({
+  parkingProcesses,
+  onDetailsClick,
+}) => {
   return (
     <S.Wrapper>
       <S.SortBarWrapper>
@@ -32,7 +36,7 @@ export const History: FC<IHistoryProps> = ({ parkingProcesses }) => {
                 parkingName: process.parking.title,
                 price: process.payment.value,
                 detailsClick: () => {
-                  return;
+                  onDetailsClick(process._id);
                 },
               }}
             />
