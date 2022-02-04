@@ -13,6 +13,22 @@ import {
   ModelToken,
   useModel,
 } from "../../hooks/models";
+import { IUncompletedParkingProcess } from "../../hooks/models/interfaces/uncompletedParkingProcess.interface";
+
+const prepareParkingProcess = (
+  parkingProcess: ICompletedParkingProcess | IUncompletedParkingProcess,
+) => {
+  if (parkingProcess.isCompleted) {
+    return {
+      parkingName: parkingProcess.parking.title,
+      date: parkingProcess.entryCarTime,
+      price: parkingProcess.payment.value,
+    };
+  }
+  return {
+    price: parkingProcess.payment.value as unknown as number,
+  };
+};
 
 export const HomeContainer: FC = () => {
   const driverApi = useDriverApi(localStorage.getItem("at") as string);
@@ -59,8 +75,7 @@ export const HomeContainer: FC = () => {
     return (
       <Home
         parkingWidget={{
-          ...parkingProcess,
-          price: parkingProcess.payment.value,
+          ...prepareParkingProcess(parkingProcess),
           detailsClick: () => console.log("1"),
         }}
         plate={plate}
